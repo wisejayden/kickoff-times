@@ -1,0 +1,16 @@
+#Header {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  #logo {
+    height: 50px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+}
