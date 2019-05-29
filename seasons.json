@@ -1,0 +1,1286 @@
+{
+    generated_at: "2019-05-29T15:50:16+00:00",
+    schema: "http://schemas.sportradar.com/bsa/rugby/v1/json/endpoints/rugby/seasons.json",
+    seasons: [
+    {
+    id: "sr:season:9032",
+    name: "British and Irish Cup, Q 2014",
+    start_date: "2014-08-30",
+    end_date: "2014-09-07",
+    year: "2014",
+    tournament_id: "sr:tournament:1426",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1426",
+    name: "British and Irish Cup, Q"
+    }
+    },
+    {
+    id: "sr:season:10018",
+    name: "Vodacom Cup 2015",
+    start_date: "2015-03-06",
+    end_date: "2015-05-31",
+    year: "2015",
+    tournament_id: "sr:tournament:1272",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1272",
+    name: "Vodacom Cup"
+    }
+    },
+    {
+    id: "sr:season:10249",
+    name: "World Rugby Tbilisi Cup 2015",
+    start_date: "2015-06-13",
+    end_date: "2015-06-22",
+    year: "2015",
+    tournament_id: "sr:tournament:1740",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1740",
+    name: "World Rugby Tbilisi Cup"
+    }
+    },
+    {
+    id: "sr:season:10950",
+    name: "Trofeo Eccellenza 15/16",
+    start_date: "2015-11-14",
+    end_date: "2016-04-10",
+    year: "15/16",
+    tournament_id: "sr:tournament:1968",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1968",
+    name: "Trofeo Eccellenza"
+    }
+    },
+    {
+    id: "sr:season:12086",
+    name: "World Rugby Sevens World Series 15/16",
+    start_date: "2015-12-04",
+    end_date: "2016-05-23",
+    year: "15/16",
+    tournament_id: "sr:tournament:1990",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1990",
+    name: "World Rugby Sevens World Series"
+    }
+    },
+    {
+    id: "sr:season:12773",
+    name: "Pacific Rugby Premiership 2016",
+    start_date: "2016-01-29",
+    end_date: "2016-05-30",
+    year: "2016",
+    tournament_id: "sr:tournament:2067",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2067",
+    name: "Pacific Rugby Premiership"
+    }
+    },
+    {
+    id: "sr:season:33335",
+    name: "Olympic Tournament, Women 2016",
+    start_date: "2016-08-06",
+    end_date: "2016-08-09",
+    year: "2016",
+    tournament_id: "sr:tournament:13965",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:13965",
+    name: "Olympic Tournament, Women"
+    }
+    },
+    {
+    id: "sr:season:33331",
+    name: "Olympic Games 2016",
+    start_date: "2016-08-08",
+    end_date: "2016-08-15",
+    year: "2016",
+    tournament_id: "sr:tournament:13963",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:13963",
+    name: "Olympic Tournament"
+    }
+    },
+    {
+    id: "sr:season:34329",
+    name: "Currie Cup First Division 2016",
+    start_date: "2016-08-12",
+    end_date: "2016-10-09",
+    year: "2016",
+    tournament_id: "sr:tournament:1872",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1872",
+    name: "Currie Cup First Division"
+    }
+    },
+    {
+    id: "sr:season:34605",
+    name: "WRU Premiership Challenge Cup 16/17",
+    start_date: "2016-10-12",
+    end_date: "2017-04-30",
+    year: "16/17",
+    tournament_id: "sr:tournament:2266",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2266",
+    name: "WRU Premiership Challenge Cup"
+    }
+    },
+    {
+    id: "sr:season:40673",
+    name: "World Rugby Nations Cup 2017",
+    start_date: "2017-06-09",
+    end_date: "2017-06-30",
+    year: "2017",
+    tournament_id: "sr:tournament:1736",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1736",
+    name: "World Rugby Nations Cup"
+    }
+    },
+    {
+    id: "sr:season:41114",
+    name: "Rugby Africa Gold Cup 2017",
+    start_date: "2017-06-23",
+    end_date: "2017-08-07",
+    year: "2017",
+    tournament_id: "sr:tournament:15564",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:15564",
+    name: "Rugby Africa Gold Cup"
+    }
+    },
+    {
+    id: "sr:season:40465",
+    name: "World Cup, Women 2017",
+    start_date: "2017-08-09",
+    end_date: "2017-08-26",
+    year: "2017",
+    tournament_id: "sr:tournament:1826",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1826",
+    name: "World Cup, Women"
+    }
+    },
+    {
+    id: "sr:season:46298",
+    name: "British and Irish Cup 17/18",
+    start_date: "2017-10-13",
+    end_date: "2018-05-31",
+    year: "17/18",
+    tournament_id: "sr:tournament:1508",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1508",
+    name: "British and Irish Cup"
+    }
+    },
+    {
+    id: "sr:season:46372",
+    name: "Anglo-Welsh Cup 17/18",
+    start_date: "2017-11-03",
+    end_date: "2018-03-30",
+    year: "17/18",
+    tournament_id: "sr:tournament:366",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:366",
+    name: "Anglo-Welsh Cup"
+    }
+    },
+    {
+    id: "sr:season:53668",
+    name: "Int. Friendly Games 2018",
+    start_date: "2018-01-01",
+    end_date: "2018-12-31",
+    year: "2018",
+    tournament_id: "sr:tournament:876",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:876",
+    name: "Int. Friendly Games"
+    }
+    },
+    {
+    id: "sr:season:51167",
+    name: "Brisbane Global Rugby Tens 2018",
+    start_date: "2018-02-09",
+    end_date: "2018-02-13",
+    year: "2018",
+    tournament_id: "sr:tournament:14874",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1479",
+    name: "Rugby Union Tens"
+    },
+    competition: {
+    id: "sr:tournament:14874",
+    name: "Brisbane Global Rugby Tens"
+    }
+    },
+    {
+    id: "sr:season:51949",
+    name: "Commonwealth Games, Women 2018",
+    start_date: "2018-04-13",
+    end_date: "2018-04-16",
+    year: "2018",
+    tournament_id: "sr:tournament:24213",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:24213",
+    name: "Commonwealth Games, Women"
+    }
+    },
+    {
+    id: "sr:season:51951",
+    name: "Commonwealth Games 2018",
+    start_date: "2018-04-14",
+    end_date: "2018-04-16",
+    year: "2018",
+    tournament_id: "sr:tournament:24215",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:24215",
+    name: "Commonwealth Games"
+    }
+    },
+    {
+    id: "sr:season:54409",
+    name: "World Rugby Pacific Nations Cup 2018",
+    start_date: "2018-06-09",
+    end_date: "2018-06-17",
+    year: "2018",
+    tournament_id: "sr:tournament:1738",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1738",
+    name: "World Rugby Pacific Nations Cup"
+    }
+    },
+    {
+    id: "sr:season:55281",
+    name: "World Cup Sevens 2018",
+    start_date: "2018-07-20",
+    end_date: "2018-07-24",
+    year: "2018",
+    tournament_id: "sr:tournament:25531",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:25531",
+    name: "World Cup Sevens"
+    }
+    },
+    {
+    id: "sr:season:55283",
+    name: "World Cup Sevens, Women, 2018",
+    start_date: "2018-07-20",
+    end_date: "2018-07-23",
+    year: "2018",
+    tournament_id: "sr:tournament:25533",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:25533",
+    name: "World Cup Sevens, Women"
+    }
+    },
+    {
+    id: "sr:season:56053",
+    name: "Premiership Rugby 7s 2018",
+    start_date: "2018-07-27",
+    end_date: "2018-07-29",
+    year: "2018",
+    tournament_id: "sr:tournament:14049",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:14049",
+    name: "Premiership Rugby 7s"
+    }
+    },
+    {
+    id: "sr:season:56357",
+    name: "NPC Cup 2018",
+    start_date: "2018-08-15",
+    end_date: "2018-10-28",
+    year: "2018",
+    tournament_id: "sr:tournament:797",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:797",
+    name: "NPC Cup"
+    }
+    },
+    {
+    id: "sr:season:54913",
+    name: "Currie Cup 2018",
+    start_date: "2018-08-17",
+    end_date: "2018-10-28",
+    year: "2018",
+    tournament_id: "sr:tournament:796",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:796",
+    name: "Currie Cup"
+    }
+    },
+    {
+    id: "sr:season:55549",
+    name: "Pro D2 18/19",
+    start_date: "2018-08-17",
+    end_date: "2019-05-27",
+    year: "18/19",
+    tournament_id: "sr:tournament:1147",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1147",
+    name: "Pro D2"
+    }
+    },
+    {
+    id: "sr:season:55291",
+    name: "Top 14 18/19",
+    start_date: "2018-08-25",
+    end_date: "2019-06-17",
+    year: "18/19",
+    tournament_id: "sr:tournament:420",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:420",
+    name: "Top 14"
+    }
+    },
+    {
+    id: "sr:season:58656",
+    name: "Heartland Championship 2018",
+    start_date: "2018-08-25",
+    end_date: "2018-10-29",
+    year: "2018",
+    tournament_id: "sr:tournament:2179",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2179",
+    name: "Heartland Championship"
+    }
+    },
+    {
+    id: "sr:season:56656",
+    name: "Asian Games 2018, Women",
+    start_date: "2018-08-30",
+    end_date: "2018-09-02",
+    year: "2018",
+    tournament_id: "sr:tournament:26102",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:26102",
+    name: "Asian Games, Women"
+    }
+    },
+    {
+    id: "sr:season:56654",
+    name: "Asian Games 2018",
+    start_date: "2018-08-30",
+    end_date: "2018-09-02",
+    year: "2018",
+    tournament_id: "sr:tournament:26104",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:26104",
+    name: "Asian Games"
+    }
+    },
+    {
+    id: "sr:season:55971",
+    name: "Pro 14 18/19",
+    start_date: "2018-08-31",
+    end_date: "2019-05-26",
+    year: "18/19",
+    tournament_id: "sr:tournament:419",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:419",
+    name: "Pro 14"
+    }
+    },
+    {
+    id: "sr:season:55241",
+    name: "English Premiership 18/19",
+    start_date: "2018-08-31",
+    end_date: "2019-06-03",
+    year: "18/19",
+    tournament_id: "sr:tournament:424",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:424",
+    name: "English Premiership"
+    }
+    },
+    {
+    id: "sr:season:57234",
+    name: "RFU Championship 18/19",
+    start_date: "2018-08-31",
+    end_date: "2019-05-31",
+    year: "18/19",
+    tournament_id: "sr:tournament:1323",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1323",
+    name: "RFU Championship"
+    }
+    },
+    {
+    id: "sr:season:57496",
+    name: "Premiership Rugby Shield 18/19",
+    start_date: "2018-08-31",
+    end_date: "2019-05-14",
+    year: "18/19",
+    tournament_id: "sr:tournament:1349",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1349",
+    name: "Premiership Rugby Shield"
+    }
+    },
+    {
+    id: "sr:season:57206",
+    name: "Georgian Big 10 18/19",
+    start_date: "2018-08-31",
+    end_date: "2019-05-26",
+    year: "18/19",
+    tournament_id: "sr:tournament:1357",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1357",
+    name: "Georgian Big 10"
+    }
+    },
+    {
+    id: "sr:season:57210",
+    name: "NRC 2018",
+    start_date: "2018-08-31",
+    end_date: "2018-10-27",
+    year: "2018",
+    tournament_id: "sr:tournament:1828",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1828",
+    name: "NRC"
+    }
+    },
+    {
+    id: "sr:season:58328",
+    name: "Top League 18/19",
+    start_date: "2018-08-31",
+    end_date: "2019-01-13",
+    year: "18/19",
+    tournament_id: "sr:tournament:2187",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2187",
+    name: "Top League"
+    }
+    },
+    {
+    id: "sr:season:60168",
+    name: "Scottish Prem Division 18/19",
+    start_date: "2018-09-01",
+    end_date: "2019-03-04",
+    year: "18/19",
+    tournament_id: "sr:tournament:1315",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1315",
+    name: "Scottish Prem Division"
+    }
+    },
+    {
+    id: "sr:season:57398",
+    name: "Welsh Premiership 18/19",
+    start_date: "2018-09-01",
+    end_date: "2019-05-31",
+    year: "18/19",
+    tournament_id: "sr:tournament:1361",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1361",
+    name: "Welsh Premiership"
+    }
+    },
+    {
+    id: "sr:season:57608",
+    name: "Celtic Cup 2018",
+    start_date: "2018-09-07",
+    end_date: "2018-10-31",
+    year: "2018",
+    tournament_id: "sr:tournament:26440",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:26440",
+    name: "Celtic Cup"
+    }
+    },
+    {
+    id: "sr:season:57618",
+    name: "Romania Superliga 18/19",
+    start_date: "2018-09-08",
+    end_date: "2019-05-31",
+    year: "18/19",
+    tournament_id: "sr:tournament:2116",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2116",
+    name: "Romania SuperLiga"
+    }
+    },
+    {
+    id: "sr:season:58266",
+    name: "Eccellenza 18/19",
+    start_date: "2018-09-15",
+    end_date: "2019-04-28",
+    year: "18/19",
+    tournament_id: "sr:tournament:566",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:566",
+    name: "Top 12"
+    }
+    },
+    {
+    id: "sr:season:59176",
+    name: "All Ireland League D. 1A 18/19",
+    start_date: "2018-10-05",
+    end_date: "2019-04-14",
+    year: "18/19",
+    tournament_id: "sr:tournament:1912",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1912",
+    name: "All Ireland League D. 1A"
+    }
+    },
+    {
+    id: "sr:season:60178",
+    name: "All Ireland League D. 1B 18/19",
+    start_date: "2018-10-06",
+    end_date: "2019-06-24",
+    year: "18/19",
+    tournament_id: "sr:tournament:1914",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1914",
+    name: "All Ireland League D. 1B"
+    }
+    },
+    {
+    id: "sr:season:56023",
+    name: "European Challenge Cup 18/19",
+    start_date: "2018-10-11",
+    end_date: "2019-05-30",
+    year: "18/19",
+    tournament_id: "sr:tournament:752",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:752",
+    name: "European Challenge Cup"
+    }
+    },
+    {
+    id: "sr:season:56025",
+    name: "European Cup 18/19",
+    start_date: "2018-10-12",
+    end_date: "2019-05-12",
+    year: "18/19",
+    tournament_id: "sr:tournament:401",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:401",
+    name: "European Cup"
+    }
+    },
+    {
+    id: "sr:season:60820",
+    name: "World Rugby Sevens World Series, Women 18/19",
+    start_date: "2018-10-20",
+    end_date: "2019-06-10",
+    year: "18/19",
+    tournament_id: "sr:tournament:27492",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:27492",
+    name: "World Rugby Sevens World Series, Women"
+    }
+    },
+    {
+    id: "sr:season:59370",
+    name: "Premiership Rugby Cup 18/19",
+    start_date: "2018-10-26",
+    end_date: "2019-03-18",
+    year: "18/19",
+    tournament_id: "sr:tournament:27086",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:27086",
+    name: "Premiership Rugby Cup"
+    }
+    },
+    {
+    id: "sr:season:60818",
+    name: "World Rugby Sevens World Series 18/19",
+    start_date: "2018-11-30",
+    end_date: "2019-06-03",
+    year: "18/19",
+    tournament_id: "sr:tournament:14638",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:1118",
+    name: "Rugby Union Sevens"
+    },
+    competition: {
+    id: "sr:tournament:14638",
+    name: "World Rugby Sevens World Series"
+    }
+    },
+    {
+    id: "sr:season:62309",
+    name: "WRU Challenge Cup 2019",
+    start_date: "2019-01-04",
+    end_date: "2019-05-30",
+    year: "2019",
+    tournament_id: "sr:tournament:2047",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2047",
+    name: "WRU Challenge Cup"
+    }
+    },
+    {
+    id: "sr:season:45974",
+    name: "Six Nations 2019",
+    start_date: "2019-02-01",
+    end_date: "2019-03-18",
+    year: "2019",
+    tournament_id: "sr:tournament:423",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:423",
+    name: "Six Nations"
+    }
+    },
+    {
+    id: "sr:season:60372",
+    name: "U20 Six Nations 2019",
+    start_date: "2019-02-01",
+    end_date: "2019-03-16",
+    year: "2019",
+    tournament_id: "sr:tournament:1628",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1628",
+    name: "U20 Six Nations"
+    }
+    },
+    {
+    id: "sr:season:63251",
+    name: "Womens Six Nations 2019",
+    start_date: "2019-02-01",
+    end_date: "2019-03-18",
+    year: "2019",
+    tournament_id: "sr:tournament:2092",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2092",
+    name: "Womens Six Nations"
+    }
+    },
+    {
+    id: "sr:season:63267",
+    name: "Varsity Cup 2019",
+    start_date: "2019-02-04",
+    end_date: "2019-04-16",
+    year: "2019",
+    tournament_id: "sr:tournament:2071",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2071",
+    name: "Varsity Cup"
+    }
+    },
+    {
+    id: "sr:season:63373",
+    name: "Rugby Europe Championship 2019",
+    start_date: "2019-02-09",
+    end_date: "2019-03-17",
+    year: "2019",
+    tournament_id: "sr:tournament:2073",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2073",
+    name: "Rugby Europe Championship"
+    }
+    },
+    {
+    id: "sr:season:59620",
+    name: "Super Rugby 2019",
+    start_date: "2019-02-15",
+    end_date: "2019-07-07",
+    year: "2019",
+    tournament_id: "sr:tournament:422",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:422",
+    name: "Super Rugby"
+    }
+    },
+    {
+    id: "sr:season:63567",
+    name: "Gold Cup 2019",
+    start_date: "2019-03-09",
+    end_date: "2019-04-15",
+    year: "2019",
+    tournament_id: "sr:tournament:2059",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2059",
+    name: "Gold Cup"
+    }
+    },
+    {
+    id: "sr:season:63927",
+    name: "2019 URBA Top 12",
+    start_date: "2019-03-16",
+    end_date: "2019-10-07",
+    year: "2019",
+    tournament_id: "sr:tournament:2189",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2189",
+    name: "URBA Top 12"
+    }
+    },
+    {
+    id: "sr:season:65350",
+    name: "Queensland Premier Rugby 2019",
+    start_date: "2019-03-23",
+    end_date: "2019-08-20",
+    year: "2019",
+    tournament_id: "sr:tournament:2069",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2069",
+    name: "Queensland Premier Rugby"
+    }
+    },
+    {
+    id: "sr:season:65204",
+    name: "NSW Shute Shield 2019",
+    start_date: "2019-04-06",
+    end_date: "2019-08-25",
+    year: "2019",
+    tournament_id: "sr:tournament:2065",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:2065",
+    name: "NSW Shute Shield"
+    }
+    },
+    {
+    id: "sr:season:66257",
+    name: "South African Challenge Cup 2019",
+    start_date: "2019-04-26",
+    end_date: "2019-07-23",
+    year: "2019",
+    tournament_id: "sr:tournament:15241",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:15241",
+    name: "South African Challenge Cup"
+    }
+    },
+    {
+    id: "sr:season:66613",
+    name: "Junior World Ch.ship 2019",
+    start_date: "2019-06-04",
+    end_date: "2019-06-23",
+    year: "2019",
+    tournament_id: "sr:tournament:1056",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:1056",
+    name: "Junior World Ch.ship"
+    }
+    },
+    {
+    id: "sr:season:67631",
+    name: "The Rugby Championship 2019",
+    start_date: "2019-07-20",
+    end_date: "2019-08-19",
+    year: "2019",
+    tournament_id: "sr:tournament:789",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:789",
+    name: "The Rugby Championship"
+    }
+    },
+    {
+    id: "sr:season:59616",
+    name: "World Cup 2019",
+    start_date: "2019-09-20",
+    end_date: "2019-11-03",
+    year: "2019",
+    tournament_id: "sr:tournament:421",
+    sport: {
+    id: "sr:sport:12",
+    name: "Rugby"
+    },
+    category: {
+    id: "sr:category:82",
+    name: "Rugby Union"
+    },
+    competition: {
+    id: "sr:tournament:421",
+    name: "World Cup"
+    }
+    }
+    ]
+    }

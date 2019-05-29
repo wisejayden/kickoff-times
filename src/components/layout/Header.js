@@ -9,12 +9,12 @@ const Header = () => {
   return (
     <header id="Header">
       <div className="logo-container">
-        <Link to="/"><img id="logo" src={tempLogo} /></Link>
+        <Link to="/" ><img id="logo" src={tempLogo} alt="Kickoff Times Logo"/></Link>
         <Link to="/"><span>KickOff Times</span></Link>
       </div>
 
-      <Link to="/rugby"><a>Rugby</a></Link>
-      <a>Login</a>
+      <Link to="/rugby"><span>Rugby</span></Link>
+      <span>Login</span>
     </header>
   )
 }

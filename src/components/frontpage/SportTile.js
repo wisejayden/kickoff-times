@@ -8,7 +8,7 @@ const SportTile = () => {
     <div id="SportTile">
       <div className="sport-tile-container">
         <h1>Rugby</h1>
-        <img src={rugbyImage} />
+        <img src={rugbyImage} alt="Rugby"/>
       </div>
     </div>
   )
