@@ -1,16 +1,44 @@
-#Header {
+.Header {
   height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  .logo-container {
-    display: flex;
-    align-items: center;
+  background-color: black;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  margin-top: 0;
+  a {
+    text-decoration: none;
   }
+  
+
+  .locale-container {
+    color: white;
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+    display: flex;
+    .locale-icon {
+      color: white;
+    }
+  }
+  h1 {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: normal;
+
+  }
+
   #logo {
     height: 50px;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
   }
+  .profile-icon {
+    color: white;
+    height: 5rem;
+    margin-right: 2rem;
+  }
+ 
 }

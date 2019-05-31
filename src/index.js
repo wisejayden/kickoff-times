@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RootStore from './stores/RootStore';
+import 'normalize.css';
+import './index.scss';
 
 const rootStore = new RootStore();
 export const StoreContext = React.createContext();

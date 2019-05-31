@@ -1,0 +1,20 @@
+.UpcomingGames {
+    margin: 2rem 1rem;
+    .upcoming-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        .personalize-container {
+            display: flex;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            .info-icon {
+                margin-left: 0.5rem;
+                font-size: 1.2rem;
+                height: 1.6rem;
+            }
+        }
+    }    
+}
