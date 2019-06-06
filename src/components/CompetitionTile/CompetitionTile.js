@@ -1,7 +1,6 @@
 import React from 'react';
 import rwc from '../../rwc-schedule.json';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import RugbySchedule from './RugbySchedule.js';
 
 
 import './CompetitionTile.scss';
@@ -9,7 +8,7 @@ import './CompetitionTile.scss';
 const rwcLogo = '/images/rwc-logo.png';
 
 
-const CompetitionTile = (comp, ...props) => {
+const CompetitionTile = (sport, comp, ...props) => {
   
     return (
         <div className="CompetitionTile">
