@@ -1,6 +1,8 @@
 import React from 'react';
 import './GameFixture.scss';
 import cityTimezones from 'city-timezones';
+import moment from 'moment';
+import tz from 'moment-timezone';
 
 
 const GameFixture = ({gameData, ...props}) => {
@@ -9,13 +11,15 @@ const GameFixture = ({gameData, ...props}) => {
   console.log("gameData", gameData);
   const weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const date = new Date(gameData.scheduled);
-  console.log("yooo", date.toLocaleTimeString());
-  const cityLookup = cityTimezones.lookupViaCity(gameData.venue.city_name);
-  console.log("cityLookup", cityLookup);
-  
-  // const localTime =   new Date( date.getTime() + ( date.getTimezoneOffset() * 60000 ) );
-  // console.log("localTime", localTime);
+
+  const scheduled = moment(gameData.scheduled);
+
+  //const userTimeIn12HourTime = scheduled.format('h:mm a')
+  const userTime = scheduled.format('H:mm');
+
+  //Need to find a better solution in case the city is not found. Large country may screw with the timezone.
+  const cityLookup = cityTimezones.lookupViaCity(gameData.venue.city_name).length > 0 ? cityTimezones.lookupViaCity(gameData.venue.city_name)[0] : cityTimezones.findFromCityStateProvince(gameData.venue.country_name)[0];
+  const localTime = scheduled.tz(cityLookup.timezone).format('H:mm');
 
 
   return (
@@ -23,12 +27,12 @@ const GameFixture = ({gameData, ...props}) => {
        <div className="game-fixture-team-color-block"></div>
        <div className="game-fixture-time-container">
            <div className="game-fixture-day">
-            <span>{weekArray[date.getDay()]}</span>
-            <span>{date.getDate()} {monthArray[date.getMonth()]}</span>
+            <span>{weekArray[scheduled.day()]}</span>
+            <span>{scheduled.date()} {monthArray[scheduled.month()]}</span>
            </div>
            <div className="game-fixture-time">
-            <span>{date.getHours()}:{date.getMinutes()} Your Time</span>
-            <span>19:45 Local Time</span>
+            <span>{userTime} Your Time</span>
+            <span>{localTime} Local Time</span>
            </div>
        </div>
        <div className="game-fixture-playing">

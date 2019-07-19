@@ -2,8 +2,8 @@ import React from 'react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import FrontPage from './components/frontpage/Main';
-import RugbyContent from './components/rugby/RugbyContent';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import SportContent from './components/sport/SportContent';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.scss';
 
 
@@ -13,11 +13,14 @@ function App() {
       <div className="App">
         <Header />
         <div className="body">
-        <Route path="/" exact component={FrontPage} />
-        <Route
-          path="/rugby"
-          render={props => <RugbyContent sport="rugby" />}
-        />
+        <Switch>
+          <Route path="/" exact component={FrontPage} />
+          <Route
+           path="/:sport"
+           component={SportContent}
+         />
+        </Switch>
+        
         </div>
         <Footer />
       </div>
