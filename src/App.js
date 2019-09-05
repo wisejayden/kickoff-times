@@ -3,18 +3,23 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import FrontPage from './components/frontpage/Main';
 import SportContent from './components/sport/SportContent';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import './App.scss';
 
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <Router>
       <div className="App">
         <Header />
         <div className="body">
         <Switch>
-          <Route path="/" exact component={FrontPage} />
+          <Redirect exact from="/" to="/matches" />
+          <Route path="/matches" component={FrontPage} />
+          <Route path="/pools" component={FrontPage} />
+
+
           <Route
            path="/:sport"
            component={SportContent}

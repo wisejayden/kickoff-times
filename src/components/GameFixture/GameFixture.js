@@ -8,7 +8,7 @@ import tz from 'moment-timezone';
 const GameFixture = ({gameData, ...props}) => {
 
   // iso-8601 date format
-  console.log("gameData", gameData);
+  // console.log("gameData", gameData);
   const weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -21,9 +21,10 @@ const GameFixture = ({gameData, ...props}) => {
   const cityLookup = cityTimezones.lookupViaCity(gameData.venue.city_name).length > 0 ? cityTimezones.lookupViaCity(gameData.venue.city_name)[0] : cityTimezones.findFromCityStateProvince(gameData.venue.country_name)[0];
   const localTime = scheduled.tz(cityLookup.timezone).format('H:mm');
 
-
+  // console.log(scheduled.date());
   return (
     <div className="GameFixture">
+      
        <div className="game-fixture-team-color-block"></div>
        <div className="game-fixture-time-container">
            <div className="game-fixture-day">
