@@ -10,7 +10,7 @@ import { StoreContext } from "../../index";
 
 
 
-const GameFixture = observer(({gameData, ...props}) => {
+const GameFixture = observer(({gameData, pool,...props}) => {
   const store = useContext(StoreContext).AppStore;
 
   // iso-8601 date format
@@ -24,7 +24,9 @@ const GameFixture = observer(({gameData, ...props}) => {
   const cityLookup = cityTimezones.lookupViaCity(gameData.venue.city_name).length > 0 ? cityTimezones.lookupViaCity(gameData.venue.city_name)[0] : cityTimezones.findFromCityStateProvince(gameData.venue.country_name)[0];
   const localTime = scheduled.tz(cityLookup.timezone).format('H:mm');
 
-  // console.log(scheduled.date());
+
+
+  console.log("HELLLO", pool);
   return (
     <div className="GameFixture">
       
@@ -37,8 +39,9 @@ const GameFixture = observer(({gameData, ...props}) => {
            </div>
   */}
            <div className="game-fixture-time">
-            <span>{userTime} Your Time</span>
+            
             <span>{localTime} Local Time</span>
+            <span>{pool}</span>
            </div>
        </div>
        <div className="game-fixture-playing">
@@ -47,7 +50,7 @@ const GameFixture = observer(({gameData, ...props}) => {
        </div>
        <div className="game-fixture-sport">
           <div className="game-fixture-sport-container">
-           <span>{gameData.sport_event_context.category.name}</span>
+          <span>{userTime} Your Time</span>
            <img src="https://a.espncdn.com/combiner/i?img=/redesign/assets/img/icons/ESPN-icon-rugby.png&w=288&h=288&transparent=true" alt="Rugby Ball" />
           </div>
            <span>{gameData.sport_event_context.competition.name}</span>

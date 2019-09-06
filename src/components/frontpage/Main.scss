@@ -9,4 +9,14 @@
         font-size: 1.6rem;
         margin: 0 0 1rem 2rem;
     }
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        #rwc-logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+    }
 }

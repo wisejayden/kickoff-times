@@ -20,7 +20,16 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
   //Sort the data by date
   data.forEach(element => {
     let date = `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
-    gamesSortedByDay.push({date, element});
+    let pool;
+    for (let i = 0; i < store.aPoolOfCountries.length; i++) {
+      console.log('YAY');
+      if (store.aPoolOfCountries[i].country === element.competitors[0].name) {
+        pool = `Pool ${store.aPoolOfCountries[i].pool}`
+      }
+    }
+    
+      
+    gamesSortedByDay.push({date, element, pool});
   });
   //Pull out the unique dates out of the array
   const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
@@ -33,12 +42,12 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
       return (
         <>
           <GameDate date={game.date}/>
-          <GameFixture gameData={game.element} />
+          <GameFixture gameData={game.element} pool={game.pool} />
         </>
       )
     } else {
       return (
-        <GameFixture gameData={game.element} />
+        <GameFixture gameData={game.element} pool={game.pool}/>
       )
     }
     

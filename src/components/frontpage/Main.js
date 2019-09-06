@@ -15,6 +15,9 @@ const FrontPage = (props) => {
   return (
     <div className="Main">
       <h1>Rugby World Cup</h1>
+      <div className="logo-container">
+        <img id="rwc-logo" src="images/rwc-logo.png" />
+      </div>
       <Tab />
       {props.location.pathname === "/matches" &&
             <UpcomingGames data={rwcSchedule.sport_events}/>

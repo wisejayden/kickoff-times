@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  border-top:  6px solid #FE6323;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -24,9 +24,11 @@
     }
   }
   h1 {
-    color: white;
+    // color: white;
+    color: black;
     font-size: 1.6rem;
     font-weight: normal;
+    text-align: center;
 
   }
 
