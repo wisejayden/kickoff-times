@@ -1,68 +1,72 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IconContext } from "react-icons";
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import GameFixture from '../GameFixture/GameFixture';
 import moment from 'moment';
 import GameDate from '../GameDate/GameDate';
 
+import { observer } from "mobx-react-lite";
+import { StoreContext } from "../../index";
+
 
 import './UpcomingGames.scss';
-const UpcomingGames = ({numberOfGames, data, ...props}) => {
-
-  const weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
+  const store = useContext(StoreContext).AppStore;
+  console.log(store.worldCupPools);
 
   const gamesSortedByDay = [];
   let count = 0;
 
+  //Sort the data by date
   data.forEach(element => {
-    let date = `${weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${monthArray[moment(element.scheduled).month()]}`;
+    let date = `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
     gamesSortedByDay.push({date, element});
   });
-
+  //Pull out the unique dates out of the array
   const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
 
 
-const upcomingGames = gamesSortedByDay.map((game, i) => {
-  if (game.date === unique[count]) {
-    count ++;
-    return (
-      <>
-        <GameDate date={game.date}/>
+  const upcomingGames = gamesSortedByDay.map((game, i) => {
+    if (game.date === unique[count]) {
+      count ++;
+      //Add a GameDate component for the first instance of each date.
+      return (
+        <>
+          <GameDate date={game.date}/>
+          <GameFixture gameData={game.element} />
+        </>
+      )
+    } else {
+      return (
         <GameFixture gameData={game.element} />
-      </>
-    )
-  } else {
-    return (
-      <GameFixture gameData={game.element} />
-    )
-  }
-  
-})
+      )
+    }
+    
+  })
 
 
   
-let result = gamesSortedByDay.reduce(function(h, obj) {
-  h[obj.date] = (h[obj.date] || []).concat(obj);
-  return h; 
-}, {});
+  let result = gamesSortedByDay.reduce(function(h, obj) {
+    h[obj.date] = (h[obj.date] || []).concat(obj);
+    return h; 
+  }, {});
 
-console.log("result", result);
+  console.log("result", result);
 
-// var newArray = Object.keys(result).map(function(key) {
-//   return [Number(key), result[key]];
-// });
+  // var newArray = Object.keys(result).map(function(key) {
+  //   return [Number(key), result[key]];
+  // });
 
-// console.log("newArray", newArray);
-
-
+  // console.log("newArray", newArray);
 
 
-// let hello = result.sort((a,b)=>a.element.scheduled.getTime()-b.element.scheduled.getTime());
-// console.log("hello", hello);
 
 
-// console.log("result", result);
+  // let hello = result.sort((a,b)=>a.element.scheduled.getTime()-b.element.scheduled.getTime());
+  // console.log("hello", hello);
+
+
+  // console.log("result", result);
 
   
   if (numberOfGames === false) numberOfGames = data.length;
@@ -83,7 +87,7 @@ console.log("result", result);
        {upcomingGames}
     </div>
   )
-}
+});
 
 
 export default UpcomingGames;

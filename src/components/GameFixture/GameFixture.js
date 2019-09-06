@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './GameFixture.scss';
 import cityTimezones from 'city-timezones';
 import moment from 'moment';
 import tz from 'moment-timezone';
 
+import { observer } from "mobx-react-lite";
+import { StoreContext } from "../../index";
 
-const GameFixture = ({gameData, ...props}) => {
+
+
+
+const GameFixture = observer(({gameData, ...props}) => {
+  const store = useContext(StoreContext).AppStore;
 
   // iso-8601 date format
   // console.log("gameData", gameData);
-  const weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
   const scheduled = moment(gameData.scheduled);
 
   //const userTimeIn12HourTime = scheduled.format('h:mm a')
@@ -27,10 +30,12 @@ const GameFixture = ({gameData, ...props}) => {
       
        <div className="game-fixture-team-color-block"></div>
        <div className="game-fixture-time-container">
-           <div className="game-fixture-day">
-            <span>{weekArray[scheduled.day()]}</span>
+       <span>{store.weekArray[scheduled.day()]} {scheduled.date()} {store.monthArray[scheduled.month()]}</span>
+
+           {/*div className="game-fixture-day">
             <span>{scheduled.date()} {monthArray[scheduled.month()]}</span>
            </div>
+  */}
            <div className="game-fixture-time">
             <span>{userTime} Your Time</span>
             <span>{localTime} Local Time</span>
@@ -50,7 +55,7 @@ const GameFixture = ({gameData, ...props}) => {
        <div className="game-fixture-team-color-block"></div>
     </div>
   )
-}
+});
 
 
 export default GameFixture;
