@@ -1,0 +1,39 @@
+.Pools {
+    margin: 0 2rem;
+    ul {
+        list-style-type: none;
+    }
+    .pool-picker {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+
+        li {
+            cursor: pointer;
+            font-size: 1.7rem;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            box-shadow: 1px 3px 9px rgba(34,34,34,.15);
+        }
+    }
+    .pool-container {
+        margin: 2rem 1rem;
+      
+        .pool-country-container {
+            line-height: 20px;
+            margin: 0.5rem 0;
+            width: 100;
+            padding: 1rem 0;
+
+            .pool-country-icons {
+                height: 30px;
+                vertical-align: middle;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+   
+}

@@ -4,6 +4,8 @@ import SportTile from './SportTile';
 import './Main.scss';
 import rwcSchedule from '../../rwc-schedule.json';
 import Tab from '../Tab/Tab';
+import Pools from '../Pools/Pools';
+console.log(Tab);
 
 const rugbyImage = '/images/mackenzie.jpg';
 const soccerImage = '/images/messi.jpg';
@@ -22,8 +24,8 @@ const FrontPage = (props) => {
       {props.location.pathname === "/matches" &&
             <UpcomingGames data={rwcSchedule.sport_events}/>
       }
-       {props.location.pathname === "/matches" &&
-            <p>Pools</p>
+       {props.location.pathname === "/pools" &&
+            <Pools />
       }
 
       {/*
