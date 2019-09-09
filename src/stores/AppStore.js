@@ -15,28 +15,29 @@ export default class AppStore {
     "D": ["Australia", "Wales", "Georgia", "Fiji", "Uruguay"]
   };
   @observable aPoolOfCountries = [
-    {"country": "Ireland", "pool": "A"}, 
-    {"country": "Scotland", "pool": "A"}, 
-    {"country": "Japan", "pool": "A"}, 
-    {"country": "Russia", "pool": "A"}, 
-    {"country": "Samoa", "pool": "A"},
+    {"country": "Ireland", "pool": "A", "image": "ireland.svg"}, 
+    {"country": "Scotland", "pool": "A", "image": "scotland.svg"}, 
+    {"country": "Japan", "pool": "A", "image": "japan.svg"}, 
+    {"country": "Russia", "pool": "A", "image": "russia.svg"}, 
+    {"country": "Samoa", "pool": "A", "image": "samoa.svg"},
 
-    {"country": "New Zealand", "pool": "B"}, 
-    {"country": "South Africa", "pool": "B"}, 
-    {"country": "Italy", "pool": "B"}, 
-    {"country": "Namibia", "pool": "B"}, 
-    {"country": "Canada", "pool": "B"},
+    {"country": "New Zealand", "pool": "B", "image": "new-zealand.svg"}, 
+    {"country": "South Africa", "pool": "B", "image": "south-africa.svg"}, 
+    {"country": "Italy", "pool": "B", "image": "italy.svg"}, 
+    {"country": "Namibia", "pool": "B", "image": "namibia.svg"}, 
+    {"country": "Canada", "pool": "B", "image": "canada.svg"},
 
-    {"country": "England", "pool": "C"}, 
-    {"country": "France", "pool": "C"}, 
-    {"country": "Argentina", "pool": "C"}, 
-    {"country": "USA", "pool": "C"}, 
-    {"country": "Tonga", "pool": "C"},
+    {"country": "England", "pool": "C", "image": "england.svg"}, 
+    {"country": "France", "pool": "C", "image": "france.svg"}, 
+    {"country": "Argentina", "pool": "C", "image": "argentina.svg"}, 
+    {"country": "USA", "pool": "C", "image": "united-states-of-america.svg"}, 
+    {"country": "Tonga", "pool": "C", "image": "tonga.svg"},
 
-    {"country": "Australia", "pool": "D"}, 
-    {"country": "Wales", "pool": "D"}, 
-    {"country": "Georgia", "pool": "D"}, 
-    {"country": "Fiji", "pool": "D"}, 
-    {"country": "Uruguay", "pool": "D"}
+    {"country": "Australia", "pool": "D", "image": "australia.svg"}, 
+    {"country": "Wales", "pool": "D", "image": "wales.svg"}, 
+    {"country": "Georgia", "pool": "D", "image": "georgia.svg"}, 
+    {"country": "Fiji", "pool": "D", "image": "fiji.svg"}, 
+    {"country": "Uruguay", "pool": "D", "image": "uruguay.svg"}
   ];
+
 }

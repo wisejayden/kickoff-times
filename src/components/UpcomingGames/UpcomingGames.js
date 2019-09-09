@@ -21,16 +21,21 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
   data.forEach(element => {
     let date = `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
     let pool;
+    let image = [];
     for (let i = 0; i < store.aPoolOfCountries.length; i++) {
-      console.log('YAY');
       if (store.aPoolOfCountries[i].country === element.competitors[0].name) {
-        pool = `Pool ${store.aPoolOfCountries[i].pool}`
+        if(!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
+        image.unshift(store.aPoolOfCountries[i].image);
+      }
+      if (store.aPoolOfCountries[i].country === element.competitors[1].name) {
+        if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
+        image.push(store.aPoolOfCountries[i].image);
       }
     }
     
-      
-    gamesSortedByDay.push({date, element, pool});
+    gamesSortedByDay.push({date, element, pool, image});
   });
+
   //Pull out the unique dates out of the array
   const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
 
@@ -42,12 +47,12 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
       return (
         <>
           <GameDate date={game.date}/>
-          <GameFixture gameData={game.element} pool={game.pool} />
+          <GameFixture gameData={game.element} pool={game.pool} image={game.image} />
         </>
       )
     } else {
       return (
-        <GameFixture gameData={game.element} pool={game.pool}/>
+        <GameFixture gameData={game.element} pool={game.pool} image={game.image}/>
       )
     }
     
@@ -89,10 +94,10 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
 
   return (
     <div className="UpcomingGames">
-        <div className="upcoming-container">
+        {/* <div className="upcoming-container">
             <p>Upcoming Games...</p>
             <div className="personalize-container">Personalize? <IconContext.Provider value={{className: "info-icon" }}><FaRegQuestionCircle /></IconContext.Provider></div>
-        </div>
+        </div> */}
        {upcomingGames}
     </div>
   )

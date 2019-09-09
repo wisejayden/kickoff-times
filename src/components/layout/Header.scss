@@ -1,10 +1,18 @@
+$japan-pink: #E09DA6;
+$japan-green: #4F817F;
+$japan-yellow: #F2C59E;
+$japan-brown: #6E4E53;
+$japan-orange: #EB6E52;
+$japan-purple: #552151;
+$japan-off-white: #FFE9CB;
+
 .Header {
   height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-top:  6px solid #FE6323;
+  border-top:  6px solid $japan-pink;
   width: 100vw;
   position: fixed;
   top: 0;
