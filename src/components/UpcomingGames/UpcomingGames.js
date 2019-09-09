@@ -4,6 +4,7 @@ import { FaRegQuestionCircle } from 'react-icons/fa';
 import GameFixture from '../GameFixture/GameFixture';
 import moment from 'moment';
 import GameDate from '../GameDate/GameDate';
+import Filter from '../Filter/Filter';
 
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
@@ -98,6 +99,7 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
             <p>Upcoming Games...</p>
             <div className="personalize-container">Personalize? <IconContext.Provider value={{className: "info-icon" }}><FaRegQuestionCircle /></IconContext.Provider></div>
         </div> */}
+        <Filter />
        {upcomingGames}
     </div>
   )

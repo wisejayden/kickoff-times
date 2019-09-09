@@ -5,7 +5,6 @@ import './Main.scss';
 import rwcSchedule from '../../rwc-schedule.json';
 import Tab from '../Tab/Tab';
 import Pools from '../Pools/Pools';
-console.log(Tab);
 
 const rugbyImage = '/images/mackenzie.jpg';
 const soccerImage = '/images/messi.jpg';
