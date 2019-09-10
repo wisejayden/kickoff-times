@@ -13,7 +13,7 @@ const Tab = ({ ...props}) => {
     <div className="Tab">
         <Link className="Tab-link" to={"/matches"}><span>Matches</span></Link>
         <Link className="Tab-link" to={"/pools"}><span className="tab-links" >Pools</span></Link>
-        <Link className="Tab-link" to={"/ratings"}><span className="tab-links" >Match Ratings</span></Link>
+        {/* <Link className="Tab-link" to={"/ratings"}><span className="tab-links" >Match Ratings</span></Link> */}
     </div>
   )
 }

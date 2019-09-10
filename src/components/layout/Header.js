@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Header.scss';
 import {Link} from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { MdLocationOn } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
+import { observer } from "mobx-react-lite";
+import { StoreContext } from "../../index";
 
 const tempLogo = './images/templogo.png';
 
 
-const Header = () => {
+const Header = observer(() => {
+  const store = useContext(StoreContext).AppStore;
+
   const currentLocale = "Berlin";
   return (
     <header className="Header">
@@ -18,12 +22,12 @@ const Header = () => {
         </div>
       
         {/* <Link to="/" ><img id="logo" src={tempLogo} alt="Kickoff Times Logo"/></Link> */}
-        <Link to="/"><h1>KickOff Times</h1></Link>
+        <Link to="/" onClick={store.clearFilterData}><h1>KickOff Times</h1></Link>
 
       <IconContext.Provider value={{ className: "profile-icon" }}><FaUser /></IconContext.Provider>
 
     </header>
   )
-}
+});
 
 export default Header;

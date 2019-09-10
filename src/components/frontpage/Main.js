@@ -1,18 +1,16 @@
-import React from 'react';
+import React, {useContext } from 'react';
 import UpcomingGames from '../UpcomingGames/UpcomingGames';
 import SportTile from './SportTile';
 import './Main.scss';
 import rwcSchedule from '../../rwc-schedule.json';
 import Tab from '../Tab/Tab';
 import Pools from '../Pools/Pools';
+import { observer } from "mobx-react-lite";
+import { StoreContext } from "../../index";
 
-const rugbyImage = '/images/mackenzie.jpg';
-const soccerImage = '/images/messi.jpg';
-const nflImage = '/images/nfl.jpeg';
+const FrontPage = observer((props) => {
+  const store = useContext(StoreContext).AppStore;
 
-
-
-const FrontPage = (props) => {
   return (
     <div className="Main">
       <h1>Rugby World Cup</h1>
@@ -21,7 +19,7 @@ const FrontPage = (props) => {
       </div>
       <Tab />
       {props.location.pathname === "/matches" &&
-            <UpcomingGames data={rwcSchedule.sport_events}/>
+            <UpcomingGames data={store.data}/>
       }
        {props.location.pathname === "/pools" &&
             <Pools />
@@ -36,7 +34,7 @@ const FrontPage = (props) => {
         */}
     </div>
   )
-}
+});
 
 
 export default FrontPage;

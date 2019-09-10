@@ -26,9 +26,22 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
   const localTime = scheduled.tz(cityLookup.timezone).format('H:mm');
 
   const shortenedWeekday = store.weekArray[scheduled.day()].substring(0,3);
-  console.log(image)
   const imageUrlArray = [`/images/country/${image[0]}`, `/images/country/${image[1]}`]
 
+  const determinePoolColour = () => {
+    if(pool === "Pool A") {
+      return {color: '#4F817F'};
+    }
+    if(pool === "Pool B") {
+      return {color: '#EB6E52'};
+    }
+    if(pool === "Pool C") {
+      return {color: '#76C6FB'};
+    }
+    if(pool === "Pool D") {
+      return {color: '#984363'};
+    }
+  }
 
 
   return (
@@ -42,7 +55,7 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
             <span>{scheduled.date()} {monthArray[scheduled.month()]}</span>
            </div>
   */}
-        <span>{userTime} Your Time</span>
+        <span className="your-time">{userTime} Your Time</span>
 
        </div>
 
@@ -50,7 +63,7 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
             <img className="country-circle" src={imageUrlArray[0]} />
             <div>
               <p>{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
-              <span>{pool} </span>
+              <span style={determinePoolColour()}>{pool} </span>
               <span>{gameData.venue.city_name}</span>
               <p>{localTime} Local Time</p>
             </div>

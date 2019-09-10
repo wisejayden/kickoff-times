@@ -1,10 +1,18 @@
-import { observable, action, computed } from "mobx";
+import { observable, action, computed, toJS } from "mobx";
+
+import rwcSchedule from '../rwc-schedule.json';
+
 
 
 export default class AppStore {
   rootStore;
   constructor(rootStore) {
     this.rootStore = rootStore;
+  }
+  @observable filterValue = '';
+  @action changeFilterValue = (option) => {
+    this.filterValue = option;
+    this.filterData(option);
   }
   @observable weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   @observable monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -39,5 +47,40 @@ export default class AppStore {
     {"country": "Fiji", "pool": "D", "image": "fiji.svg"}, 
     {"country": "Uruguay", "pool": "D", "image": "uruguay.svg"}
   ];
+  @observable data = rwcSchedule.sport_events;
+
+  @action filterData = (filterTarget) => {
+    let filterTargetArray = [];
+    const data = rwcSchedule.sport_events;
+    const filteredData = [];
+    if (filterTarget.startsWith("Pool")) {
+      filterTargetArray = toJS(this.worldCupPools[filterTarget.slice(-1)]);
+      console.log("1", toJS(this.worldCupPools));
+      console.log("2", toJS(this.worldCupPools["A"]));
+
+    } else {
+      filterTargetArray.push(filterTarget);
+    }
+    console.log("______", filterTargetArray);
+
+    for(let t = 0; t < filterTargetArray.length; t++) {
+      console.log("go")
+      for(let i = 0; i < data.length; i++) {
+        for(let c = 0; c < data[i].competitors.length; c++) {
+          console.log("")
+          if(filterTargetArray[t] === data[i].competitors[c].name) {
+            console.log("WORKS");
+            filteredData.push(data[i]);
+          }
+        }
+      }
+    }
+    this.data = filteredData;
+  };
+
+  @action clearFilterData = () => {
+    this.data = rwcSchedule.sport_events;
+    this.filterValue = '';
+  }
 
 }

@@ -1,6 +1,24 @@
 .Filter {
+    position: relative;
+    width: 100vw;
+    #filter-logo {
+        position: absolute;
+        right: 0;
+        top: -15px;
+        width: 50px;
+    }
+    #remove-filter-logo {
+        position: absolute;
+        right: 15px;
+        top: -5px;
+        width: 30px;
+    }
+    #filter-select {
+        position: absolute;
+        right: 40px;
+    }
     // position: sticky;
-    position:fixed;
-    right: 0rem;
-    top: 26rem;
+    // position:fixed;
+    // right: 0rem;
+    // top: 26rem;
 }

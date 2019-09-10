@@ -1,16 +1,20 @@
 import React, { useState, useContext } from 'react';
 import './Pools.scss';
+import { withRouter} from "react-router-dom";
 
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
 
 
 
-const Pools = observer(({...props}) => {
+const Pools = withRouter(observer(({...props}) => {
   const [currentPool, changeCurrentPool] = useState('A');
 
   const store = useContext(StoreContext).AppStore;
-
+  const applyFilters = (country) => {
+    props.history.push("matches");
+    store.changeFilterValue(country);
+  }
 
   const showPool = store.worldCupPools[currentPool].map(country => {
     let image;
@@ -18,7 +22,7 @@ const Pools = observer(({...props}) => {
       if (country === store.aPoolOfCountries[i].country) image = `/images/country/${store.aPoolOfCountries[i].image}`;
     }
     return (
-      <li className="pool-country-container">
+      <li onClick ={() => {applyFilters(country)}} className="pool-country-container">
         <img src={image } className="pool-country-icons"/>
         <span>{country}</span>
       </li>
@@ -28,10 +32,10 @@ const Pools = observer(({...props}) => {
   return (
     <div className="Pools">
       <ul className="pool-picker">
-          <li onClick={() => changeCurrentPool('A')}>Pool A</li>
-          <li  onClick={() => changeCurrentPool('B')}>Pool B</li>
-          <li  onClick={() => changeCurrentPool('C')}>Pool C</li>
-          <li  onClick={() => changeCurrentPool('D')}>Pool D</li>
+          {currentPool === "A" ? <li id="pool-a-picker-active">Pool A</li> : <li id="pool-a-picker" onClick={() => changeCurrentPool('A')}>Pool A</li> }
+          {currentPool === "B" ? <li id="pool-b-picker-active">Pool B</li> : <li id="pool-b-picker" onClick={() => changeCurrentPool('B')}>Pool B</li> }
+          {currentPool === "C" ? <li id="pool-c-picker-active">Pool C</li> : <li id="pool-c-picker" onClick={() => changeCurrentPool('C')}>Pool C</li> }
+          {currentPool === "D" ? <li id="pool-d-picker-active">Pool D</li> : <li id="pool-d-picker" onClick={() => changeCurrentPool('D')}>Pool D</li> }
       </ul>
       <ul className="pool-container">
         {showPool}
@@ -39,7 +43,7 @@ const Pools = observer(({...props}) => {
       
     </div>
   )
-});
-export default Pools;
+}));
+export default withRouter(Pools);
 
 

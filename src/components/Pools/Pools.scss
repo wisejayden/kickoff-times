@@ -1,7 +1,46 @@
+$japan-pink: #E09DA6;
+$japan-green: #4F817F;
+$japan-yellow: #F2C59E;
+$japan-brown: #6E4E53;
+$japan-orange: #EB6E52;
+$japan-purple: #552151;
+$japan-off-white: #FFE9CB;
+$japan-blue: #76C6FB;
+$japan-plurple: #984363;
+
 .Pools {
-    margin: 0 2rem;
+    margin: 2rem 2rem;
     ul {
         list-style-type: none;
+    }
+    #pool-a-picker {
+        color:  $japan-green;
+    }
+    #pool-a-picker-active {
+        background-color: $japan-green;
+        color: white;
+    }
+    #pool-b-picker {
+        color:  $japan-orange;
+    }
+    #pool-b-picker-active {
+        background-color: $japan-orange;
+        color: white;
+    }
+    
+    #pool-c-picker {
+        color:  $japan-blue;
+    }
+    #pool-c-picker-active {
+        background-color: $japan-blue;
+        color: white;
+    }
+    #pool-d-picker {
+        color: $japan-plurple;
+    }
+    #pool-d-picker-active {
+        background-color: $japan-purple;
+        color: white;
     }
     .pool-picker {
         display: flex;
@@ -24,9 +63,11 @@
       
         .pool-country-container {
             line-height: 20px;
-            margin: 0.5rem 0;
+            margin: 0.5rem 35%;
+            width: 100%;
             width: 100;
             padding: 1rem 0;
+            cursor: pointer;
 
             .pool-country-icons {
                 height: 30px;
