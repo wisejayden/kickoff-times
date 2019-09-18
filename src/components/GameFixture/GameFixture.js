@@ -30,18 +30,33 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
 
   const determinePoolColour = () => {
     if(pool === "Pool A") {
-      return {color: '#4F817F'};
+      return {color: '#54c8e8', fontWeight: "bold"};
     }
     if(pool === "Pool B") {
-      return {color: '#EB6E52'};
+      return {color: '#f4436c', fontWeight: "bold"};
     }
     if(pool === "Pool C") {
-      return {color: '#76C6FB'};
+      return {color: '#2ed9c3', fontWeight: "bold"};
     }
     if(pool === "Pool D") {
-      return {color: '#984363'};
+      return {color: '#993dbb', fontWeight: "bold"};
     }
   }
+
+
+  const determineSatdiumName = () => {
+
+    
+    for(let i = 0; i < store.checkStadiumName.length; i++) {
+      if (gameData.venue.city_name === store.checkStadiumName[i][0]) {
+        return store.checkStadiumName[i][1];
+      }
+    }
+
+
+
+  }
+
 
 
   return (
@@ -64,7 +79,7 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
             <div>
               <p>{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>
-              <span>{gameData.venue.city_name}</span>
+              <span>{determineSatdiumName()}</span>
               <p>{localTime} Local Time</p>
             </div>
             <img className="country-circle" src={imageUrlArray[1]} />

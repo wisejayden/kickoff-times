@@ -16,15 +16,16 @@ const Header = observer(() => {
   const currentLocale = "Berlin";
   return (
     <header className="Header">
-        <div className="locale-container">
-          <IconContext.Provider value={{className: "locale-icon" }}><MdLocationOn /></IconContext.Provider>
-          <span>{currentLocale}</span>
-        </div>
-      
+        
+        {/* <div className="locale-container"> */}
+          {/* <IconContext.Provider value={{className: "locale-icon" }}><MdLocationOn /></IconContext.Provider> */}
+          {/* <span>{currentLocale}</span> */}
+        {/* </div> */}
+       
         {/* <Link to="/" ><img id="logo" src={tempLogo} alt="Kickoff Times Logo"/></Link> */}
         <Link to="/" onClick={store.clearFilterData}><h1>KickOff Times</h1></Link>
 
-      <IconContext.Provider value={{ className: "profile-icon" }}><FaUser /></IconContext.Provider>
+      {/* <IconContext.Provider value={{ className: "profile-icon" }}><FaUser /></IconContext.Provider> */}
 
     </header>
   )

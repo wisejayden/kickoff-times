@@ -1,6 +1,7 @@
 .Tab {
     display: flex;
     flex-direction: row;
+    border-bottom: 1rem #F0F0F0 solid;
     
     .Tab-link {
         text-decoration: none;

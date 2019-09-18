@@ -10,15 +10,18 @@ $japan-off-white: #FFE9CB;
   height: 50px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border-top:  6px solid $japan-pink;
+  // border-top:  6px solid $japan-pink;
   width: 100vw;
   position: fixed;
   top: 0;
   margin-top: 0;
+  background-color: #75313C;
+  color: white;
   a {
     text-decoration: none;
+
   }
   
 

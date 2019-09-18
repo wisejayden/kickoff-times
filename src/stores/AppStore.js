@@ -47,6 +47,10 @@ export default class AppStore {
     {"country": "Fiji", "pool": "D", "image": "fiji.svg"}, 
     {"country": "Uruguay", "pool": "D", "image": "uruguay.svg"}
   ];
+
+  @observable checkStadiumName = [
+    ["Chofu", "Tokyo"], ["Sapporo", "Sapporo"], ["Yokohama", "Yokohama City"], ["Osaka", "Higashiosaka City"], ["Toyota", "Toyota City"],["Kumagaya", "Kumagaya City"], ["Kamaishi", "Kamaishi City"], ["Fukuoka", "Fukuoka City"], ["Kobe", "Kobe City"], ["Oita", "Oita Prefecture"], ["Fukuroi", "Shizuoka Prefecture"], ["Kumamoto", "Kumamoto City"]
+  ];
   @observable data = rwcSchedule.sport_events;
 
   @action filterData = (filterTarget) => {

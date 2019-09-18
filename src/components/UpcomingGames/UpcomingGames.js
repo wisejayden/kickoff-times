@@ -99,8 +99,12 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
             <p>Upcoming Games...</p>
             <div className="personalize-container">Personalize? <IconContext.Provider value={{className: "info-icon" }}><FaRegQuestionCircle /></IconContext.Provider></div>
         </div> */}
-        <Filter />
-       {upcomingGames}
+        <div className="UpcomingGame-container">
+          {/* <Filter /> */}
+          {upcomingGames}
+
+        </div>
+        
     </div>
   )
 });

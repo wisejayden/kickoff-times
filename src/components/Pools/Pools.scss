@@ -8,38 +8,43 @@ $japan-off-white: #FFE9CB;
 $japan-blue: #76C6FB;
 $japan-plurple: #984363;
 
+$rugbya: #54c8e8;
+$rugbyb: #f4436c;
+$rugbyc: #2ed9c3;
+$rugbyd: #993dbb;
+
 .Pools {
     margin: 2rem 2rem;
     ul {
         list-style-type: none;
     }
     #pool-a-picker {
-        color:  $japan-green;
+        color:  $rugbya;
     }
     #pool-a-picker-active {
-        background-color: $japan-green;
+        background-color: $rugbya;
         color: white;
     }
     #pool-b-picker {
-        color:  $japan-orange;
+        color:  $rugbyb;
     }
     #pool-b-picker-active {
-        background-color: $japan-orange;
+        background-color: $rugbyb;
         color: white;
     }
     
     #pool-c-picker {
-        color:  $japan-blue;
+        color:  $rugbyc;
     }
     #pool-c-picker-active {
-        background-color: $japan-blue;
+        background-color: $rugbyc;
         color: white;
     }
     #pool-d-picker {
-        color: $japan-plurple;
+        color: $rugbyd;
     }
     #pool-d-picker-active {
-        background-color: $japan-purple;
+        background-color: $rugbyd;
         color: white;
     }
     .pool-picker {
