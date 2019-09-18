@@ -8,7 +8,6 @@ import './App.scss';
 
 
 function App(props) {
-  console.log(props);
   return (
     <Router>
       <div className="App">
@@ -24,10 +23,12 @@ function App(props) {
            path="/:sport"
            component={SportContent}
          />
+
         </Switch>
-        
-        </div>
         <Footer />
+
+        </div>
+
       </div>
     </Router>
   );

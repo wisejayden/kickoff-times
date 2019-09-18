@@ -11,11 +11,9 @@ import { StoreContext } from "../../index";
 
 
 const GameFixture = observer(({gameData, pool, image, ...props}) => {
-  // console.log(gameData, pool, image);
   const store = useContext(StoreContext).AppStore;
 
   // iso-8601 date format
-  // console.log("gameData", gameData);
   const scheduled = moment(gameData.scheduled);
 
   //const userTimeIn12HourTime = scheduled.format('h:mm a')
@@ -76,7 +74,7 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
 
        <div className="game-fixture-playing">
             <img className="country-circle" src={imageUrlArray[0]} />
-            <div>
+            <div className="match-information">
               <p>{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>
               <span>{determineSatdiumName()}</span>

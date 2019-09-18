@@ -59,21 +59,16 @@ export default class AppStore {
     const filteredData = [];
     if (filterTarget.startsWith("Pool")) {
       filterTargetArray = toJS(this.worldCupPools[filterTarget.slice(-1)]);
-      console.log("1", toJS(this.worldCupPools));
-      console.log("2", toJS(this.worldCupPools["A"]));
+     
 
     } else {
       filterTargetArray.push(filterTarget);
     }
-    console.log("______", filterTargetArray);
 
     for(let t = 0; t < filterTargetArray.length; t++) {
-      console.log("go")
       for(let i = 0; i < data.length; i++) {
         for(let c = 0; c < data[i].competitors.length; c++) {
-          console.log("")
           if(filterTargetArray[t] === data[i].competitors[c].name) {
-            console.log("WORKS");
             filteredData.push(data[i]);
           }
         }

@@ -13,7 +13,6 @@ import { StoreContext } from "../../index";
 import './UpcomingGames.scss';
 const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
   const store = useContext(StoreContext).AppStore;
-  console.log(store.worldCupPools);
 
   const gamesSortedByDay = [];
   let count = 0;
@@ -66,32 +65,10 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
     return h; 
   }, {});
 
-  console.log("result", result);
-
-  // var newArray = Object.keys(result).map(function(key) {
-  //   return [Number(key), result[key]];
-  // });
-
-  // console.log("newArray", newArray);
-
-
-
-
-  // let hello = result.sort((a,b)=>a.element.scheduled.getTime()-b.element.scheduled.getTime());
-  // console.log("hello", hello);
-
-
-  // console.log("result", result);
-
   
   if (numberOfGames === false) numberOfGames = data.length;
 
   
-  // const upcomingGames = data.slice(0, numberOfGames).map((game, i) => {
-  //   return(
-  //     <GameFixture gameData={game} />
-  //   )
-  // });
 
   return (
     <div className="UpcomingGames">
@@ -99,8 +76,13 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
             <p>Upcoming Games...</p>
             <div className="personalize-container">Personalize? <IconContext.Provider value={{className: "info-icon" }}><FaRegQuestionCircle /></IconContext.Provider></div>
         </div> */}
-        <div className="UpcomingGame-container">
-          {/* <Filter /> */}
+        <div className="UpcomingGames-container">
+          <div className="filter-container">
+            <Filter />
+            {store.filterValue !== '' &&
+            <img onClick={store.clearFilterData} id="remove-filter-logo" src="/images/redcross.png" />
+            }
+          </div>
           {upcomingGames}
 
         </div>

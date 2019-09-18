@@ -1,5 +1,88 @@
 
 
+@font-face {
+  font-family: 'archive';
+  src: url('/fonts/archive-regular-webfont.woff2') format('woff2'),
+      url('/fonts/archive-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'promesh';
+  src: url('/fonts/promesh-regular-webfont.woff2') format('woff2'),
+      url('/fonts/promesh-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'age';
+  src: url('/fonts/age-regular-webfont.woff2') format('woff2'),
+      url('/fonts/age-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'franchise';
+  src: url('/fonts/franchise-bold-hinted-regular-webfont.woff2') format('woff2'),
+      url('/fonts/franchise-bold-hinted-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gabo';
+  src: url('/fonts/gabo.woff2') format('woff2'),
+      url('/fonts/gabo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+//Ok
+@font-face {
+  font-family: 'governor';
+  src: url('/fonts/governor-webfont.woff2') format('woff2'),
+      url('/fonts/governor-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+//Nice
+@font-face {
+  font-family: 'junction';
+  src: url('/fonts/junction-regular-webfont.woff2') format('woff2'),
+      url('/fonts/junction-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//Rugby World CUp
+@font-face {
+  font-family: 'kilogram';
+  src: url('/fonts/kilogram_kg-webfont.woff2') format('woff2'),
+      url('/fonts/kilogram_kg-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'knewave';
+  src: url('/fonts/knewave-webfont.woff2') format('woff2'),
+      url('/fonts/knewave-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'orbitron';
+  src: url('/fonts/orbitron_medium-webfont.woff2') format('woff2'),
+      url('/fonts/orbitron_medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'peyo';
+  src: url('/fonts/peyoregular-webfont.woff2') format('woff2'),
+      url('/fonts/peyoregular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 html {
     box-sizing: border-box;
     font-size: 62.5%;

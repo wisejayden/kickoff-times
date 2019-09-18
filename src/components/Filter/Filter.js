@@ -20,12 +20,17 @@ const Filter = observer((props) => {
     }
     options.sort();
     options.unshift("Pool A", "Pool B", "Pool C", "Pool D");
+    const stylishSelect = store.filterValue === '' ? "filter-select disabled" : 'filter-select';
+    const addRedCrossIcon = store.filterValue === '' ? "Filter" : "Filter filtered"
     return (
-        <div className="Filter">
-            {store.filterValue === '' ? <img id="filter-logo" src="/images/filter.png" /> : <img onClick={store.clearFilterData} id="remove-filter-logo" src="/images/redcross.png" />}
-            <select id="filter-select" value={store.filterValue} onChange={(value) => store.changeFilterValue(value.target.value)}>
-                 <option value="" disabled selected>Filter:</option>
+        <div className={addRedCrossIcon}>
+            
+            {/* <img className="drop-down-arrow"src="/images/drop-down-arrow.svg" /> */}
+            <select className={stylishSelect} value={store.filterValue} onChange={(value) => store.changeFilterValue(value.target.value)}>
+                 <option value="" disabled selected>Filter </option>
+                 
                 {options.map(option => <option value={option}>{option}</option>)}
+                
             </select>
         </div>
     )

@@ -1,8 +1,45 @@
 .Filter {
     // width: 100vw;
-    position: absolute;
-    top: 0;
-    right: 0;
+    *:focus {
+        outline: none;
+    }
+   
+
+
+    word-wrap: break-word;
+    line-height: 1rem;
+    white-space: normal;
+    outline: 0;
+    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
+    width: 10em;
+    min-height: 1rem;
+    background: #fff;
+    display: inline-block;
+    padding: .5rem 0 .5rem 0.5em;
+    color: rgba(0,0,0,.87);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+    -webkit-transition: width .1s ease,-webkit-box-shadow .1s ease;
+    transition: width .1s ease,-webkit-box-shadow .1s ease;
+    transition: box-shadow .1s ease,width .1s ease;
+    transition: box-shadow .1s ease,width .1s ease,-webkit-box-shadow .1s ease;
+    background: url("/images/drop-down-arrow.svg") no-repeat 90% 55%;
+    background-size: 1rem;
+    background-color: white;
+   
+    &.filtered {
+        width: 13.5rem;
+    }
+
+
+
+
+    .drop-down-arrow {
+        width: 1rem;
+    }
     #filter-logo {
         position: absolute;
         right: 0;
@@ -15,10 +52,22 @@
         top: -5px;
         width: 30px;
     }
-    #filter-select {
-        position: absolute;
+    .filter-select {
+        // position: absolute;
         right: 40px;
+        width: 100%;
+        &.disabled {
+            color: rgba(191,191,191,.87);
+        }
+      
+
     }
+
+    select option:disabled {
+        color: #000;
+        font-weight: bold;
+    }
+    
     // position: sticky;
     // position:fixed;
     // right: 0rem;

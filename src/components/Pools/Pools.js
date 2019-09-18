@@ -37,9 +37,13 @@ const Pools = withRouter(observer(({...props}) => {
           {currentPool === "C" ? <li id="pool-c-picker-active">Pool C</li> : <li id="pool-c-picker" onClick={() => changeCurrentPool('C')}>Pool C</li> }
           {currentPool === "D" ? <li id="pool-d-picker-active">Pool D</li> : <li id="pool-d-picker" onClick={() => changeCurrentPool('D')}>Pool D</li> }
       </ul>
-      <ul className="pool-container">
-        {showPool}
-      </ul>
+      <div className="pool-container">
+
+        <ul>
+          {showPool}
+        </ul>
+      </div>
+
       
     </div>
   )

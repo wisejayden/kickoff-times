@@ -3,9 +3,6 @@ import rwc from '../../rwc-schedule.json';
 
 
 const RugbySchedule = () => {    
-    console.log(new Date());
-    console.log(rwc.sport_events[0]);
-    console.log(new Date(rwc.sport_events[0].scheduled));
     const weekArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
