@@ -57,24 +57,36 @@ export default class AppStore {
     let filterTargetArray = [];
     const data = rwcSchedule.sport_events;
     const filteredData = [];
+    //Create an array out of the team or teams you wish to filter by.
     if (filterTarget.startsWith("Pool")) {
       filterTargetArray = toJS(this.worldCupPools[filterTarget.slice(-1)]);
-     
-
     } else {
       filterTargetArray.push(filterTarget);
     }
+    
 
+    //Loop through team/s
     for(let t = 0; t < filterTargetArray.length; t++) {
+      //Loop through data
       for(let i = 0; i < data.length; i++) {
+        //
         for(let c = 0; c < data[i].competitors.length; c++) {
+          // console.log("data[i].competitors[c].name", data[i].competitors[c].name);
           if(filterTargetArray[t] === data[i].competitors[c].name) {
             filteredData.push(data[i]);
           }
         }
       }
     }
-    this.data = filteredData;
+    let uniq = [...new Set(filteredData)];
+    
+    let sorted = uniq.sort(function(a,b){
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(a.scheduled) - new Date(b.scheduled);
+    });
+
+    this.data = sorted;
   };
 
   @action clearFilterData = () => {
