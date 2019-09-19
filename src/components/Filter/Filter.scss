@@ -1,10 +1,26 @@
 .Filter {
     // width: 100vw;
-    *:focus {
-        outline: none;
-    }
-   
-
+    // *:focus {
+    //     outline: none;
+    // }
+    // input:focus, textarea:focus, select:focus{
+    //     outline: none;
+    // }
+  
+        select {
+            border: none;
+            background-color: white;
+            background: url("/images/drop-down-arrow.svg") no-repeat 90% 55%;
+            background-size: 1rem;
+            -o-appearance: none;
+            -ms-appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            height: 2.2rem;
+            padding-left: 0.8rem;
+            
+        }
 
     word-wrap: break-word;
     line-height: 1rem;
@@ -26,8 +42,7 @@
     transition: width .1s ease,-webkit-box-shadow .1s ease;
     transition: box-shadow .1s ease,width .1s ease;
     transition: box-shadow .1s ease,width .1s ease,-webkit-box-shadow .1s ease;
-    background: url("/images/drop-down-arrow.svg") no-repeat 90% 55%;
-    background-size: 1rem;
+
     background-color: white;
    
     &.filtered {
