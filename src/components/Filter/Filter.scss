@@ -87,6 +87,10 @@
         color: #000;
         font-weight: bold;
     }
+    @media screen and (max-width: 400px) {
+        padding: .2rem 0 .2rem 0.5em;
+     }
+    
     
     // position: sticky;
     // position:fixed;
