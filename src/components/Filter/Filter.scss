@@ -56,6 +56,11 @@
         // position: absolute;
         right: 40px;
         width: 100%;
+        color: #000;
+        color: rgba(0,0,0,0);
+        text-shadow: 0 0 0 #000;
+        outline: none;
+
         &.disabled {
             color: rgba(191,191,191,.87);
         }
