@@ -73,14 +73,14 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
        </div>
 
        <div className="game-fixture-playing">
-            <img className="country-circle" src={imageUrlArray[0]} />
+            <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
             <div className="match-information">
               <p>{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>
               <span>{determineSatdiumName()}</span>
               <p>{localTime} Local Time</p>
             </div>
-            <img className="country-circle" src={imageUrlArray[1]} />
+            <img className="country-circle" src={imageUrlArray[1]} alt={gameData.competitors[1].name + " country flag"}/>
           
 
        </div>

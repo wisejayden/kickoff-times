@@ -16,7 +16,7 @@ const FrontPage = observer((props) => {
       <div className="rugby-header">
         <h1>Rugby World Cup</h1>
         <div className="logo-container">
-        <img id="rwc-logo" src="images/rwc-logo-white.png" />
+        <img id="rwc-logo" src="images/rwc-logo-white-compress.png" alt="Rugby World Cup Logo"/>
       </div>
         
         </div>
