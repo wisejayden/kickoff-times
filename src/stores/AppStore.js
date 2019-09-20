@@ -1,4 +1,5 @@
 import { observable, action, computed, toJS } from "mobx";
+import axios from 'axios';
 
 import rwcSchedule from '../rwc-schedule.json';
 
@@ -10,6 +11,7 @@ export default class AppStore {
     this.rootStore = rootStore;
   }
   @observable filterValue = '';
+  @observable ratingsObject = '';
   @action changeFilterValue = (option) => {
     this.filterValue = option;
     this.filterData(option);
@@ -88,6 +90,36 @@ export default class AppStore {
 
     this.data = sorted;
   };
+
+  @action getAllRatings = () => {
+    let ratingsObject = '';
+
+    axios({
+      method: 'get',
+      async: true,
+      crossDomain: true,
+      url: 'https://kickofftimes-7771.restdb.io/rest/ratings',
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": "5d84bbdbfd86cb75861e24f4",
+        "cache-control": "no-cache"
+      }
+    }).then(res => {
+      ratingsObject = Object.assign({}, ...res.data);
+      Object.keys(ratingsObject).forEach(v => ratingsObject[v] = []);
+      res.data.map(data => {
+        //From each object, push the key value pairs into the relevent keys in the uniqueKeys object.
+        Object.keys(data).forEach((key) => {
+          ratingsObject[key].push(data[key]);
+      });
+      })
+      this.ratingsObject = ratingsObject;
+    })
+    console.log("HEHHRHEHEHEHE")
+    console.log("ratingsObject", ratingsObject);
+
+    
+  }
 
   @action clearFilterData = () => {
     this.data = rwcSchedule.sport_events;

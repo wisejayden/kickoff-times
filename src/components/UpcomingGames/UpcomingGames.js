@@ -11,7 +11,7 @@ import { StoreContext } from "../../index";
 
 
 import './UpcomingGames.scss';
-const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
+const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) => {
   const store = useContext(StoreContext).AppStore;
 
   const gamesSortedByDay = [];
@@ -47,12 +47,12 @@ const UpcomingGames = observer(({numberOfGames, data, ...props}) => {
       return (
         <>
           <GameDate date={game.date}/>
-          <GameFixture gameData={game.element} pool={game.pool} image={game.image} />
+          <GameFixture matchesView={matchesView} gameData={game.element} pool={game.pool} image={game.image} />
         </>
       )
     } else {
       return (
-        <GameFixture gameData={game.element} pool={game.pool} image={game.image}/>
+        <GameFixture matchesView={matchesView} gameData={game.element} pool={game.pool} image={game.image}/>
       )
     }
     

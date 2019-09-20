@@ -1,4 +1,4 @@
-import React, {useContext } from 'react';
+import React, {useContext, useEffect } from 'react';
 import UpcomingGames from '../UpcomingGames/UpcomingGames';
 import SportTile from './SportTile';
 import './Main.scss';
@@ -11,6 +11,9 @@ import { StoreContext } from "../../index";
 const FrontPage = observer((props) => {
   const store = useContext(StoreContext).AppStore;
 
+  useEffect(()=>{
+    store.getAllRatings();
+  })
   return (
     <div className="Main">
       <div className="rugby-header">
@@ -23,19 +26,14 @@ const FrontPage = observer((props) => {
       
       <Tab />
       {props.location.pathname === "/matches" &&
-            <UpcomingGames data={store.data}/>
+            <UpcomingGames data={store.data} matchesView={true}/>
       }
        {props.location.pathname === "/pools" &&
             <Pools />
       }
-
-      {/*
-      <h2>Sports</h2>
-
-      <SportTile backgroundPosition="50% 50%" link="/rugby" sportName='Rugby' image='https://www.radiosport.co.nz/media/16861238/chiefs-first-five-damian-mckenzie-photosport.jpg?mode=crop&width=675&height=379&quality=80&scale=both'/>
-      <SportTile backgroundPosition="50% 40%" sportName='Football' image='https://ep01.epimg.net/deportes/imagenes/2019/04/19/actualidad/1555686393_895375_1555686917_noticia_normal.jpg'/>
-      <SportTile backgroundPosition="0% 0%" sportName='NFL' image='https://media.profootballfocus.com/2015/12/AP_670821111947.jpg?w=916&h=720'/>
-        */}
+      {props.location.pathname === "/ratings" &&
+            <UpcomingGames data={store.data} matchesView={false}/>
+      }
     </div>
   )
 });

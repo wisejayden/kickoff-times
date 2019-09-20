@@ -16,7 +16,7 @@ const Tab = withRouter(({ ...props}) => {
     <div className="Tab">
         <Link className={path === "/matches" ? "Tab-link active" : "Tab-link"} to={"/matches"}><span>Matches</span></Link>
         <Link className={path === "/pools" ? "Tab-link active" : "Tab-link"} to={"/pools"}><span className="tab-links" >Pools</span></Link>
-        {/* <Link className="Tab-link" to={"/ratings"}><span className="tab-links" >Match Ratings</span></Link> */}
+        <Link className={path === "/ratings" ? "Tab-link active" : "Tab-link"} to={"/ratings"}><span className="tab-links" >Ratings</span></Link>
     </div>
   )
 });
