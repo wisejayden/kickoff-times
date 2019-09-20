@@ -17,11 +17,11 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
   const scheduled = moment(gameData.scheduled);
 
   //const userTimeIn12HourTime = scheduled.format('h:mm a')
-  const userTime = scheduled.format('H:mm');
+  const userTime = scheduled.format('HH:mm');
 
   //Need to find a better solution in case the city is not found. Large country may screw with the timezone.
   const cityLookup = cityTimezones.lookupViaCity(gameData.venue.city_name).length > 0 ? cityTimezones.lookupViaCity(gameData.venue.city_name)[0] : cityTimezones.findFromCityStateProvince(gameData.venue.country_name)[0];
-  const localTime = scheduled.tz(cityLookup.timezone).format('H:mm');
+  const localTime = scheduled.tz(cityLookup.timezone).format('HH:mm');
 
   const shortenedWeekday = store.weekArray[scheduled.day()].substring(0,3);
   const imageUrlArray = [`/images/country/${image[0]}`, `/images/country/${image[1]}`]
