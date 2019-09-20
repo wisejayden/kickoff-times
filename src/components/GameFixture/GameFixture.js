@@ -31,6 +31,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
   const shortenedWeekday = store.weekArray[scheduled.day()].substring(0,3);
   const imageUrlArray = [`/images/country/${image[0]}`, `/images/country/${image[1]}`]
 
+  const matchPassed = moment() > scheduled ? true : false;
 
   const determinePoolColour = () => {
     if(pool === "Pool A") {
