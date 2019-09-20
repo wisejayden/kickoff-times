@@ -1,17 +1,21 @@
 import React, { useContext } from 'react';
 import './GameFixture.scss';
+import Ratings from '../Ratings/Ratings';
 import cityTimezones from 'city-timezones';
 import moment from 'moment';
 import tz from 'moment-timezone';
 
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
+import {toJS} from 'mobx';
 
 
 
 
-const GameFixture = observer(({gameData, pool, image, ...props}) => {
+const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) => {
   const store = useContext(StoreContext).AppStore;
+
+  
 
   // iso-8601 date format
   const scheduled = moment(gameData.scheduled);
@@ -25,6 +29,8 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
 
   const shortenedWeekday = store.weekArray[scheduled.day()].substring(0,3);
   const imageUrlArray = [`/images/country/${image[0]}`, `/images/country/${image[1]}`]
+
+  const matchPassed = moment() > scheduled ? true : false;
 
   const determinePoolColour = () => {
     if(pool === "Pool A") {
@@ -55,42 +61,42 @@ const GameFixture = observer(({gameData, pool, image, ...props}) => {
 
   }
 
-
+  // const countryFlagHeight = 
 
   return (
     <div className="GameFixture">
-      
-       {/* <div className="game-fixture-team-color-block"></div> */}
-       <div className="game-fixture-time-container">
-        <span>{shortenedWeekday} {scheduled.date()} {store.monthArray[scheduled.month()]}</span>
+      {matchesView &&
+        <div className="game-fixture-time-container">
 
-           {/*div className="game-fixture-day">
-            <span>{scheduled.date()} {monthArray[scheduled.month()]}</span>
-           </div>
-  */}
+        <span>{shortenedWeekday} {scheduled.date()} {store.monthArray[scheduled.month()]}</span>
         <span className="your-time">{userTime} Your Time</span>
 
        </div>
+      
+      }
+             
 
-       <div className="game-fixture-playing">
+       <div className="game-fixture-playing" style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
             <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
             <div className="match-information">
-              <p>{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
+              {!matchesView && matchPassed &&
+                <Ratings id={gameData.id}/>
+              }
+              {
+                !matchesView && !matchPassed &&
+                <div className="space-saver"></div>
+              }
+              <p className="competitors">{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>
               <span>{determineSatdiumName()}</span>
-              <p>{localTime} Local Time</p>
+              {matchesView &&
+                <p>{localTime} Local Time</p>
+              }
             </div>
             <img className="country-circle" src={imageUrlArray[1]} alt={gameData.competitors[1].name + " country flag"}/>
           
 
        </div>
-       {/* <div className="game-fixture-sport">
-          <div className="game-fixture-sport-container">
-           <img src="https://a.espncdn.com/combiner/i?img=/redesign/assets/img/icons/ESPN-icon-rugby.png&w=288&h=288&transparent=true" alt="Rugby Ball" />
-          </div>
-           <span>{gameData.sport_event_context.competition.name}</span>
-       </div> */}
-       {/* <div className="game-fixture-team-color-block"></div> */}
     </div>
   )
 });

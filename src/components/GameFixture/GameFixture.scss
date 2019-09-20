@@ -11,6 +11,9 @@
     background-color: white;
     margin: 0 1rem 2rem 1rem;
     // padding: 1rem;
+    .space-saver {
+        height: 3rem;
+    }
     .your-time {
         color: #c00327;
     }
@@ -42,6 +45,7 @@
         justify-content: space-between;
         margin: 0 1rem;
         // flex-direction: column;
+
         .country-circle {
             width: 25px;
         }
@@ -57,7 +61,7 @@
        
 
     
-        :nth-child(1) {
+        .competitors {
             font-size: 1.6rem;
             font-weight: 600;
         }

@@ -17,6 +17,8 @@ function App(props) {
           <Redirect exact from="/" to="/matches" />
           <Route path="/matches" component={FrontPage} />
           <Route path="/pools" component={FrontPage} />
+          <Route path="/ratings" component={FrontPage} />
+
 
 
           <Route

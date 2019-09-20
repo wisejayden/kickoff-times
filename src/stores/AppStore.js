@@ -1,4 +1,5 @@
 import { observable, action, computed, toJS } from "mobx";
+import axios from 'axios';
 
 import rwcSchedule from '../rwc-schedule.json';
 
@@ -10,6 +11,7 @@ export default class AppStore {
     this.rootStore = rootStore;
   }
   @observable filterValue = '';
+  @observable ratingsObject = '';
   @action changeFilterValue = (option) => {
     this.filterValue = option;
     this.filterData(option);
@@ -48,10 +50,13 @@ export default class AppStore {
     {"country": "Uruguay", "pool": "D", "image": "uruguay.svg"}
   ];
 
+  @observable unratedGame = false;
   @observable checkStadiumName = [
     ["Chofu", "Tokyo"], ["Sapporo", "Sapporo"], ["Yokohama", "Yokohama City"], ["Osaka", "Higashiosaka City"], ["Toyota", "Toyota City"],["Kumagaya", "Kumagaya City"], ["Kamaishi", "Kamaishi City"], ["Fukuoka", "Fukuoka City"], ["Kobe", "Kobe City"], ["Oita", "Oita Prefecture"], ["Fukuroi", "Shizuoka Prefecture"], ["Kumamoto", "Kumamoto City"]
   ];
+  @observable currentRating = '';
   @observable data = rwcSchedule.sport_events;
+  @observable alreadyRated = false;
 
   @action filterData = (filterTarget) => {
     let filterTargetArray = [];
@@ -71,7 +76,6 @@ export default class AppStore {
       for(let i = 0; i < data.length; i++) {
         //
         for(let c = 0; c < data[i].competitors.length; c++) {
-          // console.log("data[i].competitors[c].name", data[i].competitors[c].name);
           if(filterTargetArray[t] === data[i].competitors[c].name) {
             filteredData.push(data[i]);
           }
@@ -88,6 +92,75 @@ export default class AppStore {
 
     this.data = sorted;
   };
+
+  @action averageRating = (id) => {
+    let value =  this.ratingsObject[id];
+    let count = value.length;
+    let newValue = value.reduce((previous, current) => current += previous);
+    newValue /= count;
+    return newValue;
+  }
+
+  @action postRating = (value, id) => {
+    let jsonData = {[id]: value};
+   axios({
+      method: 'post',
+      async: true,
+      crossDomain: true,
+      url: 'https://kickofftimes-7771.restdb.io/rest/ratings',
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": "5d84bbdbfd86cb75861e24f4",
+        "cache-control": "no-cache"
+      },
+      processData: false,
+      data: JSON.stringify(jsonData)
+    }).then(res => {
+      this.alreadyRated = true;
+      this.getAllRatings();
+    })
+
+  }
+
+  @action getAllRatings = () => {
+    let ratingsObject = '';
+    this.unratedGame = false;
+    this.ratingError = "";
+
+
+    axios({
+      method: 'get',
+      async: true,
+      crossDomain: true,
+      url: 'https://kickofftimes-7771.restdb.io/rest/ratings',
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": "5d84bbdbfd86cb75861e24f4",
+        "cache-control": "no-cache"
+      }
+    }).then(res => {
+      ratingsObject = Object.assign({}, ...res.data);
+      Object.keys(ratingsObject).forEach(v => ratingsObject[v] = []);
+      res.data.map(data => {
+        //From each object, push the key value pairs into the relevent keys in the uniqueKeys object.
+        Object.keys(data).forEach((key) => {
+          ratingsObject[key].push(data[key]);
+      });
+      });
+      if (Object.entries(ratingsObject).length === 0 && ratingsObject.constructor === Object) {
+        this.unratedGame = true;
+      } else {
+        this.ratingsObject = ratingsObject;
+
+      }
+    })
+    .catch(err => {
+      this.ratingError = "Error";
+    })
+ 
+
+    
+  }
 
   @action clearFilterData = () => {
     this.data = rwcSchedule.sport_events;
