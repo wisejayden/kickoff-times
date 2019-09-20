@@ -23,7 +23,7 @@ export default class AppStore {
     "D": ["Australia", "Wales", "Georgia", "Fiji", "Uruguay"]
   };
   @observable aPoolOfCountries = [
-    {"country": "Ireland", "pool": "A", "image": "irfu.svg"}, 
+    {"country": "Ireland", "pool": "A", "image": "irfu2.svg"}, 
     {"country": "Scotland", "pool": "A", "image": "scotland.svg"}, 
     {"country": "Japan", "pool": "A", "image": "japan.svg"}, 
     {"country": "Russia", "pool": "A", "image": "russia.svg"}, 
