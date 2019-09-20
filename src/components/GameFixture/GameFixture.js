@@ -13,7 +13,6 @@ import {toJS} from 'mobx';
 
 
 const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) => {
-  console.log("matchesVoew", matchesView);
   const store = useContext(StoreContext).AppStore;
 
   
@@ -82,6 +81,10 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
             <div className="match-information">
               {!matchesView && matchPassed &&
                 <Ratings id={gameData.id}/>
+              }
+              {
+                !matchesView && !matchPassed &&
+                <div className="space-saver"></div>
               }
               <p className="competitors">{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>

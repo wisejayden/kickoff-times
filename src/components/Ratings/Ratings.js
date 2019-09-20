@@ -17,58 +17,17 @@ const Ratings = observer(({id, ...props}) => {
   const store = useContext(StoreContext).AppStore;
 
 
-  if(store.ratingsObject && ratingsReceived === false) {
-    changeRatingsReceived(true);
-    let value =  toJS(store.ratingsObject[id]);
-    let count = value.length;
-    let newValue = value.reduce((previous, current) => current += previous);
-    newValue /= count;
-    changeCurrentRating(newValue);
-  }
-
-
-
-
-  const postRequest = () => {
-    axios({
-      method: 'post',
-      async: true,
-      crossDomain: true,
-      url: 'https://kickofftimes-7771.restdb.io/rest/ratings',
-      headers: {
-       "content-type": "application/json",
-       "x-apikey": "5d84bbdbfd86cb75861e24f4",
-       "cache-control": "no-cache"
-     },
-      data: {
-        "user_rating": 5
-      }
-   })
-    .then(res => {
-      console.log(res);
-    })
-  };
-
-  // const style = () => {
-  //   console.log("HOWW MANY TIMES?")
-  //   let i = counter;
-  //   const l = 10;
-  //   let styleObject = {
-  //     left: (50 - 35*Math.cos(-0.5 * Math.PI - 2*(1/l)*i*Math.PI)).toFixed(4) + "%",
-  //     top: (50 + 35*Math.sin(-0.5 * Math.PI - 2*(1/l)*i*Math.PI)).toFixed(4) + "%"
-  //   }
-  //   changeCounter(counter + 1 );
-
-
- 
-  //   return {styleObject};
-  // }
-
   let rateText;
   if (mouseOverText) {
     store.alreadyRated === true ? rateText = "Done" : rateText = mouseOverText;
   } else {
-    currentRating ? rateText = Math.round( currentRating * 10 ) /  10 : rateText = 'N/A'
+    if(store.unratedGame)  {
+      rateText = "Unrated.." 
+    } else if (store.ratingError) {
+      rateText = store.ratingError
+    } else {
+      store.ratingsObject ? rateText = Math.round( store.averageRating(id) * 10 ) / 10 : rateText = 'Loading..'
+    }
   }
 
   return (

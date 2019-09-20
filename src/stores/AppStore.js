@@ -50,9 +50,11 @@ export default class AppStore {
     {"country": "Uruguay", "pool": "D", "image": "uruguay.svg"}
   ];
 
+  @observable unratedGame = false;
   @observable checkStadiumName = [
     ["Chofu", "Tokyo"], ["Sapporo", "Sapporo"], ["Yokohama", "Yokohama City"], ["Osaka", "Higashiosaka City"], ["Toyota", "Toyota City"],["Kumagaya", "Kumagaya City"], ["Kamaishi", "Kamaishi City"], ["Fukuoka", "Fukuoka City"], ["Kobe", "Kobe City"], ["Oita", "Oita Prefecture"], ["Fukuroi", "Shizuoka Prefecture"], ["Kumamoto", "Kumamoto City"]
   ];
+  @observable currentRating = '';
   @observable data = rwcSchedule.sport_events;
   @observable alreadyRated = false;
 
@@ -74,7 +76,6 @@ export default class AppStore {
       for(let i = 0; i < data.length; i++) {
         //
         for(let c = 0; c < data[i].competitors.length; c++) {
-          // console.log("data[i].competitors[c].name", data[i].competitors[c].name);
           if(filterTargetArray[t] === data[i].competitors[c].name) {
             filteredData.push(data[i]);
           }
@@ -92,9 +93,14 @@ export default class AppStore {
     this.data = sorted;
   };
 
-  // @computed get averageRating = () => {
+  @action averageRating = (id) => {
+    let value =  this.ratingsObject[id];
+    let count = value.length;
+    let newValue = value.reduce((previous, current) => current += previous);
+    newValue /= count;
+    return newValue;
+  }
 
-  // }
   @action postRating = (value, id) => {
     let jsonData = {[id]: value};
    axios({
@@ -118,7 +124,9 @@ export default class AppStore {
 
   @action getAllRatings = () => {
     let ratingsObject = '';
-    console.log("Here we go again")
+    this.unratedGame = false;
+    this.ratingError = "";
+
 
     axios({
       method: 'get',
@@ -138,11 +146,18 @@ export default class AppStore {
         Object.keys(data).forEach((key) => {
           ratingsObject[key].push(data[key]);
       });
-      })
-      this.ratingsObject = ratingsObject;
+      });
+      if (Object.entries(ratingsObject).length === 0 && ratingsObject.constructor === Object) {
+        this.unratedGame = true;
+      } else {
+        this.ratingsObject = ratingsObject;
+
+      }
     })
-    console.log("HEHHRHEHEHEHE")
-    console.log("ratingsObject", ratingsObject);
+    .catch(err => {
+      this.ratingError = "Error";
+    })
+ 
 
     
   }
