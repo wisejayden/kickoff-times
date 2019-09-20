@@ -54,6 +54,7 @@ export default class AppStore {
     ["Chofu", "Tokyo"], ["Sapporo", "Sapporo"], ["Yokohama", "Yokohama City"], ["Osaka", "Higashiosaka City"], ["Toyota", "Toyota City"],["Kumagaya", "Kumagaya City"], ["Kamaishi", "Kamaishi City"], ["Fukuoka", "Fukuoka City"], ["Kobe", "Kobe City"], ["Oita", "Oita Prefecture"], ["Fukuroi", "Shizuoka Prefecture"], ["Kumamoto", "Kumamoto City"]
   ];
   @observable data = rwcSchedule.sport_events;
+  @observable alreadyRated = false;
 
   @action filterData = (filterTarget) => {
     let filterTargetArray = [];
@@ -91,8 +92,33 @@ export default class AppStore {
     this.data = sorted;
   };
 
+  // @computed get averageRating = () => {
+
+  // }
+  @action postRating = (value, id) => {
+    let jsonData = {[id]: value};
+   axios({
+      method: 'post',
+      async: true,
+      crossDomain: true,
+      url: 'https://kickofftimes-7771.restdb.io/rest/ratings',
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": "5d84bbdbfd86cb75861e24f4",
+        "cache-control": "no-cache"
+      },
+      processData: false,
+      data: JSON.stringify(jsonData)
+    }).then(res => {
+      this.alreadyRated = true;
+      this.getAllRatings();
+    })
+
+  }
+
   @action getAllRatings = () => {
     let ratingsObject = '';
+    console.log("Here we go again")
 
     axios({
       method: 'get',

@@ -62,7 +62,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
   }
 
-
+  // const countryFlagHeight = 
 
   return (
     <div className="GameFixture">
@@ -77,13 +77,13 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
       }
              
 
-       <div className="game-fixture-playing">
+       <div className="game-fixture-playing" style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
             <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
             <div className="match-information">
               {!matchesView && matchPassed &&
                 <Ratings id={gameData.id}/>
               }
-              <p>{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
+              <p className="competitors">{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>
               <span>{determineSatdiumName()}</span>
               {matchesView &&
