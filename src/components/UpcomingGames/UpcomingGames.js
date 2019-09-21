@@ -22,6 +22,14 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
     let date = `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
     let pool;
     let image = [];
+    
+    //If the game has passed, get rid of it.. But give it a couple of hours first..
+    const scheduled = moment(element.scheduled).add(4, 'hours');
+    if (matchesView && moment() > scheduled) {
+      return;
+    }
+
+
     for (let i = 0; i < store.aPoolOfCountries.length; i++) {
       if (store.aPoolOfCountries[i].country === element.competitors[0].name) {
         if(!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
