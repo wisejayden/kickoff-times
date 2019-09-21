@@ -26,7 +26,7 @@ const Ratings = observer(({id, ...props}) => {
     } else if (store.ratingError) {
       rateText = store.ratingError
     } else {
-      store.ratingsObject ? rateText = Math.round( store.averageRating(id) * 10 ) / 10 : rateText = 'Loading..'
+      store.ratingsObject ? rateText = store.averageRating(id)  : rateText = 'Loading..'
     }
   }
 

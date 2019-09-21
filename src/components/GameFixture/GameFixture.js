@@ -60,8 +60,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
 
   }
-
-  // const countryFlagHeight = 
+  // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
   return (
     <div className="GameFixture">

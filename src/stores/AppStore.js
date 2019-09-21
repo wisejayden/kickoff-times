@@ -94,11 +94,17 @@ export default class AppStore {
   };
 
   @action averageRating = (id) => {
-    let value =  this.ratingsObject[id];
-    let count = value.length;
-    let newValue = value.reduce((previous, current) => current += previous);
-    newValue /= count;
-    return newValue;
+    if(this.ratingsObject[id]) {
+      let value =  this.ratingsObject[id];
+      let count = value.length;
+      let newValue = value.reduce((previous, current) => current += previous);
+      newValue /= count;
+      return Math.round( newValue  * 10 ) / 10;
+    } else {
+      this.unratedGame === true;
+      return "Unrated..";
+    }
+    
   }
 
   @action postRating = (value, id) => {
@@ -150,7 +156,12 @@ export default class AppStore {
       if (Object.entries(ratingsObject).length === 0 && ratingsObject.constructor === Object) {
         this.unratedGame = true;
       } else {
-        this.ratingsObject = ratingsObject;
+        try {
+          this.ratingsObject = ratingsObject;
+        }
+        catch(err) {
+          this.ratingError = "Error";
+        }
 
       }
     })
