@@ -43,9 +43,19 @@
         
        .filter-container {
         top: -0.7rem;
+        
        }
      
     }
+    @media screen and (min-width: 480px) {
+        
+        .filter-container #remove-filter-logo {
+            width: 35px;
+            height: 35px;
+        }
+      
+     }
+     
    
     
 }
