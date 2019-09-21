@@ -39,6 +39,12 @@ const Pools = withRouter(observer(({...props}) => {
       </ul>
       <div className="pool-container">
 
+        {currentPool === "A" && <h1 onClick ={() => {applyFilters("Pool A")}}>Pool A</h1> }
+        {currentPool === "B" && <h1 onClick ={() => {applyFilters("Pool B")}}>Pool B</h1> }
+        {currentPool === "C"&& <h1 onClick ={() => {applyFilters("Pool C")}}>Pool C</h1> }
+        {currentPool === "D" && <h1 onClick ={() => {applyFilters("Pool D")}}> Pool D</h1> }
+
+
         <ul>
           {showPool}
         </ul>

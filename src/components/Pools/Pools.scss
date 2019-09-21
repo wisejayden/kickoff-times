@@ -74,6 +74,34 @@ $rugbyd: #993dbb;
         display: flex;
         flex-direction: column;
         align-items: center;
+        h1 {
+            color: black;
+            font-family: 'age';
+            cursor: pointer;
+
+            position: relative;
+            color: #000;
+            text-decoration: none;
+        }
+        h1:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            visibility: hidden;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s;
+          }
+          h1:hover:before {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+          }
        
         ul {
             .pool-country-container {
@@ -131,7 +159,7 @@ $rugbyd: #993dbb;
                 flex-direction: row;
                 justify-content: space-around;
                 width: 100%;
-                margin-top: 5rem;
+                margin-top: 3rem;
                 .pool-country-container {
                     font-size: 2rem;
                     .pool-country-icons {
@@ -155,6 +183,14 @@ $rugbyd: #993dbb;
             }
         }
      
+    }
+    @media screen and (max-width: 1024px) {
+        .pool-container {
+            h1 {
+                margin-bottom: 2rem;
+            }
+        }
+
     }
 
  
