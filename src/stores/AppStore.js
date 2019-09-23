@@ -96,6 +96,9 @@ export default class AppStore {
   @action averageRating = (id) => {
     if(this.ratingsObject[id]) {
       let value =  this.ratingsObject[id];
+       if(typeof this.ratingsObject[id][0] === 'string') {
+         value = value.map(Number);
+       } 
       let count = value.length;
       let newValue = value.reduce((previous, current) => current += previous);
       newValue /= count;
