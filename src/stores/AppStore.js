@@ -2,6 +2,7 @@ import { observable, action, computed, toJS } from "mobx";
 import axios from 'axios';
 
 import rwcSchedule from '../rwc-schedule.json';
+import lineup from '../lineups.json';
 
 
 
@@ -10,6 +11,7 @@ export default class AppStore {
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
+  @observable lineup = lineup;
   @observable filterValue = '';
   @observable ratingsObject = '';
   @action changeFilterValue = (option) => {
@@ -96,6 +98,7 @@ export default class AppStore {
   @action averageRating = (id) => {
     if(this.ratingsObject[id]) {
       let value =  this.ratingsObject[id];
+      //Forgot to enter some matches into the database leading to the match ratings being entered as strings.. Convert these to numbers.
        if(typeof this.ratingsObject[id][0] === 'string') {
          value = value.map(Number);
        } 
@@ -130,6 +133,7 @@ export default class AppStore {
     })
 
   }
+  
 
   @action getAllRatings = () => {
     let ratingsObject = '';

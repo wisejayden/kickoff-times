@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './GameFixture.scss';
 import Ratings from '../Ratings/Ratings';
 import cityTimezones from 'city-timezones';
 import moment from 'moment';
 import tz from 'moment-timezone';
+import {useSpring, animated} from 'react-spring'
+
 
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
@@ -13,9 +15,13 @@ import {toJS} from 'mobx';
 
 
 const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) => {
+  const [lineupState, changeLineupState] = useState(false);
+  const spring = useSpring({height: '100%', from: {height: '0'}})
+
+
   const store = useContext(StoreContext).AppStore;
 
-  
+  console.log(toJS(store.lineup));
 
   // iso-8601 date format
   const scheduled = moment(gameData.scheduled);
@@ -48,7 +54,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
   }
 
 
-  const determineSatdiumName = () => {
+  const determineStadiumName = () => {
 
     
     for(let i = 0; i < store.checkStadiumName.length; i++) {
@@ -60,10 +66,12 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
 
   }
+  let gameFixtureClickable;
+  store.lineup.sport_event.id === gameData.id ? gameFixtureClickable = {cursor: 'pointer'} : gameFixtureClickable = {};
   // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
   return (
-    <div className="GameFixture">
+    <div onClick={() => changeLineupState(!lineupState)} className="GameFixture" style={gameFixtureClickable}>
       {matchesView &&
         <div className="game-fixture-time-container">
 
@@ -79,7 +87,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
             <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
             <div className="match-information">
               {!matchesView && matchPassed &&
-                <Ratings id={gameData.id}/>
+                <Ratings id={gameData.id} gameData={gameData}/>
               }
               {
                 !matchesView && !matchPassed &&
@@ -87,15 +95,41 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
               }
               <p className="competitors">{gameData.competitors[0].name} v {gameData.competitors[1].name}</p>
               <span style={determinePoolColour()}>{pool} </span>
-              <span>{determineSatdiumName()}</span>
+              <span>{determineStadiumName()}</span>
               {matchesView &&
                 <p>{localTime} Local Time</p>
               }
             </div>
             <img className="country-circle" src={imageUrlArray[1]} alt={gameData.competitors[1].name + " country flag"}/>
-          
-
        </div>
+       {store.lineup.sport_event.id === gameData.id && lineupState &&
+              <animated.div className="lineups-container" style={spring}>
+                <ul>
+                  {store.lineup.lineups[0].starting_lineup.map(pos=> {
+                    return (
+                      <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
+                    )
+                  })}
+                   {store.lineup.lineups[0].substitutes.map(pos=> {
+                    return (
+                      <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
+                    )
+                  })}
+                </ul>
+                <ul>
+                  {store.lineup.lineups[1].starting_lineup.map(pos=> {
+                    return (
+                      <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
+                    )
+                  })}
+                   {store.lineup.lineups[1].substitutes.map(pos=> {
+                    return (
+                      <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
+                    )
+                  })}
+                </ul>
+              </animated.div>
+            }
     </div>
   )
 });

@@ -25,9 +25,9 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
     
     //If the game has passed, get rid of it.. But give it a couple of hours first..
     const scheduled = moment(element.scheduled).add(4, 'hours');
-    if (matchesView && moment() > scheduled) {
-      return;
-    }
+    // if (matchesView && moment() > scheduled) {
+    //   return;
+    // }
 
 
     for (let i = 0; i < store.aPoolOfCountries.length; i++) {
@@ -49,6 +49,8 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
 
 
   const upcomingGames = gamesSortedByDay.map((game, i) => {
+    // console.log("id", game.element.id, "Game: ", game.element.competitors[0].name, " vs ", game.element.competitors[1].name);
+
     if (game.date === unique[count]) {
       count ++;
       //Add a GameDate component for the first instance of each date.
