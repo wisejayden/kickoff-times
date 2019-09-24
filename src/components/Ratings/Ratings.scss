@@ -15,17 +15,17 @@
     background-color: white;
     flex-wrap: wrap;
     position: relative;
-    cursor: pointer;
+    // cursor: pointer;
     margin-bottom: 1rem;
     margin: 0.5rem auto;
     
 
-    &:hover {
-        background-color: #3C2D84;
-        color: white;
-        cursor: pointer;
+  //   &:hover {
+  //     background-color: #3C2D84;
+  //     color: white;
+  //     cursor: pointer;
 
-    }
+  // }
 
 
    span {
@@ -42,11 +42,16 @@
         position: absolute;
         width: 8rem;
         height: 3rem;
-        border-radius: 50%;
         cursor: pointer;
-        
+        left: -17.5rem;
+        top: -2.5rem;
+        width: 44.5rem;
+        height: 10rem;
+        // border: solid blue 2px;
+        // background-color: blue;
 
     }
+    
 
    
 body {
@@ -136,5 +141,6 @@ body {
 
    
 }
+
 
 }

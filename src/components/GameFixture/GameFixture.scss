@@ -12,6 +12,15 @@
     background-color: white;
     margin: 0 1rem 2rem 1rem;
     // padding: 1rem;
+
+
+    &:hover {
+        .rating-container {
+            background-color: #3C2D84;
+            color: white;
+            cursor: pointer;
+        }
+    }
     .lineup-available {
         margin-top: 0.5rem;
         color: #3C2D84;
@@ -132,5 +141,6 @@
     @media screen and (min-width: 1280px) {
         margin-left: 2rem;
     }
+    
   
 }

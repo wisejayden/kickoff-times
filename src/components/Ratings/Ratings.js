@@ -6,12 +6,12 @@ import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
 import { Socket } from 'dgram';
 
-const Ratings = observer(({id, gameData, ...props}) => {
+const Ratings = observer(({id, gameData, mouseOverText, ...props}) => {
   const [currentRating, changeCurrentRating] = useState('');
   const [ratingsReceived, changeRatingsReceived] = useState(false);
   const [circleOpen, toggleCircleOpen] = useState(false);
   const [counter, changeCounter] = useState(0);
-  const [mouseOverText, addMouseOverText] = useState('');
+  // const [mouseOverText, addMouseOverText] = useState('');
   const allRatingsArray = [];
 
   const store = useContext(StoreContext).AppStore;
@@ -32,7 +32,7 @@ const Ratings = observer(({id, gameData, ...props}) => {
 
   return (
    <div className="Ratings">
-       <div className="rating-container" onMouseOver={() => addMouseOverText("Rate")} onMouseOut={() => addMouseOverText('')}>
+       <div className="rating-container">
        <span>{rateText}</span>
 
         {store.alreadyRated === false &&

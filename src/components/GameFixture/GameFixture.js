@@ -15,6 +15,8 @@ import {toJS} from 'mobx';
 
 const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) => {
   const [lineupState, changeLineupState] = useState(false);
+  const [mouseOverText, addMouseOverText] = useState('');
+
 
 
   const store = useContext(StoreContext).AppStore;
@@ -52,35 +54,37 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
 
   const determineStadiumName = () => {
-
-    
     for(let i = 0; i < store.checkStadiumName.length; i++) {
       if (gameData.venue.city_name === store.checkStadiumName[i][0]) {
         return store.checkStadiumName[i][1];
       }
     }
+  }
 
-
-
+  const toggleLineup = () => {
+    if(matchesView && gameFixtureClickable) {
+      changeLineupState(!lineupState);
+    }
   }
   let gameFixtureClickable;
   let gameFixtureHeight;
-  if (store.lineup.sport_event.id === gameData.id && lineupState) {
+  const fixtureHasCurrentLineup = store.lineup.sport_event.id === gameData.id;
+  if (fixtureHasCurrentLineup && lineupState) {
     gameFixtureHeight = {height: '51rem'};
-  } else if(store.lineup.sport_event.id === gameData.id) {
+  } else if(fixtureHasCurrentLineup) {
     gameFixtureHeight = {height: '11rem'};
   } else {
     gameFixtureHeight = {height: '10rem'};
   }
-  store.lineup.sport_event.id === gameData.id ? gameFixtureClickable = {cursor: 'pointer'} : gameFixtureClickable = {};
+  (fixtureHasCurrentLineup && matchesView) || !matchesView ? gameFixtureClickable = {cursor: 'pointer'} : gameFixtureClickable = {};
   // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
   console.log("gameFixtureHeight", gameFixtureHeight);
 
   return (
-    <div className="GameFixture" style={Object.assign(gameFixtureClickable, gameFixtureHeight)}>
+    <div className="GameFixture" onMouseOver={() => addMouseOverText("Rate")} onMouseOut={() => addMouseOverText('')} style={Object.assign(gameFixtureClickable, gameFixtureHeight)}>
       {matchesView &&
-        <div onClick={() => changeLineupState(!lineupState)} className="game-fixture-time-container">
+        <div onClick={() => toggleLineup()} className="game-fixture-time-container">
 
         <span>{shortenedWeekday} {scheduled.date()} {store.monthArray[scheduled.month()]}</span>
         <span className="your-time">{userTime} Your Time</span>
@@ -90,11 +94,11 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
       }
              
 
-       <div className="game-fixture-playing" onClick={() => changeLineupState(!lineupState)} style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
+       <div className="game-fixture-playing" onClick={() => toggleLineup()} style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
             <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
             <div className="match-information">
               {!matchesView && matchPassed &&
-                <Ratings id={gameData.id} gameData={gameData}/>
+                <Ratings id={gameData.id} gameData={gameData} mouseOverText={mouseOverText}/>
               }
               {
                 !matchesView && !matchPassed &&
@@ -106,7 +110,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
               {matchesView &&
                 <p>{localTime} Local Time</p>
               }
-              {store.lineup.sport_event.id === gameData.id && 
+              {fixtureHasCurrentLineup && matchesView &&
                 <p className="lineup-available">Lineups available! Click to show..</p>
               }
 
@@ -114,7 +118,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
             <img className="country-circle" src={imageUrlArray[1]} alt={gameData.competitors[1].name + " country flag"}/>
        </div>
-       {store.lineup.sport_event.id === gameData.id && lineupState &&
+       {fixtureHasCurrentLineup && lineupState && matchesView &&
               <div className="lineups-container" >
                 <ul>
                   {store.lineup.lineups[0].starting_lineup.map(pos=> {
