@@ -1,15 +1,16 @@
 {
   "short_name": "KickOff Times",
   "name": "KickOff Times",
+  "description": "Spoiler-free KickOff Times for the Rugby World Cup",
   "icons": [
     {
-      "src": "/images/rugby-logo.svg",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/images/rugby-logo.png",
+      "sizes": "160x160",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/matches",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#3C2D84",
   "background_color": "#ffffff"
 }
