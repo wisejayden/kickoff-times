@@ -64,11 +64,21 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
   }
   let gameFixtureClickable;
+  let gameFixtureHeight;
+  if (store.lineup.sport_event.id === gameData.id && lineupState) {
+    gameFixtureHeight = {height: '51rem'};
+  } else if(store.lineup.sport_event.id === gameData.id) {
+    gameFixtureHeight = {height: '11rem'};
+  } else {
+    gameFixtureHeight = {height: '10rem'};
+  }
   store.lineup.sport_event.id === gameData.id ? gameFixtureClickable = {cursor: 'pointer'} : gameFixtureClickable = {};
   // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
+  console.log("gameFixtureHeight", gameFixtureHeight);
+
   return (
-    <div className="GameFixture" style={gameFixtureClickable}>
+    <div className="GameFixture" style={Object.assign(gameFixtureClickable, gameFixtureHeight)}>
       {matchesView &&
         <div onClick={() => changeLineupState(!lineupState)} className="game-fixture-time-container">
 
