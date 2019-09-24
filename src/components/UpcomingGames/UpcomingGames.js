@@ -49,6 +49,8 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
 
 
   const upcomingGames = gamesSortedByDay.map((game, i) => {
+    // console.log("id", game.element.id, "Game: ", game.element.competitors[0].name, " vs ", game.element.competitors[1].name);
+
     if (game.date === unique[count]) {
       count ++;
       //Add a GameDate component for the first instance of each date.

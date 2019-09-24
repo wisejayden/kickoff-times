@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
 import { Socket } from 'dgram';
 
-const Ratings = observer(({id, ...props}) => {
+const Ratings = observer(({id, gameData, ...props}) => {
   const [currentRating, changeCurrentRating] = useState('');
   const [ratingsReceived, changeRatingsReceived] = useState(false);
   const [circleOpen, toggleCircleOpen] = useState(false);
