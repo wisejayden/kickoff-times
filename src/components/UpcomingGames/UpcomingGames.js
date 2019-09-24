@@ -25,9 +25,9 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
     
     //If the game has passed, get rid of it.. But give it a couple of hours first..
     const scheduled = moment(element.scheduled).add(4, 'hours');
-    // if (matchesView && moment() > scheduled) {
-    //   return;
-    // }
+    if (matchesView && moment() > scheduled) {
+      return;
+    }
 
 
     for (let i = 0; i < store.aPoolOfCountries.length; i++) {

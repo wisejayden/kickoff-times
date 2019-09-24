@@ -52,7 +52,7 @@ function makeApiCall(id) {
         crossDomain: true,
         url: `https://api.sportradar.us/rugby/trial/v2/union/en/matches/${id}/lineups.json?api_key=37vfn24yhgracbpcx9ry95ta`,
       }).then(res => {
-        fs.appendFile('src/lineups.json', JSON.stringify(res.data), function (err) {
+        fs.writeFile('src/lineups.json', JSON.stringify(res.data), function (err) {
             if (err) throw err;
             console.log('Saved!', res.data);
           });
