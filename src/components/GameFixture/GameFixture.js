@@ -4,7 +4,6 @@ import Ratings from '../Ratings/Ratings';
 import cityTimezones from 'city-timezones';
 import moment from 'moment';
 import tz from 'moment-timezone';
-import {useSpring, animated} from 'react-spring'
 
 
 import { observer } from "mobx-react-lite";
@@ -16,12 +15,10 @@ import {toJS} from 'mobx';
 
 const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) => {
   const [lineupState, changeLineupState] = useState(false);
-  const spring = useSpring({height: '100%', from: {height: '0'}})
 
 
   const store = useContext(StoreContext).AppStore;
 
-  console.log(toJS(store.lineup));
 
   // iso-8601 date format
   const scheduled = moment(gameData.scheduled);
@@ -71,9 +68,9 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
   // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
   return (
-    <div onClick={() => changeLineupState(!lineupState)} className="GameFixture" style={gameFixtureClickable}>
+    <div className="GameFixture" style={gameFixtureClickable}>
       {matchesView &&
-        <div className="game-fixture-time-container">
+        <div onClick={() => changeLineupState(!lineupState)} className="game-fixture-time-container">
 
         <span>{shortenedWeekday} {scheduled.date()} {store.monthArray[scheduled.month()]}</span>
         <span className="your-time">{userTime} Your Time</span>
@@ -83,7 +80,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
       }
              
 
-       <div className="game-fixture-playing" style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
+       <div className="game-fixture-playing" onClick={() => changeLineupState(!lineupState)} style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
             <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
             <div className="match-information">
               {!matchesView && matchPassed &&
@@ -99,17 +96,23 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
               {matchesView &&
                 <p>{localTime} Local Time</p>
               }
+              {store.lineup.sport_event.id === gameData.id && 
+                <p className="lineup-available">Lineups available! Click to show..</p>
+              }
+
             </div>
+
             <img className="country-circle" src={imageUrlArray[1]} alt={gameData.competitors[1].name + " country flag"}/>
        </div>
        {store.lineup.sport_event.id === gameData.id && lineupState &&
-              <animated.div className="lineups-container" style={spring}>
+              <div className="lineups-container" >
                 <ul>
                   {store.lineup.lineups[0].starting_lineup.map(pos=> {
                     return (
                       <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
                     )
                   })}
+                  <br></br>
                    {store.lineup.lineups[0].substitutes.map(pos=> {
                     return (
                       <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
@@ -122,13 +125,14 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
                       <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
                     )
                   })}
+                  <br></br>
                    {store.lineup.lineups[1].substitutes.map(pos=> {
                     return (
                       <li>{pos.player.jersey_number}. {pos.player.name.split(',').reverse().join(" ")}</li>
                     )
                   })}
                 </ul>
-              </animated.div>
+              </div>
             }
     </div>
   )
