@@ -79,7 +79,6 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
   (fixtureHasCurrentLineup && matchesView) || !matchesView ? gameFixtureClickable = {cursor: 'pointer'} : gameFixtureClickable = {};
   // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
-  console.log("gameFixtureHeight", gameFixtureHeight);
 
   return (
     <div className="GameFixture" onMouseOver={() => addMouseOverText("Rate")} onMouseOut={() => addMouseOverText('')} style={Object.assign(gameFixtureClickable, gameFixtureHeight)}>
