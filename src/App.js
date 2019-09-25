@@ -3,6 +3,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import FrontPage from './components/frontpage/Main';
 import SportContent from './components/sport/SportContent';
+import NotFound from './components/NotFound/NotFound';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import './App.scss';
 
@@ -18,6 +19,7 @@ function App(props) {
           <Route path="/matches" component={FrontPage} />
           <Route path="/pools" component={FrontPage} />
           <Route path="/ratings" component={FrontPage} />
+          <Route component={NotFound} />
 
 
 
