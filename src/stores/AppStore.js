@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import rwcSchedule from '../rwc-schedule.json';
 import lineup from '../lineups.json';
+import backup from '../backup-lineups.json';
 
 
 
@@ -12,6 +13,7 @@ export default class AppStore {
     this.rootStore = rootStore;
   }
   @observable lineup = lineup;
+  @observable backup = backup;
   @observable filterValue = '';
   @observable ratingsObject = '';
   @action changeFilterValue = (option) => {
@@ -60,6 +62,14 @@ export default class AppStore {
   @observable data = rwcSchedule.sport_events;
   @observable alreadyRated = false;
 
+
+  @action checkForLineup = (id) => {
+    for (let key in backup) {
+      if(id === key) {
+        return key;
+      }
+    }
+  }
   @action filterData = (filterTarget) => {
     let filterTargetArray = [];
     const data = rwcSchedule.sport_events;
@@ -70,7 +80,7 @@ export default class AppStore {
     } else {
       filterTargetArray.push(filterTarget);
     }
-    
+
 
     //Loop through team/s
     for(let t = 0; t < filterTargetArray.length; t++) {
@@ -85,7 +95,7 @@ export default class AppStore {
       }
     }
     let uniq = [...new Set(filteredData)];
-    
+
     let sorted = uniq.sort(function(a,b){
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
@@ -101,7 +111,7 @@ export default class AppStore {
       //Forgot to enter some matches into the database leading to the match ratings being entered as strings.. Convert these to numbers.
        if(typeof this.ratingsObject[id][0] === 'string') {
          value = value.map(Number);
-       } 
+       }
       let count = value.length;
       let newValue = value.reduce((previous, current) => current += previous);
       newValue /= count;
@@ -110,7 +120,7 @@ export default class AppStore {
       this.unratedGame === true;
       return "Unrated..";
     }
-    
+
   }
 
   @action postRating = (value, id) => {
@@ -133,7 +143,7 @@ export default class AppStore {
     })
 
   }
-  
+
 
   @action getAllRatings = () => {
     let ratingsObject = '';
@@ -175,9 +185,9 @@ export default class AppStore {
     .catch(err => {
       this.ratingError = "Error";
     })
- 
 
-    
+
+
   }
 
   @action clearFilterData = () => {

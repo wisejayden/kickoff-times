@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './GameFixture.scss';
 import Ratings from '../Ratings/Ratings';
 import cityTimezones from 'city-timezones';
 import moment from 'moment';
 import tz from 'moment-timezone';
+
 
 
 import { observer } from "mobx-react-lite";
@@ -16,6 +17,10 @@ import {toJS} from 'mobx';
 const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) => {
   const [lineupState, changeLineupState] = useState(false);
   const [mouseOverText, addMouseOverText] = useState('');
+  const [lineupVersion, setLineupVersion] = useState('');
+  const [gameId, setGameId] =  useState('');
+  const [fixtureHasCurrentLineup, setFixtureHasCurrentLineup] = useState(false);
+
 
 
 
@@ -68,7 +73,28 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
   }
   let gameFixtureClickable;
   let gameFixtureHeight;
-  const fixtureHasCurrentLineup = store.lineup.sport_event.id === gameData.id;
+  // let fixtureHasCurrentLineup = store.lineup.sport_event.id === gameData.id;
+  // let fixtureHasCurrentLineup;
+  // if(store.lineup.sport_event.id === gameData.id){
+  //   setLineupVersion("primary");
+  //   let fixtureHasCurrentLineup = true;
+  // } else {
+  //   for(let key in store.backup)
+  // }
+  useEffect(() => {
+    let id = store.checkForLineup(gameData.id);
+    if(id) {
+      // fixtureHasCurrentLineup = true;
+      setLineupVersion("backup");
+      setGameId(id);
+      setFixtureHasCurrentLineup(true);
+    }
+  }, [gameId]);
+
+  let homeTeam = gameData.competitors[0].name;
+  let awayTeam;
+
+
   if (fixtureHasCurrentLineup && lineupState) {
     gameFixtureHeight = {height: '51rem'};
   } else if(fixtureHasCurrentLineup) {
@@ -77,7 +103,6 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
     gameFixtureHeight = {height: '10rem'};
   }
   (fixtureHasCurrentLineup && matchesView) || !matchesView ? gameFixtureClickable = {cursor: 'pointer'} : gameFixtureClickable = {};
-  // console.log("id", gameData.id, "Game: ", gameData.competitors[0].name, " vs ", gameData.competitors[1].name);
 
 
   return (
@@ -89,9 +114,9 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
         <span className="your-time">{userTime} Your Time</span>
 
        </div>
-      
+
       }
-             
+
 
        <div className="game-fixture-playing" onClick={() => toggleLineup()} style={matchesView === false ? {height: '100%', marginTop: '1.3rem'} : {}}>
             <img className="country-circle" src={imageUrlArray[0]} alt={gameData.competitors[0].name + " country flag"}/>
@@ -117,7 +142,7 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
 
             <img className="country-circle" src={imageUrlArray[1]} alt={gameData.competitors[1].name + " country flag"}/>
        </div>
-       {fixtureHasCurrentLineup && lineupState && matchesView &&
+       {fixtureHasCurrentLineup && lineupState && matchesView && lineupVersion === "primary" &&
               <div className="lineups-container" >
                 <ul>
                   {store.lineup.lineups[0].starting_lineup.map(pos=> {
@@ -147,6 +172,48 @@ const GameFixture = observer(({gameData, pool, image, matchesView, ...props}) =>
                 </ul>
               </div>
             }
+
+            {fixtureHasCurrentLineup && lineupState && matchesView && lineupVersion === "backup" &&
+            <div className="lineups-container" >
+              <ul>
+                {
+                  store.backup[gameId][0].starters.map(pos => {
+                    return (
+                      <li>{pos}</li>
+                    )
+                  })
+                }
+                <br></br>
+                {
+                  store.backup[gameId][0].finishers.map(pos => {
+                    return (
+                      <li>{pos}</li>
+                    )
+                  })
+                }
+              </ul>
+              <ul>
+                {
+                  store.backup[gameId][1].starters.map(pos => {
+                    return (
+                      <li>{pos}</li>
+                    )
+                  })
+                }
+                <br></br>
+                {
+                  store.backup[gameId][1].finishers.map(pos => {
+                    return (
+                      <li>{pos}</li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
+
+          }
+
+
     </div>
   )
 });
