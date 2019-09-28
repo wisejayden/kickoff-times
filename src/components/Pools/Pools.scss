@@ -13,6 +13,9 @@ $rugbyb: #f4436c;
 $rugbyc: #2ed9c3;
 $rugbyd: #993dbb;
 
+$image-height: 5rem;
+$image-height-ipad: 3rem;
+
 .Pools {
     border-top: 2rem #F0F0F0 solid;
     border-left: 1rem #F0F0F0 solid;
@@ -22,6 +25,47 @@ $rugbyd: #993dbb;
     background-color: white;
     ul {
         list-style-type: none;
+    }
+    table {
+      width: 100%;
+
+      .pools__header-team {
+        text-align: left;
+        // margin-left: 5rem;
+      }
+      .pools__cell-team {
+        cursor: pointer;
+        vertical-align: baseline;
+        text-align: left;
+        line-height: $image-height;
+        white-space: nowrap;
+        img {
+          vertical-align: top;
+          margin-right: 0.8rem;
+          width: $image-height;
+        }
+        // text-align: justify;
+      }
+
+      .pools__row {
+          margin-bottom: 2rem;
+          height: $image-height;
+      }
+      // align: left;
+      tr {
+        display: flex;
+        justify-content: space-around;
+        td, th {
+          width: 15rem;
+          text-align: center;
+          vertical-align: middle;
+        }
+        th {
+          margin-bottom: 4rem;
+          font-weight: 700;
+          font-size: 1.5  rem;
+        }
+      }
     }
     #pool-a-picker {
         color:  $rugbya;
@@ -37,7 +81,7 @@ $rugbyd: #993dbb;
         background-color: $rugbyb;
         color: white;
     }
-    
+
     #pool-c-picker {
         color:  $rugbyc;
     }
@@ -82,6 +126,7 @@ $rugbyd: #993dbb;
             position: relative;
             color: #000;
             text-decoration: none;
+            margin-bottom: 3rem;
         }
         h1:before {
             content: "";
@@ -102,7 +147,7 @@ $rugbyd: #993dbb;
             -webkit-transform: scaleX(1);
             transform: scaleX(1);
           }
-       
+
         ul {
             .pool-country-container {
                 line-height: 20px;
@@ -110,7 +155,7 @@ $rugbyd: #993dbb;
                 padding: 1rem 0;
                 margin-bottom: 1rem;
                 cursor: pointer;
-    
+
                 .pool-country-icons {
                     height: 30px;
                     vertical-align: middle;
@@ -120,12 +165,25 @@ $rugbyd: #993dbb;
 
         }
 
-      
 
-      
-       
+
+
+
     }
     @media screen and (min-width: 768px) {
+      .pools__cell-team-short {
+        display: none;
+      };
+      .pools__header-played-long, .pools__header-bonus-long {
+        display: block;
+      };
+      .pools__header-played-short, .pools__header-bonus-short {
+        display: none;
+      };
+      .pools__cell-team-long {
+        display: inline-block;
+
+      }
         .pool-picker {
             li {
                 font-size: 2rem;
@@ -136,6 +194,35 @@ $rugbyd: #993dbb;
                 font-size: 2rem;
             }
         }
+
+    }
+    @media screen and (max-width: 768px) {
+
+      .pools__header-played-long, .pools__header-bonus-long {
+        display: none;
+      };
+      .pools__header-played-short, .pools__header-bonus-short {
+        display: block;
+      };
+
+      table {
+
+
+        .pool__row {
+          height: $image-height-ipad;
+        }
+        .pools__cell-team {
+          line-height: $image-height-ipad;
+          .pools__cell-team-long {
+            display: none;
+          }
+
+          img {
+            width: $image-height-ipad;
+          }
+        }
+      }
+
 
     }
 
@@ -165,16 +252,16 @@ $rugbyd: #993dbb;
                     .pool-country-icons {
                         height: 50px;
                         margin-right: 1rem;
-                        
+
                     }
 
                 }
-               
+
             }
         }
     }
     @media screen and (max-width: 400px) {
-        
+
         .pool-picker {
             li {
                 font-size: 1.5rem;
@@ -182,7 +269,7 @@ $rugbyd: #993dbb;
 
             }
         }
-     
+
     }
     @media screen and (max-width: 1024px) {
         .pool-container {
@@ -192,7 +279,35 @@ $rugbyd: #993dbb;
         }
 
     }
+    @media screen and (min-width: 480) and (max-width: 768) {
 
- 
-   
+      .pools__cell-team-short {
+        display: inline-block;
+        line-height: $image-height-ipad;
+      }
+    }
+    @media screen and  (max-width: 480px) {
+
+      .pools__cell-team-short {
+        display: block;
+      }
+      table .pools__row {
+        margin-bottom: 3rem;
+      }
+    }
+
+    @media screen and (min-width: 420px) and (max-width: 768px) {
+      table {
+          .cell {
+            width: 8rem;
+          }
+      }
+    }
+    @media screen and (max-width: 420px) {
+      table {
+          .cell {
+            width: 6rem;
+          }
+      }
+    }
 }

@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './Pools.scss';
 import { withRouter} from "react-router-dom";
+import { toJS} from 'mobx';
 
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
@@ -9,8 +10,12 @@ import { StoreContext } from "../../index";
 
 const Pools = withRouter(observer(({...props}) => {
   const [currentPool, changeCurrentPool] = useState('A');
+  const [poolData, addPoolData] = useState('');
+  const [currentPoolData, changeCurrentPoolData] = useState([]);
 
   const store = useContext(StoreContext).AppStore;
+
+
   const applyFilters = (country) => {
     props.history.push("matches");
     store.changeFilterValue(country);
@@ -29,6 +34,45 @@ const Pools = withRouter(observer(({...props}) => {
     )
   })
 
+
+  useEffect(() => {
+    let newData = store.getPoolData();
+    addPoolData(newData);
+  }, []);
+
+  useEffect(() => {
+    let arr = poolData[currentPool];
+    if(arr) {
+      let sortedData = arr.sort((a, b) => b["points"] -a["points"]);
+      changeCurrentPoolData(sortedData);
+    }
+ }, [currentPool, poolData])
+
+  const showNewPool = currentPoolData.map(country => {
+    let image;
+    let nickname;
+    for (let i = 0; i < store.aPoolOfCountries.length; i++) {
+      if (country.teamName === store.aPoolOfCountries[i].country) {
+        image = `/images/country/${store.aPoolOfCountries[i].image}`
+        nickname = store.aPoolOfCountries[i].nickname;
+      }
+    }
+    return (
+        <tr className="pools__row">
+          <td className="cell pools__cell-team" onClick ={() => {applyFilters(country.teamName)}}>
+            <img src={image} />
+            <span className="pools__cell-team-long">{country.teamName}</span>
+            <span className="pools__cell-team-short">{nickname}</span>
+          </td>
+          <td className="cell">{country.gamesPlayed}</td>
+          <td className="cell">{country.pointsDiff}</td>
+          <td className="cell">{country.bonusPoints}</td>
+          <td className="cell">{country.points}</td>
+        </tr>
+    )
+
+  });
+
   return (
     <div className="Pools">
       <ul className="pool-picker">
@@ -44,16 +88,27 @@ const Pools = withRouter(observer(({...props}) => {
         {currentPool === "C"&& <h1 onClick ={() => {applyFilters("Pool C")}}>Pool C</h1> }
         {currentPool === "D" && <h1 onClick ={() => {applyFilters("Pool D")}}> Pool D</h1> }
 
+        <table>
+          <tbody>
+          <tr>
+            <th className="cell pools__header-team">Team</th>
+            <th className="cell pools__header-played-long">Played</th>
+            <th className="cell pools__header-played-short">Pl</th>
 
-        <ul>
-          {showPool}
-        </ul>
+            <th className="cell">+/-</th>
+            <th className="cell pools__header-bonus-long">Bonus Points</th>
+            <th className="cell pools__header-played-short">BP</th>
+            <th className="cell">Points</th>
+
+          </tr>
+
+          {showNewPool}
+          </tbody>
+        </table>
       </div>
 
-      
+
     </div>
   )
 }));
 export default withRouter(Pools);
-
-
