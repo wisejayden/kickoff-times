@@ -5,6 +5,7 @@ import GameFixture from '../GameFixture/GameFixture';
 import moment from 'moment';
 import GameDate from '../GameDate/GameDate';
 import Filter from '../Filter/Filter';
+import Notice from '../Notice/Notice';
 
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
@@ -22,7 +23,7 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
     let date = `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
     let pool;
     let image = [];
-    
+
     //If the game has passed, get rid of it.. But give it a couple of hours first..
     const scheduled = moment(element.scheduled).add(4, 'hours');
     if (matchesView && moment() > scheduled) {
@@ -40,7 +41,7 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
         image.push(store.aPoolOfCountries[i].image);
       }
     }
-    
+
     gamesSortedByDay.push({date, element, pool, image});
   });
 
@@ -65,20 +66,22 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
         <GameFixture matchesView={matchesView} gameData={game.element} pool={game.pool} image={game.image}/>
       )
     }
-    
+
   })
 
 
-  
+
   let result = gamesSortedByDay.reduce(function(h, obj) {
     h[obj.date] = (h[obj.date] || []).concat(obj);
-    return h; 
+    return h;
   }, {});
+  const clickNotice = () => {
+    store.noticeClicked = true;
+  }
 
-  
   if (numberOfGames === false) numberOfGames = data.length;
 
-  
+
 
   return (
     <div className="UpcomingGames">
@@ -87,6 +90,10 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
             <div className="personalize-container">Personalize? <IconContext.Provider value={{className: "info-icon" }}><FaRegQuestionCircle /></IconContext.Provider></div>
         </div> */}
         <div className="UpcomingGames-container">
+          {store.noticeClicked === false &&
+            <Notice clickNotice={clickNotice} message={"Group standings have been added, check out the Pools tab"}/>
+
+          }
           <div className="filter-container">
             <Filter />
             {store.filterValue !== '' &&
@@ -96,7 +103,7 @@ const UpcomingGames = observer(({numberOfGames, data, matchesView, ...props}) =>
           {upcomingGames}
 
         </div>
-        
+
     </div>
   )
 });
