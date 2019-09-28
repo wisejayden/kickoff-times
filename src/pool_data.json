@@ -1,0 +1,13 @@
+{
+  "points_list": [9, 6, 5, 0, 0, 10, 5, 4, 0, 0, 10, 6, 4, 0, 0, 5, 5, 4, 2, 0],
+  "team_list": ["Japan", "Ireland", "Samoa", "Russia", "Scotland", "Italy", "South Africa", "New Zealand", "Namibia", "Canada", "England", "Argentina", "France", "USA", "Tonga", "Australia", "Wales", "Uruguay", "Fiji", "Georgia"],
+  "games_played_list": [2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1, 1, 1, 2, 1],
+  "games_won_list": [2, 1, 1, 0, 0, 2, 1, 1, 0, 0, 2, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+  "games_drawn_list": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "games_lost_list": [0, 1, 0, 2, 1, 0, 1, 0, 2, 1, 0, 1, 0, 1, 2, 0, 0, 0, 2, 1],
+  "tries_for_list": [5, 6, 6, 1, 0, 14, 10, 2, 3, 1, 11, 6, 2, 1, 2, 6, 6, 3, 7, 2],
+  "points_for_list": [49, 39, 34, 19, 3, 95, 70, 23, 25, 7, 80, 49, 23, 7, 15, 39, 43, 30, 48, 14],
+  "points_against_list": [22, 22, 9, 64, 27, 29, 26, 13, 104, 48, 10, 35, 21, 45, 63, 21, 14, 27, 69, 43],
+  "points_diff_list": [27, 17, 25, -45, -24, 66, 44, 10, -79, -41, 70, 14, 2, -38, -48, 18, 29, 3, -21, -29],
+  "bonus_points_list": [1, 2, 1, 0, 0, 2, 1, 0, 0, 0, 2, 2, 0, 0, 0, 1, 1, 0, 2, 0]
+}
