@@ -4,6 +4,7 @@ import axios from 'axios';
 import rwcSchedule from '../rwc-schedule.json';
 import lineup from '../lineups.json';
 import backup from '../backup-lineups.json';
+import poolData from '../pool_data.json';
 
 
 
@@ -14,12 +15,16 @@ export default class AppStore {
   }
   @observable lineup = lineup;
   @observable backup = backup;
+  @observable poolData = poolData;
   @observable filterValue = '';
   @observable ratingsObject = '';
+  @observable noticeClicked = false;
+
   @action changeFilterValue = (option) => {
     this.filterValue = option;
     this.filterData(option);
   }
+
   @observable weekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   @observable monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   @observable worldCupPools = {
@@ -29,29 +34,29 @@ export default class AppStore {
     "D": ["Australia", "Wales", "Georgia", "Fiji", "Uruguay"]
   };
   @observable aPoolOfCountries = [
-    {"country": "Ireland", "pool": "A", "image": "irfu2.svg"}, 
-    {"country": "Scotland", "pool": "A", "image": "scotland.svg"}, 
-    {"country": "Japan", "pool": "A", "image": "japan.svg"}, 
-    {"country": "Russia", "pool": "A", "image": "russia.svg"}, 
-    {"country": "Samoa", "pool": "A", "image": "samoa.svg"},
+    {"country": "Ireland", "pool": "A", "image": "irfu2.svg", "nickname": "IRE"},
+    {"country": "Scotland", "pool": "A", "image": "scotland.svg", "nickname": "SCO"},
+    {"country": "Japan", "pool": "A", "image": "japan.svg", "nickname": "JPN"},
+    {"country": "Russia", "pool": "A", "image": "russia.svg", "nickname": "RUS"},
+    {"country": "Samoa", "pool": "A", "image": "samoa.svg", "nickname": "SAM"},
 
-    {"country": "New Zealand", "pool": "B", "image": "new-zealand.svg"}, 
-    {"country": "South Africa", "pool": "B", "image": "south-africa.svg"}, 
-    {"country": "Italy", "pool": "B", "image": "italy.svg"}, 
-    {"country": "Namibia", "pool": "B", "image": "namibia.svg"}, 
-    {"country": "Canada", "pool": "B", "image": "canada.svg"},
+    {"country": "New Zealand", "pool": "B", "image": "new-zealand.svg", "nickname": "NZL"},
+    {"country": "South Africa", "pool": "B", "image": "south-africa.svg", "nickname": "RSA"},
+    {"country": "Italy", "pool": "B", "image": "italy.svg", "nickname": "ITA"},
+    {"country": "Namibia", "pool": "B", "image": "namibia.svg", "nickname": "NAM"},
+    {"country": "Canada", "pool": "B", "image": "canada.svg", "nickname": "CAN"},
 
-    {"country": "England", "pool": "C", "image": "england.svg"}, 
-    {"country": "France", "pool": "C", "image": "france.svg"}, 
-    {"country": "Argentina", "pool": "C", "image": "argentina.svg"}, 
-    {"country": "USA", "pool": "C", "image": "united-states-of-america.svg"}, 
-    {"country": "Tonga", "pool": "C", "image": "tonga.svg"},
+    {"country": "England", "pool": "C", "image": "england.svg", "nickname": "ENG"},
+    {"country": "France", "pool": "C", "image": "france.svg", "nickname": "FRA"},
+    {"country": "Argentina", "pool": "C", "image": "argentina.svg", "nickname": "ARG"},
+    {"country": "USA", "pool": "C", "image": "united-states-of-america.svg", "nickname": "USA"},
+    {"country": "Tonga", "pool": "C", "image": "tonga.svg", "nickname": "TGA"},
 
-    {"country": "Australia", "pool": "D", "image": "australia.svg"}, 
-    {"country": "Wales", "pool": "D", "image": "wales.svg"}, 
-    {"country": "Georgia", "pool": "D", "image": "georgia.svg"}, 
-    {"country": "Fiji", "pool": "D", "image": "fiji.svg"}, 
-    {"country": "Uruguay", "pool": "D", "image": "uruguay.svg"}
+    {"country": "Australia", "pool": "D", "image": "australia.svg", "nickname": "AUS"},
+    {"country": "Wales", "pool": "D", "image": "wales.svg", "nickname": "WAL"},
+    {"country": "Georgia", "pool": "D", "image": "georgia.svg", "nickname": "URU"},
+    {"country": "Fiji", "pool": "D", "image": "fiji.svg", "nickname": "FIJ"},
+    {"country": "Uruguay", "pool": "D", "image": "uruguay.svg", "nickname": "GEO"}
   ];
 
   @observable unratedGame = false;
@@ -70,6 +75,50 @@ export default class AppStore {
       }
     }
   }
+
+  @action getPoolData() {
+  let poolData = this.poolData;
+  let newObject = {
+    "A": [],
+    "B": [],
+    "C": [],
+    "D": []
+  };
+  let teamList = poolData.team_list;
+  let currentPool;
+  for(let i = 0; i < teamList.length; i++) {
+    if(i >= 0 && i < 5) {
+      currentPool = "A";
+    } else if (i >= 5 && i < 10) {
+      currentPool = "B";
+    } else if(i >= 10 && i < 15) {
+      currentPool = "C";
+    } else {
+      currentPool = "D";
+    }
+    let object = this.createPoolObject(i);
+    newObject[currentPool].push(object);
+  }
+  return newObject;
+}
+
+@action createPoolObject = (i) => {
+  return {
+    "teamName": poolData.team_list[i],
+    "points": poolData.points_list[i],
+    "gamesPlayed": poolData.games_played_list[i],
+    "gamesWon": poolData.games_won_list[i],
+    "gamesDrawn": poolData.games_drawn_list[i],
+    "gamesLost": poolData.games_lost_list[i],
+    "triesFor": poolData.tries_for_list[i],
+    "pointsFor": poolData.points_for_list[i],
+    "pointsAgainst": poolData.points_against_list[i],
+    "pointsDiff": poolData.points_diff_list[i],
+    "bonusPoints": poolData.bonus_points_list[i]
+  }
+}
+
+
   @action filterData = (filterTarget) => {
     let filterTargetArray = [];
     const data = rwcSchedule.sport_events;
