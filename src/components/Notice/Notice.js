@@ -1,12 +1,13 @@
-import React from 'react';
-import './Notice.scss';
+import React from "react";
+import Button from "../Button/Button";
+import "./Notice.scss";
 
-const Notice = ({message, clickNotice, ...props}) => {
+const Notice = ({ message, clickNotice, ...props }) => {
   return (
     <div className="Notice">
-      <p onClick={() => clickNotice()} >{message}</p>
+      <Button content={message} onClick={clickNotice} />
     </div>
-  )
-}
+  );
+};
 
 export default Notice;

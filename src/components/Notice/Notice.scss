@@ -1,40 +1,5 @@
 .Notice {
-  cursor: pointer;
   width: 100%;
   display: flex;
   justify-content: center;
-  p {
-    margin-top: 1rem;
-    width: 41rem;
-    height: 5rem;
-    background-color: #3C2D84;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(35, 35, 35, 0.2);
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #F0F0F0;
-    font-size: 1.5rem;
-
-  }
-  @media screen and (max-width: 780px) and (min-width: 450px) {
-    // p {
-    //   width: 25rem;
-    //   height: 6rem;
-    //   padding: 1rem;
-    // }
-    p {
-      margin-top: 6rem;
-    }
-  }
-  @media screen and (max-width: 450px) {
-  
-    p {
-      margin-top: 4rem;
-      width: 25rem;
-    }
-  }
-
-
 }
