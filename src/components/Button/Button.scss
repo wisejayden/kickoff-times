@@ -1,17 +1,20 @@
+$kickoff: #3c2d84;
+$background-grey: #f0f0f0;
+
 .Button {
   cursor: pointer;
   margin-top: 1rem;
   // width: 41rem;
   padding: 0.5rem 2rem 0.5rem 2rem;
   height: 5rem;
-  background-color: #3c2d84;
+  background-color: $kickoff;
   text-align: center;
   box-shadow: 0 2px 8px rgba(35, 35, 35, 0.2);
   vertical-align: middle;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f0f0f0;
+  color: $background-grey;
   font-size: 1.5rem;
 
   @media screen and (max-width: 780px) and (min-width: 450px) {
@@ -21,4 +24,9 @@
     margin-top: 4rem;
     width: 25rem;
   }
+}
+.hover-button:hover {
+  background-color: white;
+  border: 1px solid $kickoff;
+  color: $kickoff;
 }

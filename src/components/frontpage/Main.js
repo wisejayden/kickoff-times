@@ -8,7 +8,6 @@ import Pools from "../Pools/Pools";
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
 import { toJS } from "mobx";
-import { ScrollTo } from "react-scroll-to";
 
 const FrontPage = observer(props => {
   const store = useContext(StoreContext).AppStore;

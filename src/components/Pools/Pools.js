@@ -187,7 +187,11 @@ const Pools = withRouter(
           className="pools-fixtures"
         >
           <div className="clear-filter-container">
-            <Button content={"Clear Filters"} onClick={store.clearFilterData} />
+            <Button
+              content={"Clear Filters"}
+              onClick={store.clearFilterData}
+              hoverable={true}
+            />
           </div>
           <UpcomingGames
             data={store.data}
