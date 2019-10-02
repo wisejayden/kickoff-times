@@ -103,7 +103,6 @@ const UpcomingGames = withRouter(
       };
 
       if (numberOfGames === false) numberOfGames = data.length;
-      console.log("store", store.noticeClicked);
       return (
         <div className="UpcomingGames">
           {/* <div className="upcoming-container">
