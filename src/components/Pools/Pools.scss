@@ -1,11 +1,11 @@
-$japan-pink: #E09DA6;
-$japan-green: #4F817F;
-$japan-yellow: #F2C59E;
-$japan-brown: #6E4E53;
-$japan-orange: #EB6E52;
+$japan-pink: #e09da6;
+$japan-green: #4f817f;
+$japan-yellow: #f2c59e;
+$japan-brown: #6e4e53;
+$japan-orange: #eb6e52;
 $japan-purple: #552151;
-$japan-off-white: #FFE9CB;
-$japan-blue: #76C6FB;
+$japan-off-white: #ffe9cb;
+$japan-blue: #76c6fb;
 $japan-plurple: #984363;
 
 $rugbya: #54c8e8;
@@ -15,299 +15,293 @@ $rugbyd: #993dbb;
 
 $image-height: 5rem;
 $image-height-ipad: 3rem;
+$kickoff: #3c2d84;
+$background-grey: #f0f0f0;
 
 .Pools {
-    border-top: 2rem #F0F0F0 solid;
-    border-left: 1rem #F0F0F0 solid;
-    border-right: 1rem #F0F0F0 solid;
-    border-bottom: 2rem #F0F0F0 solid;
+  border-top: 2rem #f0f0f0 solid;
+  border-left: 1rem #f0f0f0 solid;
+  border-right: 1rem #f0f0f0 solid;
+  border-bottom: 2rem #f0f0f0 solid;
+  .GameFixture:last-of-type {
+    margin-bottom: 0;
+  }
+  .clear-filter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $background-grey;
+    padding-top: 2rem;
+  }
 
-    background-color: white;
-    ul {
-        list-style-type: none;
+  background-color: white;
+  ul {
+    list-style-type: none;
+  }
+  table {
+    width: 100%;
+
+    .pools__header-team {
+      text-align: left;
+      // margin-left: 5rem;
     }
-    table {
+    .pools__cell-team {
+      cursor: pointer;
+      vertical-align: baseline;
+      text-align: left;
+      line-height: $image-height;
+      white-space: nowrap;
+      img {
+        vertical-align: top;
+        margin-right: 0.8rem;
+        width: $image-height;
+      }
+      // text-align: justify;
+    }
+
+    .pools__row {
+      margin-bottom: 2rem;
+      height: $image-height;
+    }
+    // align: left;
+    tr {
+      display: flex;
+      justify-content: space-around;
+      td,
+      th {
+        width: 15rem;
+        text-align: center;
+        vertical-align: middle;
+      }
+      th {
+        margin-bottom: 4rem;
+        font-weight: 700;
+        font-size: 1.5 rem;
+      }
+    }
+  }
+  #pool-a-picker {
+    color: $rugbya;
+  }
+  #pool-a-picker-active {
+    background-color: $rugbya;
+    color: white;
+  }
+  #pool-b-picker {
+    color: $rugbyb;
+  }
+  #pool-b-picker-active {
+    background-color: $rugbyb;
+    color: white;
+  }
+
+  #pool-c-picker {
+    color: $rugbyc;
+  }
+  #pool-c-picker-active {
+    background-color: $rugbyc;
+    color: white;
+  }
+  #pool-d-picker {
+    color: $rugbyd;
+  }
+  #pool-d-picker-active {
+    background-color: $rugbyd;
+    color: white;
+  }
+  .pool-picker {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-top: 1rem;
+
+    li {
+      cursor: pointer;
+      font-size: 1.7rem;
+      padding: 1rem 2rem;
+      text-align: center;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      box-shadow: 1px 3px 9px rgba(34, 34, 34, 0.15);
+    }
+  }
+  .pool-container {
+    margin: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      color: black;
+      font-family: "roboto";
+      cursor: pointer;
+
+      position: relative;
+      color: #000;
+      text-decoration: none;
+      margin-bottom: 3rem;
+    }
+    h1:before {
+      content: "";
+      position: absolute;
       width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #000;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    }
+    h1:hover:before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
 
-      .pools__header-team {
-        text-align: left;
-        // margin-left: 5rem;
-      }
-      .pools__cell-team {
+    ul {
+      .pool-country-container {
+        line-height: 20px;
+        // margin: 0.5rem 35%;
+        padding: 1rem 0;
+        margin-bottom: 1rem;
         cursor: pointer;
-        vertical-align: baseline;
-        text-align: left;
-        line-height: $image-height;
-        white-space: nowrap;
-        img {
-          vertical-align: top;
-          margin-right: 0.8rem;
-          width: $image-height;
-        }
-        // text-align: justify;
-      }
 
-      .pools__row {
-          margin-bottom: 2rem;
-          height: $image-height;
-      }
-      // align: left;
-      tr {
-        display: flex;
-        justify-content: space-around;
-        td, th {
-          width: 15rem;
-          text-align: center;
+        .pool-country-icons {
+          height: 30px;
           vertical-align: middle;
-        }
-        th {
-          margin-bottom: 4rem;
-          font-weight: 700;
-          font-size: 1.5  rem;
+          margin-right: 0.5rem;
         }
       }
     }
-    #pool-a-picker {
-        color:  $rugbya;
+  }
+  @media screen and (min-width: 768px) {
+    .pools__cell-team-short {
+      display: none;
     }
-    #pool-a-picker-active {
-        background-color: $rugbya;
-        color: white;
+    .pools__header-played-long,
+    .pools__header-bonus-long {
+      display: block;
     }
-    #pool-b-picker {
-        color:  $rugbyb;
+    .pools__header-played-short,
+    .pools__header-bonus-short {
+      display: none;
     }
-    #pool-b-picker-active {
-        background-color: $rugbyb;
-        color: white;
-    }
-
-    #pool-c-picker {
-        color:  $rugbyc;
-    }
-    #pool-c-picker-active {
-        background-color: $rugbyc;
-        color: white;
-    }
-    #pool-d-picker {
-        color: $rugbyd;
-    }
-    #pool-d-picker-active {
-        background-color: $rugbyd;
-        color: white;
+    .pools__cell-team-long {
+      display: inline-block;
     }
     .pool-picker {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-evenly;
-        padding-top: 1rem;
-
-        li {
-            cursor: pointer;
-            font-size: 1.7rem;
-            padding: 1rem 2rem;
-            text-align: center;
-            border-radius: 4px;
-            margin-right: 0.5rem;
-            box-shadow: 1px 3px 9px rgba(34,34,34,.15);
-        }
+      li {
+        font-size: 2rem;
+      }
     }
     .pool-container {
-        margin: 3rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        h1 {
-            color: black;
-            font-family: 'roboto';
-            cursor: pointer;
-
-            position: relative;
-            color: #000;
-            text-decoration: none;
-            margin-bottom: 3rem;
-        }
-        h1:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #000;
-            visibility: hidden;
-            -webkit-transform: scaleX(0);
-            transform: scaleX(0);
-            -webkit-transition: all 0.3s ease-in-out 0s;
-            transition: all 0.3s ease-in-out 0s;
-          }
-          h1:hover:before {
-            visibility: visible;
-            -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-          }
-
-        ul {
-            .pool-country-container {
-                line-height: 20px;
-                // margin: 0.5rem 35%;
-                padding: 1rem 0;
-                margin-bottom: 1rem;
-                cursor: pointer;
-
-                .pool-country-icons {
-                    height: 30px;
-                    vertical-align: middle;
-                    margin-right: 0.5rem;
-                }
-            }
-
-        }
-
-
-
-
-
-    }
-    @media screen and (min-width: 768px) {
-      .pools__cell-team-short {
-        display: none;
-      };
-      .pools__header-played-long, .pools__header-bonus-long {
-        display: block;
-      };
-      .pools__header-played-short, .pools__header-bonus-short {
-        display: none;
-      };
-      .pools__cell-team-long {
-        display: inline-block;
-
+      .pool-country-container {
+        font-size: 2rem;
       }
-        .pool-picker {
-            li {
-                font-size: 2rem;
-            }
-        }
-        .pool-container {
-            .pool-country-container {
-                font-size: 2rem;
-            }
-        }
-
     }
-    @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 768px) {
+    .pools__header-played-long,
+    .pools__header-bonus-long {
+      display: none;
+    }
+    .pools__header-played-short,
+    .pools__header-bonus-short {
+      display: block;
+    }
 
-      .pools__header-played-long, .pools__header-bonus-long {
-        display: none;
-      };
-      .pools__header-played-short, .pools__header-bonus-short {
-        display: block;
-      };
-
-      table {
-
-
-        .pool__row {
-          height: $image-height-ipad;
-        }
-        .pools__cell-team {
-          line-height: $image-height-ipad;
-          .pools__cell-team-long {
-            display: none;
-          }
-
-          img {
-            width: $image-height-ipad;
-          }
-        }
+    table {
+      .pool__row {
+        height: $image-height-ipad;
       }
-
-
-    }
-
-    @media screen and (min-width: 1024px) {
-        border-left: 15rem #F0F0F0 solid;
-        border-top: 5rem #F0F0F0 solid;
-        border-right: 15rem #F0F0F0 solid;
-        min-height: 50rem;
-        border-bottom: 5rem #F0F0F0 solid;
-        .pool-picker {
-            margin-top: 3rem;
-            li {
-                font-size: 2rem;
-                padding: 1rem 4rem;
-
-            }
-        }
-        .pool-container {
-            ul {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                width: 100%;
-                margin-top: 3rem;
-                .pool-country-container {
-                    font-size: 2rem;
-                    .pool-country-icons {
-                        height: 50px;
-                        margin-right: 1rem;
-
-                    }
-
-                }
-
-            }
-        }
-    }
-    @media screen and (max-width: 400px) {
-
-        .pool-picker {
-            li {
-                font-size: 1.5rem;
-                padding: 1rem 1.2rem;
-
-            }
-        }
-
-    }
-    @media screen and (max-width: 1024px) {
-        .pool-container {
-            h1 {
-                margin-bottom: 2rem;
-            }
-        }
-
-    }
-    @media screen and (min-width: 480) and (max-width: 768) {
-
-      .pools__cell-team-short {
-        display: inline-block;
+      .pools__cell-team {
         line-height: $image-height-ipad;
-      }
-    }
-    @media screen and  (max-width: 480px) {
+        .pools__cell-team-long {
+          display: none;
+        }
 
-      .pools__cell-team-short {
-        display: block;
-      }
-      table .pools__row {
-        margin-bottom: 3rem;
+        img {
+          width: $image-height-ipad;
+        }
       }
     }
+  }
 
-    @media screen and (min-width: 420px) and (max-width: 768px) {
-      table {
-          .cell {
-            width: 8rem;
-          }
+  @media screen and (min-width: 1024px) {
+    border-left: 15rem #f0f0f0 solid;
+    border-top: 5rem #f0f0f0 solid;
+    border-right: 15rem #f0f0f0 solid;
+    min-height: 50rem;
+    border-bottom: 5rem #f0f0f0 solid;
+    .pool-picker {
+      margin-top: 3rem;
+      li {
+        font-size: 2rem;
+        padding: 1rem 4rem;
       }
     }
-    @media screen and (max-width: 420px) {
-      table {
-          .cell {
-            width: 6rem;
+    .pool-container {
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 3rem;
+        .pool-country-container {
+          font-size: 2rem;
+          .pool-country-icons {
+            height: 50px;
+            margin-right: 1rem;
           }
+        }
       }
     }
+  }
+  @media screen and (max-width: 400px) {
+    .pool-picker {
+      li {
+        font-size: 1.5rem;
+        padding: 1rem 1.2rem;
+      }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .pool-container {
+      h1 {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  @media screen and (min-width: 480) and (max-width: 768) {
+    .pools__cell-team-short {
+      display: inline-block;
+      line-height: $image-height-ipad;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .pools__cell-team-short {
+      display: block;
+    }
+    table .pools__row {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media screen and (min-width: 420px) and (max-width: 768px) {
+    table {
+      .cell {
+        width: 8rem;
+      }
+    }
+  }
+  @media screen and (max-width: 420px) {
+    table {
+      .cell {
+        width: 6rem;
+      }
+    }
+  }
 }
