@@ -23,6 +23,9 @@ $background-grey: #f0f0f0;
   border-left: 1rem #f0f0f0 solid;
   border-right: 1rem #f0f0f0 solid;
   border-bottom: 2rem #f0f0f0 solid;
+  .GameFixture:last-of-type {
+    margin-bottom: 0;
+  }
   .clear-filter-container {
     width: 100%;
     display: flex;

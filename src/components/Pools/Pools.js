@@ -19,37 +19,19 @@ const Pools = withRouter(
     const store = useContext(StoreContext).AppStore;
     const myRef = useRef();
 
-    const executeScroll = () => scrollToRef(myRef);
-    const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
-
-    const handleClick = ref => {
-      // console.log(myRef.current);
-      // window.scrollTo({
-      //   behavior: "smooth",
-      //   top: myRef.current
-      // });
-      console.log("yo", ref);
-      // window.scrollTo(0, ref.current.offsetTop);
-      // window.scrollTo({
-      //   behavior: "smooth",
-      //   top: ref.current.offsetTop
-      // });
-      setTimeout(() => {
-        window.scrollTo(0, ref.current.offsetTop);
-      }, 2000);
+    const scrollToRef = ref => {
+      window.scrollTo({
+        behavior: "smooth",
+        top: myRef.current.offsetTop
+      });
     };
 
     const applyFilters = country => {
       store.changeFilterValue(country);
-      handleClick(myRef);
+      setTimeout(() => {
+        scrollToRef(myRef);
+      }, 500);
     };
-
-    // useEffect(() => {
-    //   console.log("Inside effect", myRef);
-    //   if (myRef.current) {
-    //     handleClick(myRef);
-    //   }
-    // }, [store.filterValue]);
 
     const showPool = store.worldCupPools[currentPool].map(country => {
       let image;
