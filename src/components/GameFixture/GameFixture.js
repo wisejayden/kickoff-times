@@ -74,23 +74,20 @@ const GameFixture = observer(
     };
     let gameFixtureClickable;
     let gameFixtureHeight;
-    // let fixtureHasCurrentLineup = store.lineup.sport_event.id === gameData.id;
-    // let fixtureHasCurrentLineup;
-    // if(store.lineup.sport_event.id === gameData.id){
-    //   setLineupVersion("primary");
-    //   let fixtureHasCurrentLineup = true;
-    // } else {
-    //   for(let key in store.backup)
-    // }
+
+    const lineupAvailableMatchId = store.checkForLineup(gameData.id);
     useEffect(() => {
-      let id = store.checkForLineup(gameData.id);
-      if (id) {
+      if (lineupAvailableMatchId) {
         // fixtureHasCurrentLineup = true;
         setLineupVersion("backup");
-        setGameId(id);
+        setGameId(lineupAvailableMatchId);
         setFixtureHasCurrentLineup(true);
+      } else {
+        setLineupVersion("");
+        setGameId(gameData.Id);
+        setFixtureHasCurrentLineup(false);
       }
-    }, [gameId]);
+    }, [lineupAvailableMatchId]);
 
     let homeTeam = gameData.competitors[0].name;
     let awayTeam;

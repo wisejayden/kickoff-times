@@ -60,48 +60,52 @@ for i, eachArg in enumerate(sys.argv[1:]):
     loop_count_1 = 0
     loop_count_2 = 0
     response = session.get(url + eachArg)
-    print(response)
     response.html.render()
 
-    for i, x in enumerate(response.html.find('.mc-lineups__player-last-name')):
-        # Seems to find 46 instances of the last name, prevent the duplication
-        if loop_count_1 < 23:
-            # Get all even names onto one side
-            if i % 2 == 0:
-                # Store name to combine it all later
-                store_name_1.append(x.text)
-            else:
-                store_name_2.append(x.text)
-                loop_count_1 += 1
+    current_lineup_available = response.html.find('.mc-lineups__player-number')
 
-
-    for i, x in enumerate(response.html.find('.mc-lineups__player-first-name')):
-        if loop_count_2 < 23:
-            # print(loop_count_2)
-            if i % 2 == 0:
-                # print("store name length", len(store_name_1))
-                # test.append(x.text)
-                if len(starters_1) < 15:
-
-                    starters_1.append(str(jersey_number + 1) + ". " + x.text + " " + store_name_1[jersey_number])
+    if len(current_lineup_available) > 0:
+        for i, x in enumerate(response.html.find('.mc-lineups__player-last-name')):
+            # Seems to find 46 instances of the last name, prevent the duplication
+            if loop_count_1 < 23:
+                # Get all even names onto one side
+                if i % 2 == 0:
+                    # Store name to combine it all later
+                    store_name_1.append(x.text)
                 else:
-                    if jersey_number < 23:
-                        finishers_1.append(str(jersey_number + 1) + ". " + x.text + " " + store_name_1[jersey_number])
-                jersey_number += 1
-            else:
-                if len(starters_2) < 15:
-                    starters_2.append(str(jersey_number_2 + 1) + ". " + x.text + " " + store_name_2[jersey_number_2])
+                    store_name_2.append(x.text)
+                    loop_count_1 += 1
+
+
+        for i, x in enumerate(response.html.find('.mc-lineups__player-first-name')):
+            if loop_count_2 < 23:
+                # print(loop_count_2)
+                if i % 2 == 0:
+                    # print("store name length", len(store_name_1))
+                    # test.append(x.text)
+                    if len(starters_1) < 15:
+
+                        starters_1.append(str(jersey_number + 1) + ". " + x.text + " " + store_name_1[jersey_number])
+                    else:
+                        if jersey_number < 23:
+                            finishers_1.append(str(jersey_number + 1) + ". " + x.text + " " + store_name_1[jersey_number])
+                    jersey_number += 1
                 else:
-                    if jersey_number_2 < 23:
-                        finishers_2.append(str(jersey_number_2 + 1) + ". " + x.text + " " + store_name_2[jersey_number_2])
-                jersey_number_2 += 1
+                    if len(starters_2) < 15:
+                        starters_2.append(str(jersey_number_2 + 1) + ". " + x.text + " " + store_name_2[jersey_number_2])
+                    else:
+                        if jersey_number_2 < 23:
+                            finishers_2.append(str(jersey_number_2 + 1) + ". " + x.text + " " + store_name_2[jersey_number_2])
+                    jersey_number_2 += 1
 
-    loop_count_2 += 1
-    data[match_id_dict[eachArg]] = [{"starters": starters_1, "finishers": finishers_1}, {"starters": starters_2, "finishers": finishers_2}]
-    print(eachArg + " finished, team count is " + str(len(starters_1) + len(finishers_1)) + " versus " + str(len(starters_2) + len(finishers_2)))
+        loop_count_2 += 1
+        data[match_id_dict[eachArg]] = [{"starters": starters_1, "finishers": finishers_1}, {"starters": starters_2, "finishers": finishers_2}]
+        print(eachArg + " finished, team count is " + str(len(starters_1) + len(finishers_1)) + " versus " + str(len(starters_2) + len(finishers_2)))
 
+        print("Success! Writing to file..")
 
-print("Success! Writing to file..")
+        with open('backup-lineups.json', 'w') as outfile:
+            json.dump(data, outfile)
 
-with open('backup-lineups.json', 'w') as outfile:
-    json.dump(data, outfile)
+    else:
+        print(eachArg + " lineup is not available yet....")
