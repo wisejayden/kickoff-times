@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { IconContext } from "react-icons";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import GameFixture from "../GameFixture/GameFixture";
@@ -23,9 +23,11 @@ const UpcomingGames = withRouter(
       ...props
     }) => {
       const store = useContext(StoreContext).AppStore;
+      const nextGameRef = useRef();
 
       const gamesSortedByDay = [];
       let count = 0;
+      let refHasBeenUsed = false;
 
       //Sort the data by date
       data.forEach(element => {
@@ -36,11 +38,14 @@ const UpcomingGames = withRouter(
         }`;
         let pool;
         let image = [];
-
         //If the game has passed, get rid of it.. But give it a couple of hours first..
-        const scheduled = moment(element.scheduled).add(4, "hours");
-        if (matchesView && moment() > scheduled) {
-          return;
+
+        const scheduled = moment(element.scheduled);
+        let gamePlayed;
+        if (moment() > scheduled) {
+          gamePlayed = true;
+        } else {
+          gamePlayed = false;
         }
 
         for (let i = 0; i < store.aPoolOfCountries.length; i++) {
