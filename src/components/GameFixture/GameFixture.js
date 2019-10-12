@@ -45,18 +45,53 @@ const GameFixture = observer(
     const matchPassed = moment() > scheduled ? true : false;
 
     const determinePoolColour = () => {
-      if (pool === "Pool A") {
-        return { color: "#54c8e8", fontWeight: "bold" };
-      }
-      if (pool === "Pool B") {
-        return { color: "#f4436c", fontWeight: "bold" };
-      }
-      if (pool === "Pool C") {
-        return { color: "#2ed9c3", fontWeight: "bold" };
-      }
-      if (pool === "Pool D") {
-        return { color: "#993dbb", fontWeight: "bold" };
-      }
+      if (pool === "Pool A")
+        return {
+          color: "#54c8e8",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Pool B")
+        return {
+          color: "#f4436c",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Pool C")
+        return {
+          color: "#2ed9c3",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Pool D")
+        return {
+          color: "#993dbb",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Quarter-Finals")
+        return {
+          color: "#024a7a",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Semi-Finals")
+        return {
+          color: "#f5a800",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Bronze Final")
+        return {
+          color: "#a46628",
+          fontWeight: "bold"
+        };
+
+      if (pool === "Final")
+        return {
+          color: "#f5a800",
+          fontWeight: "bold"
+        };
     };
 
     const determineStadiumName = () => {
@@ -93,16 +128,23 @@ const GameFixture = observer(
     let awayTeam;
 
     if (fixtureHasCurrentLineup && lineupState) {
-      gameFixtureHeight = { height: "51rem" };
+      gameFixtureHeight = {
+        height: "51rem"
+      };
     } else if (fixtureHasCurrentLineup) {
-      gameFixtureHeight = { height: "11rem" };
+      gameFixtureHeight = {
+        height: "11rem"
+      };
     } else {
-      gameFixtureHeight = { height: "10rem" };
+      gameFixtureHeight = {
+        height: "10rem"
+      };
     }
     (fixtureHasCurrentLineup && matchesView) || !matchesView
-      ? (gameFixtureClickable = { cursor: "pointer" })
+      ? (gameFixtureClickable = {
+          cursor: "pointer"
+        })
       : (gameFixtureClickable = {});
-
     return (
       <div
         className="GameFixture"
@@ -110,146 +152,169 @@ const GameFixture = observer(
         onMouseOut={() => addMouseOverText("")}
         style={Object.assign(gameFixtureClickable, gameFixtureHeight)}
       >
+        {" "}
         {matchesView && (
           <div
             onClick={() => toggleLineup()}
             className="game-fixture-time-container"
           >
             <span>
+              {" "}
               {shortenedWeekday} {scheduled.date()}{" "}
-              {store.monthArray[scheduled.month()]}
-            </span>
-            <span className="your-time">{userTime} Your Time</span>
+              {store.monthArray[scheduled.month()]}{" "}
+            </span>{" "}
+            <span className="your-time">{userTime} Your Time </span>{" "}
           </div>
-        )}
-
+        )}{" "}
         <div
           className="game-fixture-playing"
           onClick={() => toggleLineup()}
           style={
-            matchesView === false ? { height: "100%", marginTop: "1.3rem" } : {}
+            matchesView === false
+              ? {
+                  height: "100%",
+                  marginTop: "1.3rem"
+                }
+              : {}
           }
         >
-          <img
-            className="country-circle"
-            src={imageUrlArray[0]}
-            alt={gameData.competitors[0].name + " country flag"}
-          />
+          {" "}
+          {image[0] ? (
+            <img
+              className="country-circle"
+              src={imageUrlArray[0]}
+              alt={gameData.competitors[0].name + " country flag"}
+            />
+          ) : (
+            <div className="country-circle"> </div>
+          )}{" "}
           <div className="match-information">
+            {" "}
             {!matchesView && matchPassed && (
               <Ratings
                 id={gameData.id}
                 gameData={gameData}
                 mouseOverText={mouseOverText}
               />
-            )}
+            )}{" "}
             {!matchesView && !matchPassed && (
-              <div className="space-saver"></div>
-            )}
+              <div className="space-saver"> </div>
+            )}{" "}
             <p className="competitors">
-              {gameData.competitors[0].name} v {gameData.competitors[1].name}
-            </p>
-            <span style={determinePoolColour()}>{pool} </span>
-            <span>{determineStadiumName()}</span>
-            {matchesView && <p>{localTime} Local Time</p>}
+              {" "}
+              {gameData.competitors[0].name} v {gameData.competitors[1].name}{" "}
+            </p>{" "}
+            <span style={determinePoolColour()}> {pool} </span>{" "}
+            <span> {determineStadiumName()} </span>{" "}
+            {matchesView && <p>{localTime} Local Time </p>}{" "}
             {fixtureHasCurrentLineup &&
               matchesView &&
               lineupState === false && (
                 <p className="lineup-available">
-                  Lineups available! Click to show..
+                  Lineups available! Click to show..{" "}
                 </p>
-              )}
-          </div>
-
-          <img
-            className="country-circle"
-            src={imageUrlArray[1]}
-            alt={gameData.competitors[1].name + " country flag"}
-          />
-        </div>
+              )}{" "}
+          </div>{" "}
+          {image[1] ? (
+            <img
+              className="country-circle"
+              src={imageUrlArray[1]}
+              alt={gameData.competitors[1].name + " country flag"}
+            />
+          ) : (
+            <div className="country-circle"> </div>
+          )}{" "}
+        </div>{" "}
         {fixtureHasCurrentLineup &&
           lineupState &&
           matchesView &&
           lineupVersion === "primary" && (
             <div className="lineups-container">
               <ul>
+                {" "}
                 {store.lineup.lineups[0].starting_lineup.map(pos => {
                   return (
                     <li>
+                      {" "}
                       {pos.player.jersey_number}.{" "}
                       {pos.player.name
                         .split(",")
                         .reverse()
-                        .join(" ")}
+                        .join(" ")}{" "}
                     </li>
                   );
-                })}
-                <br></br>
+                })}{" "}
+                <br> </br>{" "}
                 {store.lineup.lineups[0].substitutes.map(pos => {
                   return (
                     <li>
+                      {" "}
                       {pos.player.jersey_number}.{" "}
                       {pos.player.name
                         .split(",")
                         .reverse()
-                        .join(" ")}
+                        .join(" ")}{" "}
                     </li>
                   );
-                })}
-              </ul>
+                })}{" "}
+              </ul>{" "}
               <ul>
+                {" "}
                 {store.lineup.lineups[1].starting_lineup.map(pos => {
                   return (
                     <li>
+                      {" "}
                       {pos.player.jersey_number}.{" "}
                       {pos.player.name
                         .split(",")
                         .reverse()
-                        .join(" ")}
+                        .join(" ")}{" "}
                     </li>
                   );
-                })}
-                <br></br>
+                })}{" "}
+                <br> </br>{" "}
                 {store.lineup.lineups[1].substitutes.map(pos => {
                   return (
                     <li>
+                      {" "}
                       {pos.player.jersey_number}.{" "}
                       {pos.player.name
                         .split(",")
                         .reverse()
-                        .join(" ")}
+                        .join(" ")}{" "}
                     </li>
                   );
-                })}
-              </ul>
+                })}{" "}
+              </ul>{" "}
             </div>
-          )}
-
+          )}{" "}
         {fixtureHasCurrentLineup &&
           lineupState &&
           matchesView &&
           lineupVersion === "backup" && (
             <div className="lineups-container">
               <ul>
+                {" "}
                 {store.backup[gameId][0].starters.map(pos => {
-                  return <li>{pos}</li>;
-                })}
-                <br></br>
+                  return <li> {pos} </li>;
+                })}{" "}
+                <br> </br>{" "}
                 {store.backup[gameId][0].finishers.map(pos => {
-                  return <li>{pos}</li>;
-                })}
-              </ul>
+                  return <li> {pos} </li>;
+                })}{" "}
+              </ul>{" "}
               <ul>
+                {" "}
                 {store.backup[gameId][1].starters.map(pos => {
-                  return <li>{pos}</li>;
-                })}
-                <br></br>
+                  return <li> {pos} </li>;
+                })}{" "}
+                <br> </br>{" "}
                 {store.backup[gameId][1].finishers.map(pos => {
-                  return <li>{pos}</li>;
-                })}
-              </ul>
+                  return <li> {pos} </li>;
+                })}{" "}
+              </ul>{" "}
             </div>
-          )}
+          )}{" "}
       </div>
     );
   }
