@@ -1,10 +1,10 @@
-$japan-pink: #E09DA6;
-$japan-green: #4F817F;
-$japan-yellow: #F2C59E;
-$japan-brown: #6E4E53;
-$japan-orange: #EB6E52;
+$japan-pink: #e09da6;
+$japan-green: #4f817f;
+$japan-yellow: #f2c59e;
+$japan-brown: #6e4e53;
+$japan-orange: #eb6e52;
 $japan-purple: #552151;
-$japan-off-white: #FFE9CB;
+$japan-off-white: #ffe9cb;
 
 .Header {
   height: 50px;
@@ -12,18 +12,16 @@ $japan-off-white: #FFE9CB;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  z-index: 10;
   // border-top:  6px solid $japan-pink;
   width: 100vw;
   position: fixed;
   top: 0;
   margin-top: 0;
-  background-color: #3C2D84;
+  background-color: #3c2d84;
   a {
     text-decoration: none;
-
-
   }
-  
 
   .locale-container {
     color: white;
@@ -40,8 +38,7 @@ $japan-off-white: #FFE9CB;
     font-size: 1.6rem;
     font-weight: normal;
     text-align: center;
-    font-family: 'archive';
-
+    font-family: "archive";
   }
 
   #logo {
@@ -54,5 +51,4 @@ $japan-off-white: #FFE9CB;
     height: 5rem;
     margin-right: 2rem;
   }
- 
 }
