@@ -58,26 +58,49 @@ const UpcomingGames = withRouter(
           }
         }
 
-        gamesSortedByDay.push({ date, element, pool, image });
+        gamesSortedByDay.push({ date, element, pool, image, gamePlayed });
       });
 
+      let latestGameDate;
       //Pull out the unique dates out of the array
-      const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
+      const unique = [
+        ...new Set(
+          gamesSortedByDay.map((item, i) => {
+            if (item.gamePlayed === true) latestGameDate = item.date;
+            return item.date;
+          })
+        )
+      ];
 
       const upcomingGames = gamesSortedByDay.map((game, i) => {
+        const { date, element, pool, image, gamePlayed } = game;
         // console.log("id", game.element.id, "Game: ", game.element.competitors[0].name, " vs ", game.element.competitors[1].name);
+        let refRequired;
+        let latestGame;
 
-        if (game.date === unique[count]) {
+        if (gamePlayed === false && refHasBeenUsed === false) {
+          refRequired = true;
+          refHasBeenUsed = true;
+        }
+        if (game.date === latestGameDate) {
+          latestGame = true;
+        }
+        if (date === unique[count]) {
           count++;
           //Add a GameDate component for the first instance of each date.
           return (
             <>
-              <GameDate date={game.date} />
+              <GameDate
+                date={date}
+                needsRef={refRequired}
+                latestGame={latestGame}
+                pathname={props.history.location.pathname}
+              />
               <GameFixture
                 matchesView={matchesView}
-                gameData={game.element}
-                pool={game.pool}
-                image={game.image}
+                gameData={element}
+                pool={pool}
+                image={image}
               />
             </>
           );
