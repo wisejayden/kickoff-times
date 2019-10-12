@@ -65,6 +65,7 @@ for i, eachArg in enumerate(sys.argv[1:]):
     current_lineup_available = response.html.find('.mc-lineups__player-number')
 
     if len(current_lineup_available) > 0:
+        print("Found, looping...")
         for i, x in enumerate(response.html.find('.mc-lineups__player-last-name')):
             # Seems to find 46 instances of the last name, prevent the duplication
             if loop_count_1 < 23:

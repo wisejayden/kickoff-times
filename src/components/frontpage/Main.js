@@ -31,7 +31,7 @@ const FrontPage = observer(props => {
 
       <Tab />
       {props.location.pathname === "/matches" && (
-        <UpcomingGames data={store.data} matchesView={true} notice={true} />
+        <UpcomingGames data={store.data} matchesView={true} notice={false} />
       )}
       {props.location.pathname === "/pools" && <Pools />}
       {props.location.pathname === "/ratings" && (
