@@ -7,9 +7,9 @@ import GameDate from "../GameDate/GameDate";
 import Filter from "../Filter/Filter";
 import Notice from "../Notice/Notice";
 import { withRouter } from "react-router-dom";
-
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
+import { toJS } from "mobx";
 
 import "./UpcomingGames.scss";
 const UpcomingGames = withRouter(
@@ -36,12 +36,15 @@ const UpcomingGames = withRouter(
         }`;
         let pool;
         let image = [];
-
+        if (element.knockout) pool = element.knockout;
+        console.log("element.knockout", element.knockout);
         //If the game has passed, get rid of it.. But give it a couple of hours first..
         const scheduled = moment(element.scheduled).add(4, "hours");
         if (matchesView && moment() > scheduled) {
           return;
         }
+
+        let countryNameImageCheck = [];
 
         for (let i = 0; i < store.aPoolOfCountries.length; i++) {
           if (
@@ -49,12 +52,24 @@ const UpcomingGames = withRouter(
           ) {
             if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
             image.unshift(store.aPoolOfCountries[i].image);
+            countryNameImageCheck.unshift(element.competitors[0].name);
           }
           if (
             store.aPoolOfCountries[i].country === element.competitors[1].name
           ) {
             if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
             image.push(store.aPoolOfCountries[i].image);
+            countryNameImageCheck.push(element.competitors[1].name);
+          }
+        }
+
+        //Check if two team images have been added, if not check if the first or second image has been set.
+        //Add false to either the beginning or end of the array depending.
+        if (image.length !== 2) {
+          if (element.competitors[0].name === countryNameImageCheck[0]) {
+            image.push(false);
+          } else {
+            image.unshift(false);
           }
         }
 
