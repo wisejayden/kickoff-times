@@ -17,6 +17,18 @@ export default class AppStore {
   @observable filterValue = "";
   @observable ratingsObject = "";
   @observable noticeClicked = false;
+  @observable matchesFirstScroll = true;
+  @observable ratingsFirstScroll = true;
+
+  @action changeScrollBehaviour = page => {
+    if (page === "/matches") {
+      this.matchesFirstScroll = false;
+    } else if (page === "/ratings") {
+      this.ratingsFirstScroll = false;
+    } else {
+      return;
+    }
+  };
 
   @action changeFilterValue = option => {
     this.filterValue = option;
