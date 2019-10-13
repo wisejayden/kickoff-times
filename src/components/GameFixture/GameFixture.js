@@ -294,27 +294,25 @@ const GameFixture = observer(
           lineupVersion === "backup" && (
             <div className="lineups-container">
               <ul>
-                {" "}
                 {store.backup[gameId][0].starters.map(pos => {
                   return <li> {pos} </li>;
-                })}{" "}
-                <br> </br>{" "}
+                })}
+                <br />
                 {store.backup[gameId][0].finishers.map(pos => {
                   return <li> {pos} </li>;
-                })}{" "}
-              </ul>{" "}
+                })}
+              </ul>
               <ul>
-                {" "}
                 {store.backup[gameId][1].starters.map(pos => {
                   return <li> {pos} </li>;
-                })}{" "}
-                <br> </br>{" "}
+                })}
+                <br />
                 {store.backup[gameId][1].finishers.map(pos => {
                   return <li> {pos} </li>;
-                })}{" "}
-              </ul>{" "}
+                })}
+              </ul>
             </div>
-          )}{" "}
+          )}
       </div>
     );
   }
