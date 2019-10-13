@@ -2637,8 +2637,8 @@
         },
         {
           "id": "sr:competitor:4230",
-          "name": "Runner Up Pool D",
-          "country": "Runner Up Pool D",
+          "name": "Australia",
+          "country": "Australia",
           "country_code": "SCO",
           "abbreviation": "SCO",
           "qualifier": "away"
@@ -2762,8 +2762,8 @@
       "competitors": [
         {
           "id": "sr:competitor:7955",
-          "name": "Winner Pool D",
-          "country": "Winner Pool D",
+          "name": "Wales",
+          "country": "Wales",
           "country_code": "ENG",
           "abbreviation": "ENG",
           "qualifier": "home"

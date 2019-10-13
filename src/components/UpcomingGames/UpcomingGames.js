@@ -37,7 +37,6 @@ const UpcomingGames = withRouter(
         let pool;
         let image = [];
         if (element.knockout) pool = element.knockout;
-        console.log("element.knockout", element.knockout);
         //If the game has passed, get rid of it.. But give it a couple of hours first..
         const scheduled = moment(element.scheduled).add(4, "hours");
         if (matchesView && moment() > scheduled) {
