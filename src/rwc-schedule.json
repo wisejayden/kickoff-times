@@ -2703,8 +2703,8 @@
         },
         {
           "id": "sr:competitor:4230",
-          "name": "Runner Up Pool A",
-          "country": "Runner Up Pool A",
+          "name": "Ireland",
+          "country": "Ireland",
           "country_code": "SCO",
           "abbreviation": "SCO",
           "qualifier": "away"
@@ -2829,8 +2829,8 @@
       "competitors": [
         {
           "id": "sr:competitor:7955",
-          "name": "Winner Pool A",
-          "country": "Winner Pool A",
+          "name": "Japan",
+          "country": "Japan",
           "country_code": "ENG",
           "abbreviation": "ENG",
           "qualifier": "home"
