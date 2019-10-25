@@ -30,7 +30,9 @@ match_id_dict = {
     "namibia-canada": "sr:match:16327712",
     "usa-tonga": "sr:match:16166950",
     "wales-uruguay": "sr:match:16166970",
-    "japan-scotland": "sr:match:16166916"
+    "japan-scotland": "sr:match:16166916",
+    "semi-final-1": "sr:match:5",
+    "semi-final-2": "sr:match:6"
 }
 
 big_ol_soup = []
