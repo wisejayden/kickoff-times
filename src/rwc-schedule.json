@@ -3030,16 +3030,16 @@
       "competitors": [
         {
           "id": "sr:competitor:7955",
-          "name": "Loser SF 1",
-          "country": "Loser SF 1",
+          "name": "New Zealand",
+          "country": "New Zealand",
           "country_code": "ENG",
           "abbreviation": "ENG",
           "qualifier": "home"
         },
         {
           "id": "sr:competitor:4230",
-          "name": "Loser SF 2",
-          "country": "Loser SF 2",
+          "name": "Wales",
+          "country": "Wales",
           "country_code": "SCO",
           "abbreviation": "SCO",
           "qualifier": "away"
@@ -3097,16 +3097,16 @@
       "competitors": [
         {
           "id": "sr:competitor:7955",
-          "name": "Winner SF 1",
-          "country": "Winner SF 1",
+          "name": "England",
+          "country": "England",
           "country_code": "ENG",
           "abbreviation": "ENG",
           "qualifier": "home"
         },
         {
           "id": "sr:competitor:4230",
-          "name": "Winner SF 2",
-          "country": "Winner SF 2",
+          "name": "South Africa",
+          "country": "South Africa",
           "country_code": "SCO",
           "abbreviation": "SCO",
           "qualifier": "away"
