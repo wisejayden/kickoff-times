@@ -33,7 +33,9 @@ const App = observer((props) => {
         <Header />
         <div className="body">
         <Switch>
+          <Route path="/:sport/:tournament" render={(props) => <FrontPage {...props} view={"Tournament"}/>} />
           <Route path="/:sport" render={(props) => <SelectTournament {...props} view={"Tournament"}/>} />
+
 
 
         <Route path="/" render={(props) => <SelectSport {...props} view={"Sport"}/>} />

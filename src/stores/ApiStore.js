@@ -12,14 +12,14 @@ export default class ApiStore {
   @observable currentSportTournaments = [];
   @observable working = true;
   @action getTournamentsBySport = (sport) => {
-
+    console.log("triggered");
       for (let i = 0; i < this.allSportsArray.length; i++) {
         if (sport === this.allSportsArray[i].strUrl) {
           axios.get(`/api/get-tournaments-by-sport/${this.allSportsArray[i].strSport}`)
             .then(res=> {
               let tournaments = res.data.data.countrys;
               tournaments.forEach(tournament => {
-                tournament.strUrl = this.stringFlattener(tournament.strLeague);
+                tournament.strUrl = `${this.allSportsArray[i].strUrl}/${this.stringFlattener(tournament.strLeague)}`;
               })
               this.currentSportTournaments = tournaments;
             })
@@ -29,6 +29,25 @@ export default class ApiStore {
         }
       }
     }
+
+  @action getTournamentFixtures = (sport, tournament) => {
+    console.log("?")
+    if(this.currentSportTournaments.length > 0) {
+      for(let i = 0; i < this.currentSportTournaments.length; i++) {
+        console.log("go")
+        if(`${sport}/${tournament}` === this.currentSportTournaments[i].strUrl) {
+          console.log("HERE", toJS(this.currentSportTournaments[i]));
+          axios.get(`/api/get-tournament-fixtures/${this.currentSportTournaments[i].idLeague}`)
+          .then(res => {
+            console.log(res.data);
+          })
+        }
+      }
+    } else {
+      this.getTournamentsBySport(sport);
+    }
+
+  }
 
 
   @action getSports = () => {
