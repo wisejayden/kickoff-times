@@ -52,6 +52,6 @@ const App = observer((props) => {
       </div>
     </Router>
   );
-}
+});
 
 export default App;
