@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import UpcomingGames from "../UpcomingGames/UpcomingGames";
-import SportTile from "./SportTile";
 import "./Main.scss";
 import rwcSchedule from "../../rwc-schedule.json";
 import Tab from "../Tab/Tab";
