@@ -7,13 +7,22 @@ import Pools from "../Pools/Pools";
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
 import { toJS } from "mobx";
+import { withRouter } from "react-router-dom";
 
-const FrontPage = observer(props => {
+
+const FrontPage = withRouter(observer(({...props}) => {
   const store = useContext(StoreContext).AppStore;
+  const apiStore = useContext(StoreContext).ApiStore;
+  console.log(props.match.params);
 
   useEffect(() => {
+    if(apiStore.currentSportTournaments.length > 0) {
+      apiStore.getTournamentFixtures(props.match.params.sport, props.match.params.tournament);
+    } else {
+      apiStore.getTournamentsBySport(props.match.params.sport);
+    }
     store.getAllRatings();
-  });
+  }, [apiStore.currentSportTournaments]);
   // console.log(toJS(store.poolData));
   return (
     <div className="Main">
@@ -38,6 +47,6 @@ const FrontPage = observer(props => {
       )}
     </div>
   );
-});
+}));
 
 export default FrontPage;
