@@ -1,0 +1,26 @@
+#SportTile {
+  width: 33vw;
+  margin-bottom: 2rem;
+  position: relative;
+  h1 {
+    color: white;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+
+  }
+  .sport-tile-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    height: 12rem;
+    .sport-tile-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+    }
+  }
+
+}
