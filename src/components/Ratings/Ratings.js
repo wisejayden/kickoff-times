@@ -4,7 +4,6 @@ import axios from 'axios';
 import {toJS } from 'mobx';
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
-import { Socket } from 'dgram';
 
 const Ratings = observer(({id, gameData, mouseOverText, ...props}) => {
   const [currentRating, changeCurrentRating] = useState('');
