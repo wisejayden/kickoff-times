@@ -13,7 +13,7 @@ const SelectTournament = withRouter(observer(({...props}) => {
   const apiStore = useContext(StoreContext).ApiStore;
 
     useEffect(() => {
-      console.log("call function");
+      console.log("call function", apiStore.allSportsArray);
       apiStore.getTournamentsBySport(props.match.params.sport);
     }, [apiStore.allSportsArray]);
     let content;

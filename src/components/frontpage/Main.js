@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UpcomingGames from "../UpcomingGames/UpcomingGames";
 import "./Main.scss";
 import rwcSchedule from "../../rwc-schedule.json";
@@ -13,17 +13,21 @@ import { withRouter } from "react-router-dom";
 const FrontPage = withRouter(observer(({...props}) => {
   const store = useContext(StoreContext).AppStore;
   const apiStore = useContext(StoreContext).ApiStore;
-  console.log(props.match.params);
+  const [receivedTournament, updateReceivedTournament] = useState(false);
 
   useEffect(() => {
-    if(apiStore.currentSportTournaments.length > 0) {
-      apiStore.getTournamentFixtures(props.match.params.sport, props.match.params.tournament);
+    if(apiStore.fetchedTournamentsBySport === false) {
+      apiStore.getTournamentsBySport(props.match.params.sport).then(x => {
+        apiStore.getTournamentFixtures(props.match.params.sport,props.match.params.tournament);
+      })
     } else {
-      apiStore.getTournamentsBySport(props.match.params.sport);
+      apiStore.getTournamentFixtures(props.match.params.sport,props.match.params.tournament);
     }
-    store.getAllRatings();
-  }, [apiStore.currentSportTournaments]);
-  // console.log(toJS(store.poolData));
+
+
+
+  }, [apiStore.fetchedIntialSportsData])
+
   return (
     <div className="Main">
       <div className="rugby-header">

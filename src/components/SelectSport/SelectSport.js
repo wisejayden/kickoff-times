@@ -15,7 +15,6 @@ const SelectSport = withRouter(observer(({view, ...props}) => {
 
 
   let content;
-  console.log("!", toJS(apiStore.allSportsArray));
   content = apiStore.allSportsArray.map((sport, i) => {
      const {strSportThumb, strSport, idSport, strUrl} = sport;
         return(
