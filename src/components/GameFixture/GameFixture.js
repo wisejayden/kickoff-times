@@ -10,7 +10,8 @@ import { StoreContext } from "../../index";
 import { toJS } from "mobx";
 
 const GameFixture = observer(
-  ({ gameData, pool, image, matchesView, ...props }) => {
+  ({ gameData, pool, image, matchesView, teamDetails, elementMoment, ...props }) => {
+
     const [lineupState, changeLineupState] = useState(false);
     const [mouseOverText, addMouseOverText] = useState("");
     const [lineupVersion, setLineupVersion] = useState("");
@@ -18,89 +19,37 @@ const GameFixture = observer(
     const [fixtureHasCurrentLineup, setFixtureHasCurrentLineup] = useState(
       false
     );
-
+    console.log("teamn details blah", toJS(teamDetails.homeTeam));
     const store = useContext(StoreContext).AppStore;
 
-    // iso-8601 date format
-    const scheduled = moment(gameData.scheduled);
-
     //const userTimeIn12HourTime = scheduled.format('h:mm a')
-    const userTime = scheduled.format("HH:mm");
+    const userTime = elementMoment.format("HH:mm");
 
     //Need to find a better solution in case the city is not found. Large country may screw with the timezone.
-    const cityLookup =
-      cityTimezones.lookupViaCity(gameData.venue.city_name).length > 0
-        ? cityTimezones.lookupViaCity(gameData.venue.city_name)[0]
-        : cityTimezones.findFromCityStateProvince(
-            gameData.venue.country_name
-          )[0];
-    const localTime = scheduled.tz(cityLookup.timezone).format("HH:mm");
+    // const cityLookup =
+    //   cityTimezones.lookupViaCity(gameData.venue.city_name).length > 0
+    //     ? cityTimezones.lookupViaCity(gameData.venue.city_name)[0]
+    //     : cityTimezones.findFromCityStateProvince(
+    //         gameData.venue.country_name
+    //       )[0];
+    // const localTime = scheduled.tz(cityLookup.timezone).format("HH:mm");
 
-    const shortenedWeekday = store.weekArray[scheduled.day()].substring(0, 3);
-    const imageUrlArray = [
-      `/images/country/${image[0]}`,
-      `/images/country/${image[1]}`
-    ];
+    const shortenedWeekday = store.weekArray[elementMoment.day()].substring(0, 3);
+    // const imageUrlArray = [
+    //   `/images/country/${image[0]}`,
+    //   `/images/country/${image[1]}`
+    // ];
 
-    const matchPassed = moment() > scheduled ? true : false;
+    const matchPassed = moment() > elementMoment ? true : false;
 
-    const determinePoolColour = () => {
-      if (pool === "Pool A")
-        return {
-          color: "#54c8e8",
-          fontWeight: "bold"
-        };
 
-      if (pool === "Pool B")
-        return {
-          color: "#f4436c",
-          fontWeight: "bold"
-        };
-
-      if (pool === "Pool C")
-        return {
-          color: "#2ed9c3",
-          fontWeight: "bold"
-        };
-
-      if (pool === "Pool D")
-        return {
-          color: "#993dbb",
-          fontWeight: "bold"
-        };
-
-      if (pool === "Quarter-Finals")
-        return {
-          color: "#024a7a",
-          fontWeight: "bold"
-        };
-
-      if (pool === "Semi-Finals")
-        return {
-          color: "#f5a800",
-          fontWeight: "bold"
-        };
-
-      if (pool === "Bronze Final")
-        return {
-          color: "#a46628",
-          fontWeight: "bold"
-        };
-
-      if (pool === "Final")
-        return {
-          color: "#f5a800",
-          fontWeight: "bold"
-        };
-    };
-
-    const determineStadiumName = () => {
-      for (let i = 0; i < store.checkStadiumName.length; i++) {
-        if (gameData.venue.city_name === store.checkStadiumName[i][0]) {
-          return store.checkStadiumName[i][1];
-        }
-      }
-    };
+    // const determineStadiumName = () => {
+    //   for (let i = 0; i < store.checkStadiumName.length; i++) {
+    //     if (gameData.venue.city_name === store.checkStadiumName[i][0]) {
+    //       return store.checkStadiumName[i][1];
+    //     }
+    //   }
+    // };
 
     const toggleLineup = () => {
       if (matchesView && gameFixtureClickable) {
@@ -109,8 +58,9 @@ const GameFixture = observer(
     };
     let gameFixtureClickable;
     let gameFixtureHeight;
+    const lineupAvailableMatchId = false;
 
-    const lineupAvailableMatchId = store.checkForLineup(gameData.id);
+    // const lineupAvailableMatchId = store.checkForLineup(gameData.id);
     useEffect(() => {
       if (lineupAvailableMatchId) {
         // fixtureHasCurrentLineup = true;
@@ -124,8 +74,11 @@ const GameFixture = observer(
       }
     }, [lineupAvailableMatchId]);
 
-    let homeTeam = gameData.competitors[0].name;
-    let awayTeam;
+    let homeTeam = teamDetails.homeTeam.strAlternate;
+
+
+    let awayTeam = teamDetails.awayTeam.strAlternate;
+
 
     if (fixtureHasCurrentLineup && lineupState) {
       gameFixtureHeight = {
@@ -145,6 +98,7 @@ const GameFixture = observer(
           cursor: "pointer"
         })
       : (gameFixtureClickable = {});
+
     return (
       <div
         className="GameFixture"
@@ -160,8 +114,8 @@ const GameFixture = observer(
           >
             <span>
               {" "}
-              {shortenedWeekday} {scheduled.date()}{" "}
-              {store.monthArray[scheduled.month()]}{" "}
+              {shortenedWeekday} {elementMoment.date()}{" "}
+              {store.monthArray[elementMoment.month()]}{" "}
             </span>{" "}
             <span className="your-time">{userTime} Your Time </span>{" "}
           </div>
@@ -182,8 +136,8 @@ const GameFixture = observer(
           {image[0] ? (
             <img
               className="country-circle"
-              src={imageUrlArray[0]}
-              alt={gameData.competitors[0].name + " country flag"}
+              src={image[0]}
+              alt={homeTeam + " country flag"}
             />
           ) : (
             <div className="country-circle"> </div>
@@ -202,11 +156,11 @@ const GameFixture = observer(
             )}{" "}
             <p className="competitors">
               {" "}
-              {gameData.competitors[0].name} v {gameData.competitors[1].name}{" "}
+              {homeTeam} v {awayTeam}{" "}
             </p>{" "}
-            <span style={determinePoolColour()}> {pool} </span>{" "}
+            {/*<span style={determinePoolColour()}> {pool} </span>{" "}
             <span> {determineStadiumName()} </span>{" "}
-            {matchesView && <p>{localTime} Local Time </p>}{" "}
+            {matchesView && <p>{localTime} Local Time </p>}{" "}*/}
             {fixtureHasCurrentLineup &&
               matchesView &&
               lineupState === false && (
@@ -218,8 +172,8 @@ const GameFixture = observer(
           {image[1] ? (
             <img
               className="country-circle"
-              src={imageUrlArray[1]}
-              alt={gameData.competitors[1].name + " country flag"}
+              src={image[1]}
+              alt={awayTeam + " country flag"}
             />
           ) : (
             <div className="country-circle"> </div>
