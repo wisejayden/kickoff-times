@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import GameFixture from "../GameFixture/GameFixture";
@@ -23,96 +23,95 @@ const UpcomingGames = withRouter(
       ...props
     }) => {
       const store = useContext(StoreContext).AppStore;
+      const apiStore = useContext(StoreContext).ApiStore;
+      const [hasFixtures, changeHasFixtures] = useState(false);
 
       const gamesSortedByDay = [];
       let count = 0;
 
       //Sort the data by date
       data.forEach(element => {
-        let date = `${
-          store.weekArray[moment(element.scheduled).day()]
-        } ${moment(element.scheduled).date()} ${
-          store.monthArray[moment(element.scheduled).month()]
-        }`;
-        let pool;
-        let image = [];
-        if (element.knockout) pool = element.knockout;
+        // Saturday 19 October
+        const elementMoment = store.createMoment(element);
+        const formattedDate = elementMoment.format('LL').replace(",", "");
+        // let date = `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
+        // let image = ['https://upload.wikimedia.org/wikipedia/en/thumb/7/78/SupeRugby_Logo.svg/1048px-SupeRugby_Logo.svg.png', 'https://upload.wikimedia.org/wikipedia/en/thumb/7/78/SupeRugby_Logo.svg/1048px-SupeRugby_Logo.svg.png'];
         //If the game has passed, get rid of it.. But give it a couple of hours first..
-        const scheduled = moment(element.scheduled).add(4, "hours");
-        if (matchesView && moment() > scheduled) {
-          return;
-        }
 
-        let countryNameImageCheck = [];
 
-        for (let i = 0; i < store.aPoolOfCountries.length; i++) {
-          if (
-            store.aPoolOfCountries[i].country === element.competitors[0].name
-          ) {
-            if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
-            image.unshift(store.aPoolOfCountries[i].image);
-            countryNameImageCheck.unshift(element.competitors[0].name);
-          }
-          if (
-            store.aPoolOfCountries[i].country === element.competitors[1].name
-          ) {
-            if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
-            image.push(store.aPoolOfCountries[i].image);
-            countryNameImageCheck.push(element.competitors[1].name);
-          }
-        }
 
-        //Check if two team images have been added, if not check if the first or second image has been set.
-        //Add false to either the beginning or end of the array depending.
-        if (image.length !== 2) {
-          if (element.competitors[0].name === countryNameImageCheck[0]) {
-            image.push(false);
-          } else {
-            image.unshift(false);
-          }
-        }
-
-        gamesSortedByDay.push({ date, element, pool, image });
+        gamesSortedByDay.push({ formattedDate, element, elementMoment });
       });
 
       //Pull out the unique dates out of the array
-      const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
+      const unique = [...new Set(gamesSortedByDay.map(item => item.formattedDate))];
+      let temp = [];
+      temp.push(gamesSortedByDay[0]);
+      const hello = [];
+
+
 
       const upcomingGames = gamesSortedByDay.map((game, i) => {
-        // console.log("id", game.element.id, "Game: ", game.element.competitors[0].name, " vs ", game.element.competitors[1].name);
 
-        if (game.date === unique[count]) {
+        const teamDetails = store.getTeamDetails(game.element);
+        console.log("homedetails", toJS(teamDetails.homeTeam));
+        const image = [`${teamDetails.homeTeam.strTeamBadge}`, `${teamDetails.awayTeam.strTeamBadge}`];
+        if (game.formattedDate === unique[count]) {
           count++;
           //Add a GameDate component for the first instance of each date.
-          return (
+          return(
             <>
-              <GameDate date={game.date} />
-              <GameFixture
-                matchesView={matchesView}
-                gameData={game.element}
-                pool={game.pool}
-                image={game.image}
-              />
+              <GameDate date={game.formattedDate} />
+                <GameFixture
+                  matchesView={matchesView}
+                  gameData={game.element}
+                  image={image}
+                  elementMoment={game.elementMoment}
+                  teamDetails={teamDetails}
+
+                />
             </>
           );
         } else {
-          return (
+          return(
             <GameFixture
+              key={i}
               matchesView={matchesView}
               gameData={game.element}
-              pool={game.pool}
-              image={game.image}
+              image={image}
+              elementMoment={game.elementMoment}
+              teamDetails={teamDetails}
             />
           );
         }
+
+        // apiStore.getTeamDetails([game.element.idHomeTeam, game.element.idAwayTeam])
+        //   .then(teamDetails => {
+        //     let image;
+        //     if(teamDetails.length === 2) {
+        //       image = [teamDetails[0].strTeamBadge, teamDetails[1].strTeamBadge];
+        //     } else {
+        //       console.log("still not working...")
+        //     }
+        //
+        //
+        //   })
+        //   .then(() => {
+        //     changeHasFixtures(true);
+        //     console.log("hello inside then", hello)
+        //   })
+        //   .catch(err => {
+        //     console.log("ERR", err);
+        //   })
       });
 
-      let result = gamesSortedByDay.reduce(function(h, obj) {
-        h[obj.date] = (h[obj.date] || []).concat(obj);
-        return h;
-      }, {});
+
+
+      // let result = gamesSortedByDay.reduce(function(h, obj) {
+      //   h[obj.date] = (h[obj.date] || []).concat(obj);
+      //   return h;
+      // }, {});
       const clickNotice = () => {
-        props.history.push("/pools");
         store.noticeClicked = true;
       };
 
