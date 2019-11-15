@@ -20,12 +20,16 @@ const App = observer((props) => {
   const apiStore = useContext(StoreContext).ApiStore;
 
   useEffect(() => {
-    apiStore.getSports();
+    apiStore.getSports().then(() => {
+      console.log("got data");
+    });
   }, [])
 
   // <Route path="/matches" component={FrontPage} />
   // <Route path="/pools" component={FrontPage} />
   // <Route path="/ratings" component={FrontPage} />
+  // <Route path="/:sport/:tournament/matches" render={(props) => <UpcomingGames {...props} />} />
+
 
   return (
     <Router>
