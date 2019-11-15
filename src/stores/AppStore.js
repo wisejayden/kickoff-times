@@ -5,6 +5,7 @@ import rwcSchedule from "../rwc-schedule.json";
 import lineup from "../lineups.json";
 import backup from "../backup-lineups.json";
 import poolData from "../pool_data.json";
+import moment from 'moment';
 
 export default class AppStore {
   rootStore;
@@ -17,6 +18,8 @@ export default class AppStore {
   @observable filterValue = "";
   @observable ratingsObject = "";
   @observable noticeClicked = false;
+  @observable homeTeam = {};
+  @observable awayTeam = {};
 
   @action changeFilterValue = option => {
     this.filterValue = option;
@@ -129,6 +132,29 @@ export default class AppStore {
       }
     }
   };
+
+  @action getTeamDetails = (game) => {
+    const teams = this.rootStore.ApiStore.tournamentTeams;
+    let homeTeam;
+    let awayTeam;
+    for(var i = 0; i < teams.length; i++) {
+      if(game.idHomeTeam === teams[i].idTeam) {
+        homeTeam = teams[i];
+      }
+      if(game.idAwayTeam === teams[i].idTeam) {
+        awayTeam = teams[i];
+      }
+    }
+    return {homeTeam, awayTeam};
+  }
+  @action createMoment = (element) =>  {
+    return moment(`${element.dateEvent} ${element.strTime}`)
+  };
+  // @action formatDate = (element) => {
+  //    `${store.weekArray[moment(element.scheduled).day()]} ${moment(element.scheduled).date()} ${store.monthArray[moment(element.scheduled).month()]}`;
+  //
+  // }
+
 
   @action getPoolData() {
     let poolData = this.poolData;
