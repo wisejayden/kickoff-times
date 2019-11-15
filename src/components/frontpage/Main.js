@@ -20,14 +20,14 @@ const FrontPage = withRouter(observer(({...props}) => {
       apiStore.getTournamentsBySport(props.match.params.sport).then(x => {
         apiStore.getTournamentFixtures(props.match.params.sport,props.match.params.tournament);
       })
+      .catch(err => {
+        console.log(err);
+      })
     } else {
       apiStore.getTournamentFixtures(props.match.params.sport,props.match.params.tournament);
     }
-
-
-
-  }, [apiStore.fetchedIntialSportsData])
-
+  }, [apiStore.fetchedIntialSportsData]);
+  console.log("?", apiStore.tournamentTeams);
   return (
     <div className="Main">
       <div className="rugby-header">
@@ -42,12 +42,12 @@ const FrontPage = withRouter(observer(({...props}) => {
       </div>
 
       <Tab />
-      {props.location.pathname === "/matches" && (
-        <UpcomingGames data={store.data} matchesView={true} notice={false} />
+      {props.location.pathname === `/${apiStore.currentSport}/${apiStore.currentTournament}` && (
+        <UpcomingGames data={apiStore.tournamentFixtures} matchesView={true} notice={false} />
       )}
       {props.location.pathname === "/pools" && <Pools />}
       {props.location.pathname === "/ratings" && (
-        <UpcomingGames data={store.data} matchesView={false} />
+        <UpcomingGames data={apiStore.tournamentFixtures} matchesView={false} />
       )}
     </div>
   );
