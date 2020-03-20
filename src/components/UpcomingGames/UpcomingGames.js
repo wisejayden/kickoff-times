@@ -102,22 +102,10 @@ const UpcomingGames = withRouter(
         }
       });
 
-      let result = gamesSortedByDay.reduce(function(h, obj) {
-        h[obj.date] = (h[obj.date] || []).concat(obj);
-        return h;
-      }, {});
-      const clickNotice = () => {
-        props.history.push("/pools");
-        store.noticeClicked = true;
-      };
-
       if (numberOfGames === false) numberOfGames = data.length;
+      
       return (
         <div className="UpcomingGames">
-          {/* <div className="upcoming-container">
-            <p>Upcoming Games...</p>
-            <div className="personalize-container">Personalize? <IconContext.Provider value={{className: "info-icon" }}><FaRegQuestionCircle /></IconContext.Provider></div>
-        </div> */}
           <div className="UpcomingGames-container">
             {store.noticeClicked === false && notice === true && (
               <Notice
