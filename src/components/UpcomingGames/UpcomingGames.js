@@ -47,16 +47,13 @@ const UpcomingGames = withRouter(
         let countryNameImageCheck = [];
 
         for (let i = 0; i < store.aPoolOfCountries.length; i++) {
-          if (
-            store.aPoolOfCountries[i].country === element.competitors[0].name
-          ) {
+          //Add country logo to competitors object
+          if (store.aPoolOfCountries[i].country === element.competitors[0].name) {
             if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
             image.unshift(store.aPoolOfCountries[i].image);
             countryNameImageCheck.unshift(element.competitors[0].name);
           }
-          if (
-            store.aPoolOfCountries[i].country === element.competitors[1].name
-          ) {
+          if (store.aPoolOfCountries[i].country === element.competitors[1].name) {
             if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
             image.push(store.aPoolOfCountries[i].image);
             countryNameImageCheck.push(element.competitors[1].name);
@@ -72,7 +69,6 @@ const UpcomingGames = withRouter(
             image.unshift(false);
           }
         }
-
         gamesSortedByDay.push({ date, element, pool, image });
       });
 
@@ -80,8 +76,6 @@ const UpcomingGames = withRouter(
       const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
 
       const upcomingGames = gamesSortedByDay.map((game, i) => {
-        // console.log("id", game.element.id, "Game: ", game.element.competitors[0].name, " vs ", game.element.competitors[1].name);
-
         if (game.date === unique[count]) {
           count++;
           //Add a GameDate component for the first instance of each date.
