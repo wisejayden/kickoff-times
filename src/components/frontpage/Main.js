@@ -1,13 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import UpcomingGames from "../UpcomingGames/UpcomingGames";
-import SportTile from "./SportTile";
 import "./Main.scss";
-import rwcSchedule from "../../rwc-schedule.json";
 import Tab from "../Tab/Tab";
 import Pools from "../Pools/Pools";
 import { observer } from "mobx-react-lite";
 import { StoreContext } from "../../index";
-import { toJS } from "mobx";
 
 const FrontPage = observer(props => {
   const store = useContext(StoreContext).AppStore;
@@ -15,7 +12,7 @@ const FrontPage = observer(props => {
   useEffect(() => {
     store.getAllRatings();
   });
-  // console.log(toJS(store.poolData));
+
   return (
     <div className="Main">
       <div className="rugby-header">
@@ -28,7 +25,6 @@ const FrontPage = observer(props => {
           />
         </div>
       </div>
-
       <Tab />
       {props.location.pathname === "/matches" && (
         <UpcomingGames data={store.data} matchesView={true} notice={false} />

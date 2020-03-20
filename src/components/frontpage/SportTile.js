@@ -2,14 +2,7 @@ import React from 'react';
 import './SportTile.scss';
 import { Link } from 'react-router-dom'
 
-
-const rugbyImage = '/images/mackenzie.jpg';
-
-
-
-
 const SportTile = ({image, sportName, backgroundPosition, link, ...props}) => {
-  
   return (
     <Link to={link}>
       <div id="SportTile">
