@@ -38,10 +38,11 @@ const UpcomingGames = withRouter(
         let image = [];
         if (element.knockout) pool = element.knockout;
         //If the game has passed, get rid of it.. But give it a couple of hours first..
-        const scheduled = moment(element.scheduled).add(4, "hours");
-        if (matchesView && moment() > scheduled) {
-          return;
-        }
+        //Removed for now to allow website to function as tournament is now over...
+        // const scheduled = moment(element.scheduled).add(4, "hours");
+        // if (matchesView && moment() > scheduled) {
+        //   return;
+        // }
 
         let countryNameImageCheck = [];
 
