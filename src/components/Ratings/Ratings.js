@@ -37,7 +37,7 @@ const Ratings = observer(({id, gameData, mouseOverText, ...props}) => {
 
         {store.alreadyRated === false &&
         <select onChange={(event) => store.postRating(event.target.value, id)}>
-        <option value="Rating" disabled selected>Rating</option>
+        <option value="Rating" disabled >Rating</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
