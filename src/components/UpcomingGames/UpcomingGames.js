@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
-import { IconContext } from "react-icons";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import GameFixture from "../GameFixture/GameFixture";
-import moment from "moment";
-import GameDate from "../GameDate/GameDate";
-import Filter from "../Filter/Filter";
-import Notice from "../Notice/Notice";
-import { withRouter } from "react-router-dom";
-import { observer } from "mobx-react-lite";
-import { StoreContext } from "../../index";
-import { toJS } from "mobx";
+import React, { useContext } from 'react';
+import { IconContext } from 'react-icons';
+import { FaRegQuestionCircle } from 'react-icons/fa';
+import GameFixture from '../GameFixture/GameFixture';
+import moment from 'moment';
+import GameDate from '../GameDate/GameDate';
+import Filter from '../Filter/Filter';
+import Notice from '../Notice/Notice';
+import { withRouter } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { StoreContext } from '../../index';
+import { toJS } from 'mobx';
 
-import "./UpcomingGames.scss";
+import './UpcomingGames.scss';
 const UpcomingGames = withRouter(
   observer(
     ({
@@ -28,7 +28,7 @@ const UpcomingGames = withRouter(
       let count = 0;
 
       //Sort the data by date
-      data.forEach(element => {
+      data.forEach((element) => {
         let date = `${
           store.weekArray[moment(element.scheduled).day()]
         } ${moment(element.scheduled).date()} ${
@@ -48,12 +48,16 @@ const UpcomingGames = withRouter(
 
         for (let i = 0; i < store.aPoolOfCountries.length; i++) {
           //Add country logo to competitors object
-          if (store.aPoolOfCountries[i].country === element.competitors[0].name) {
+          if (
+            store.aPoolOfCountries[i].country === element.competitors[0].name
+          ) {
             if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
             image.unshift(store.aPoolOfCountries[i].image);
             countryNameImageCheck.unshift(element.competitors[0].name);
           }
-          if (store.aPoolOfCountries[i].country === element.competitors[1].name) {
+          if (
+            store.aPoolOfCountries[i].country === element.competitors[1].name
+          ) {
             if (!pool) pool = `Pool ${store.aPoolOfCountries[i].pool}`;
             image.push(store.aPoolOfCountries[i].image);
             countryNameImageCheck.push(element.competitors[1].name);
@@ -73,7 +77,7 @@ const UpcomingGames = withRouter(
       });
 
       //Pull out the unique dates out of the array
-      const unique = [...new Set(gamesSortedByDay.map(item => item.date))];
+      const unique = [...new Set(gamesSortedByDay.map((item) => item.date))];
 
       const upcomingGames = gamesSortedByDay.map((game, i) => {
         if (game.date === unique[count]) {
@@ -103,26 +107,25 @@ const UpcomingGames = withRouter(
       });
 
       if (numberOfGames === false) numberOfGames = data.length;
-      
+
       return (
-        <div className="UpcomingGames">
-          <div className="UpcomingGames-container">
+        <div className='UpcomingGames'>
+          <div className='UpcomingGames-container'>
             {store.noticeClicked === false && notice === true && (
               <Notice
-                clickNotice={clickNotice}
                 message={
-                  "Group standings have been added, check out the Pools tab"
+                  'Group standings have been added, check out the Pools tab'
                 }
               />
             )}
             {filterDropdown === true && (
-              <div className="filter-container">
+              <div className='filter-container'>
                 <Filter />
-                {store.filterValue !== "" && (
+                {store.filterValue !== '' && (
                   <img
                     onClick={store.clearFilterData}
-                    id="remove-filter-logo"
-                    src="/images/redcross.png"
+                    id='remove-filter-logo'
+                    src='/images/redcross.png'
                   />
                 )}
               </div>
