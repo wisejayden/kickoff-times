@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Ratings.scss';
 import axios from 'axios';
-import {toJS } from 'mobx';
-import { observer } from "mobx-react-lite";
-import { StoreContext } from "../../index";
-import { Socket } from 'dgram';
+import { toJS } from 'mobx';
+import { observer } from 'mobx-react-lite';
+import { StoreContext } from '../../index';
 
-const Ratings = observer(({id, gameData, mouseOverText, ...props}) => {
+const Ratings = observer(({ id, gameData, mouseOverText, ...props }) => {
   const [currentRating, changeCurrentRating] = useState('');
   const [ratingsReceived, changeRatingsReceived] = useState(false);
   const [circleOpen, toggleCircleOpen] = useState(false);
@@ -16,45 +15,49 @@ const Ratings = observer(({id, gameData, mouseOverText, ...props}) => {
 
   const store = useContext(StoreContext).AppStore;
 
-
   let rateText;
   if (mouseOverText) {
-    store.alreadyRated === true ? rateText = "Done" : rateText = mouseOverText;
+    store.alreadyRated === true
+      ? (rateText = 'Done')
+      : (rateText = mouseOverText);
   } else {
-    if(store.unratedGame)  {
-      rateText = "Unrated.." 
+    if (store.unratedGame) {
+      rateText = 'Unrated..';
     } else if (store.ratingError) {
-      rateText = store.ratingError
+      rateText = store.ratingError;
     } else {
-      store.ratingsObject ? rateText = store.averageRating(id)  : rateText = 'Loading..'
+      store.ratingsObject
+        ? (rateText = store.averageRating(id))
+        : (rateText = 'Loading..');
     }
   }
 
   return (
-   <div className="Ratings">
-       <div className="rating-container">
-       <span>{rateText}</span>
+    <div className='Ratings'>
+      <div className='rating-container'>
+        <span>{rateText}</span>
 
-        {store.alreadyRated === false &&
-        <select onChange={(event) => store.postRating(event.target.value, id)}>
-        <option value="Rating" disabled >Rating</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
+        {store.alreadyRated === false && (
+          <select
+            onChange={(event) => store.postRating(event.target.value, id)}
+          >
+            <option value='Rating' disabled>
+              Rating
+            </option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+          </select>
+        )}
 
-        </select>
-        
-        }
-           
-
-           {/* <div className="circular-menu">
+        {/* <div className="circular-menu">
             <div className={circleOpen ? "circle open" : "circle"}>
             <span className="fa fa-home fa-2x numberContainer" style={{left: '50%', top: '15%'}}>1</span>
             <span className="fa fa-facebook fa-2x numberContainer"  style={{left: '74.75%', top: '25.25%'}}></span>
@@ -67,12 +70,9 @@ const Ratings = observer(({id, gameData, mouseOverText, ...props}) => {
            </div>
            <div onClick={() => toggleCircleOpen(!circleOpen)} class="menu-button fa fa-bars fa-2x">{currentRating}</div> */}
 
-{/* </div> */}
-       </div>
-
-   </div>
-  )
+        {/* </div> */}
+      </div>
+    </div>
+  );
 });
 export default Ratings;
-
-
